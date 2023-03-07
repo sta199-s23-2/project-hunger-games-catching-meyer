@@ -1,0 +1,191 @@
+season,date,level,competition,city,country,continent,altitude,segment,jump,rotation,fall,bonus,combination,jump_number,jump_bv,goe,point_value
+2017-2018,2017-08-24,Junior,JGP,Brisbane,Australia,Oceania,,SP,3F+3Lo,,,1,1,2,11.44,0.80,12.24
+2017-2018,2017-08-24,Junior,JGP,Brisbane,Australia,Oceania,,SP,3Lz,,,1,,1,6.60,1.20,7.80
+2017-2018,2017-08-24,Junior,JGP,Brisbane,Australia,Oceania,,SP,2A,,,1,,1,3.63,0.79,4.42
+2017-2018,2017-08-26,Junior,JGP,Brisbane,Australia,Oceania,,FP,4S,u,,,,1,8.10,-1.37,6.73
+2017-2018,2017-08-26,Junior,JGP,Brisbane,Australia,Oceania,,FP,3Lz+3Lo,,,1,1,2,12.21,0.80,13.01
+2017-2018,2017-08-26,Junior,JGP,Brisbane,Australia,Oceania,,FP,3F+2T+2T,,,1,1,3,8.69,0.90,9.59
+2017-2018,2017-08-26,Junior,JGP,Brisbane,Australia,Oceania,,FP,3Lz+3T,,,1,1,2,11.33,1.30,12.63
+2017-2018,2017-08-26,Junior,JGP,Brisbane,Australia,Oceania,,FP,3F,,,1,,1,5.83,1.00,6.83
+2017-2018,2017-08-26,Junior,JGP,Brisbane,Australia,Oceania,,FP,3S,,,1,,1,4.84,0.70,5.54
+2017-2018,2017-08-26,Junior,JGP,Brisbane,Australia,Oceania,,FP,2A,,,1,,1,3.63,0.86,4.49
+2017-2018,2017-09-21,Junior,JGP,Minsk,Belarus,Europe,,SP,3F+3Lo,,,1,1,2,11.44,1.30,12.74
+2017-2018,2017-09-21,Junior,JGP,Minsk,Belarus,Europe,,SP,3Lz,,,1,,1,6.60,1.40,8.00
+2017-2018,2017-09-21,Junior,JGP,Minsk,Belarus,Europe,,SP,2A,,,1,,1,3.63,0.86,4.49
+2017-2018,2017-09-22,Junior,JGP,Minsk,Belarus,Europe,,FP,4S,d,1,,,1,4.40,-2.10,2.30
+2017-2018,2017-09-22,Junior,JGP,Minsk,Belarus,Europe,,FP,3Lz+3Lo,,,1,1,2,12.21,0.80,13.01
+2017-2018,2017-09-22,Junior,JGP,Minsk,Belarus,Europe,,FP,3F+2T+2T,,,1,1,3,8.69,0.50,9.19
+2017-2018,2017-09-22,Junior,JGP,Minsk,Belarus,Europe,,FP,3Lz+3T,,,1,1,2,11.33,1.20,12.53
+2017-2018,2017-09-22,Junior,JGP,Minsk,Belarus,Europe,,FP,3F,,,1,,1,5.83,1.20,7.03
+2017-2018,2017-09-22,Junior,JGP,Minsk,Belarus,Europe,,FP,3S,,,1,,1,4.84,0.90,5.74
+2017-2018,2017-09-22,Junior,JGP,Minsk,Belarus,Europe,,FP,2A,,,1,,1,3.63,0.86,4.49
+2017-2018,2017-12-07,Junior,JGPF,Nagoya,Japan,Asia,,SP,3F+3Lo,,,1,1,2,11.44,1.50,12.94
+2017-2018,2017-12-07,Junior,JGPF,Nagoya,Japan,Asia,,SP,3Lz,,,1,,1,6.60,1.60,8.20
+2017-2018,2017-12-07,Junior,JGPF,Nagoya,Japan,Asia,,SP,2A,,,1,,1,3.63,1.00,4.63
+2017-2018,2017-12-09,Junior,JGPF,Nagoya,Japan,Asia,,FP,4S,u,1,,,1,8.10,-4.00,4.10
+2017-2018,2017-12-09,Junior,JGPF,Nagoya,Japan,Asia,,FP,3Lz+3Lo,,,1,1,2,12.21,-0.40,11.81
+2017-2018,2017-12-09,Junior,JGPF,Nagoya,Japan,Asia,,FP,3F+2T+2T,,,1,1,3,8.69,0.70,9.39
+2017-2018,2017-12-09,Junior,JGPF,Nagoya,Japan,Asia,,FP,3Lz+3T,,,1,1,2,11.33,1.30,12.63
+2017-2018,2017-12-09,Junior,JGPF,Nagoya,Japan,Asia,,FP,3F,,,1,,1,5.83,1.40,7.23
+2017-2018,2017-12-09,Junior,JGPF,Nagoya,Japan,Asia,,FP,3S,,,1,,1,4.84,1.30,6.14
+2017-2018,2017-12-09,Junior,JGPF,Nagoya,Japan,Asia,,FP,2A,,,1,,1,3.63,0.93,4.56
+2017-2018,2018-03-09,Junior,JWC,Sofia,Bulgaria,Europe,,SP,3F+3Lo,,,1,1,2,11.44,1.70,13.14
+2017-2018,2018-03-09,Junior,JWC,Sofia,Bulgaria,Europe,,SP,3Lz,,,1,,1,6.60,1.90,8.50
+2017-2018,2018-03-09,Junior,JWC,Sofia,Bulgaria,Europe,,SP,2A,,,1,,1,3.63,1.07,4.70
+2017-2018,2018-03-10,Junior,JWC,Sofia,Bulgaria,Europe,,FP,4S,,,,,1,10.50,2.00,12.50
+2017-2018,2018-03-10,Junior,JWC,Sofia,Bulgaria,Europe,,FP,4T,,,,,1,10.30,0.57,10.87
+2017-2018,2018-03-10,Junior,JWC,Sofia,Bulgaria,Europe,,FP,3Lz,,,1,,1,6.60,1.70,8.30
+2017-2018,2018-03-10,Junior,JWC,Sofia,Bulgaria,Europe,,FP,3F+1Eu+3S,,,1,1,3,11.22,1.00,12.22
+2017-2018,2018-03-10,Junior,JWC,Sofia,Bulgaria,Europe,,FP,3Lz+3Lo,,,1,1,2,12.21,1.50,13.71
+2017-2018,2018-03-10,Junior,JWC,Sofia,Bulgaria,Europe,,FP,3F+3T,,,1,1,2,10.56,1.30,11.86
+2017-2018,2018-03-10,Junior,JWC,Sofia,Bulgaria,Europe,,FP,2A,,,1,,1,3.63,0.93,4.56
+2018-2019,2018-09-06,Junior,JGP,Kaunas,Lithuania,Europe,,SP,2A,,,,,1,3.30,1.32,4.62
+2018-2019,2018-09-06,Junior,JGP,Kaunas,Lithuania,Europe,,SP,3F,,,,,1,5.30,2.20,7.50
+2018-2019,2018-09-06,Junior,JGP,Kaunas,Lithuania,Europe,,SP,3Lz+3Lo,,,1,1,2,11.88,2.61,14.49
+2018-2019,2018-09-07,Junior,JGP,Kaunas,Lithuania,Europe,,FP,4Lz,u,,,,1,8.63,-0.61,8.02
+2018-2019,2018-09-07,Junior,JGP,Kaunas,Lithuania,Europe,,FP,4T,,1,,,1,9.50,-4.75,4.75
+2018-2019,2018-09-07,Junior,JGP,Kaunas,Lithuania,Europe,,FP,4T+3T,,,,1,2,13.70,2.44,16.14
+2018-2019,2018-09-07,Junior,JGP,Kaunas,Lithuania,Europe,,FP,2A,,,,,1,3.30,0.99,4.29
+2018-2019,2018-09-07,Junior,JGP,Kaunas,Lithuania,Europe,,FP,3Lz+3Lo,,,1,1,2,11.88,2.02,13.90
+2018-2019,2018-09-07,Junior,JGP,Kaunas,Lithuania,Europe,,FP,3Lz+1Eu+3S,,,1,1,3,11.77,2.02,13.79
+2018-2019,2018-09-07,Junior,JGP,Kaunas,Lithuania,Europe,,FP,3F,,,1,,1,5.83,1.74,7.57
+2018-2019,2018-10-11,Junior,JGP,Yerevan,Armenia,Europe,,SP,2A,,,,,1,3.30,1.32,4.62
+2018-2019,2018-10-11,Junior,JGP,Yerevan,Armenia,Europe,,SP,3F,,,,,1,5.30,2.12,7.42
+2018-2019,2018-10-11,Junior,JGP,Yerevan,Armenia,Europe,,SP,3Lz+3Lo,,,1,1,2,11.88,2.61,14.49
+2018-2019,2018-10-12,Junior,JGP,Yerevan,Armenia,Europe,,FP,4Lz,,,,,1,11.50,0.00,11.50
+2018-2019,2018-10-12,Junior,JGP,Yerevan,Armenia,Europe,,FP,2A,,,,,1,3.30,1.18,4.48
+2018-2019,2018-10-12,Junior,JGP,Yerevan,Armenia,Europe,,FP,3F+3T,,,,1,2,9.50,1.89,11.39
+2018-2019,2018-10-12,Junior,JGP,Yerevan,Armenia,Europe,,FP,2A,,,,,1,3.30,0.99,4.29
+2018-2019,2018-10-12,Junior,JGP,Yerevan,Armenia,Europe,,FP,3Lz+3Lo,,,1,1,2,11.88,2.19,14.07
+2018-2019,2018-10-12,Junior,JGP,Yerevan,Armenia,Europe,,FP,3Lz+1Eu+3S,,,1,1,3,11.77,1.94,13.71
+2018-2019,2018-10-12,Junior,JGP,Yerevan,Armenia,Europe,,FP,3F,,,1,,1,5.83,1.44,7.27
+2018-2019,2018-12-06,Junior,JGPF,Vancouver,Canada,North America,,SP,2A,,,,,1,3.30,1.32,4.62
+2018-2019,2018-12-06,Junior,JGPF,Vancouver,Canada,North America,,SP,3F,,,,,1,5.30,1.97,7.27
+2018-2019,2018-12-06,Junior,JGPF,Vancouver,Canada,North America,,SP,3Lz+3Lo,,,1,1,2,11.88,1.94,13.82
+2018-2019,2018-12-08,Junior,JGPF,Vancouver,Canada,North America,,FP,4Lz,,,,,1,11.50,-3.45,8.05
+2018-2019,2018-12-08,Junior,JGPF,Vancouver,Canada,North America,,FP,4Lz,u,1,,,1,6.04,-4.32,1.72
+2018-2019,2018-12-08,Junior,JGPF,Vancouver,Canada,North America,,FP,4T,,,,,1,9.50,0.54,10.04
+2018-2019,2018-12-08,Junior,JGPF,Vancouver,Canada,North America,,FP,2A+3T,,,,1,2,7.50,0.90,8.40
+2018-2019,2018-12-08,Junior,JGPF,Vancouver,Canada,North America,,FP,3Lz+3Lo,,,1,1,2,11.88,0.51,12.39
+2018-2019,2018-12-08,Junior,JGPF,Vancouver,Canada,North America,,FP,3Lz+1Eu+3S,,,1,1,3,11.77,1.52,13.29
+2018-2019,2018-12-08,Junior,JGPF,Vancouver,Canada,North America,,FP,3F,,,1,,1,5.83,1.67,7.50
+2018-2019,,Junior,JWC,Zagreb,Croatia,Europe,,SP,,,,,,,,,0.00
+2018-2019,,Junior,JWC,Zagreb,Croatia,Europe,,SP,,,,,,,,,0.00
+2018-2019,,Junior,JWC,Zagreb,Croatia,Europe,,SP,,,,,,,,,0.00
+2018-2019,,Junior,JWC,Zagreb,Croatia,Europe,,FP,,,,,,,,,0.00
+2018-2019,,Junior,JWC,Zagreb,Croatia,Europe,,FP,,,,,,,,,0.00
+2018-2019,,Junior,JWC,Zagreb,Croatia,Europe,,FP,,,,,,,,,0.00
+2018-2019,,Junior,JWC,Zagreb,Croatia,Europe,,FP,,,,,,,,,0.00
+2018-2019,,Junior,JWC,Zagreb,Croatia,Europe,,FP,,,,,,,,,0.00
+2018-2019,,Junior,JWC,Zagreb,Croatia,Europe,,FP,,,,,,,,,0.00
+2018-2019,,Junior,JWC,Zagreb,Croatia,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,CS,Bratislava,Slovakia,Europe,,SP,,,,,,,,,0.00
+2019-2020,,Senior,CS,Bratislava,Slovakia,Europe,,SP,,,,,,,,,0.00
+2019-2020,,Senior,CS,Bratislava,Slovakia,Europe,,SP,,,,,,,,,0.00
+2019-2020,,Senior,CS,Bratislava,Slovakia,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,CS,Bratislava,Slovakia,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,CS,Bratislava,Slovakia,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,CS,Bratislava,Slovakia,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,CS,Bratislava,Slovakia,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,CS,Bratislava,Slovakia,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,CS,Bratislava,Slovakia,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Kelowna,Canada,Europe,,SP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Kelowna,Canada,Europe,,SP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Kelowna,Canada,Europe,,SP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Kelowna,Canada,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Kelowna,Canada,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Kelowna,Canada,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Kelowna,Canada,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Kelowna,Canada,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Kelowna,Canada,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Kelowna,Canada,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Moscow,Russia,Europe,,SP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Moscow,Russia,Europe,,SP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Moscow,Russia,Europe,,SP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Moscow,Russia,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Moscow,Russia,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Moscow,Russia,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Moscow,Russia,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Moscow,Russia,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Moscow,Russia,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GP,Moscow,Russia,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GPF,Torino,Italy,Europe,,SP,,,,,,,,,0.00
+2019-2020,,Senior,GPF,Torino,Italy,Europe,,SP,,,,,,,,,0.00
+2019-2020,,Senior,GPF,Torino,Italy,Europe,,SP,,,,,,,,,0.00
+2019-2020,,Senior,GPF,Torino,Italy,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GPF,Torino,Italy,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GPF,Torino,Italy,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GPF,Torino,Italy,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GPF,Torino,Italy,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GPF,Torino,Italy,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,GPF,Torino,Italy,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,EU,Graz,Austria,Europe,,SP,,,,,,,,,0.00
+2019-2020,,Senior,EU,Graz,Austria,Europe,,SP,,,,,,,,,0.00
+2019-2020,,Senior,EU,Graz,Austria,Europe,,SP,,,,,,,,,0.00
+2019-2020,,Senior,EU,Graz,Austria,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,EU,Graz,Austria,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,EU,Graz,Austria,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,EU,Graz,Austria,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,EU,Graz,Austria,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,EU,Graz,Austria,Europe,,FP,,,,,,,,,0.00
+2019-2020,,Senior,EU,Graz,Austria,Europe,,FP,,,,,,,,,0.00
+2020-2021,,Senior,GP,Moscow,Russia,Europe,,SP,,,,,,,,,0.00
+2020-2021,,Senior,GP,Moscow,Russia,Europe,,SP,,,,,,,,,0.00
+2020-2021,,Senior,GP,Moscow,Russia,Europe,,SP,,,,,,,,,0.00
+2020-2021,,Senior,GP,Moscow,Russia,Europe,,FP,,,,,,,,,0.00
+2020-2021,,Senior,GP,Moscow,Russia,Europe,,FP,,,,,,,,,0.00
+2020-2021,,Senior,GP,Moscow,Russia,Europe,,FP,,,,,,,,,0.00
+2020-2021,,Senior,GP,Moscow,Russia,Europe,,FP,,,,,,,,,0.00
+2020-2021,,Senior,GP,Moscow,Russia,Europe,,FP,,,,,,,,,0.00
+2020-2021,,Senior,GP,Moscow,Russia,Europe,,FP,,,,,,,,,0.00
+2020-2021,,Senior,GP,Moscow,Russia,Europe,,FP,,,,,,,,,0.00
+2020-2021,,Senior,WC,Stockholm,Sweden,Europe,,SP,,,,,,,,,0.00
+2020-2021,,Senior,WC,Stockholm,Sweden,Europe,,SP,,,,,,,,,0.00
+2020-2021,,Senior,WC,Stockholm,Sweden,Europe,,SP,,,,,,,,,0.00
+2020-2021,,Senior,WC,Stockholm,Sweden,Europe,,FP,,,,,,,,,0.00
+2020-2021,,Senior,WC,Stockholm,Sweden,Europe,,FP,,,,,,,,,0.00
+2020-2021,,Senior,WC,Stockholm,Sweden,Europe,,FP,,,,,,,,,0.00
+2020-2021,,Senior,WC,Stockholm,Sweden,Europe,,FP,,,,,,,,,0.00
+2020-2021,,Senior,WC,Stockholm,Sweden,Europe,,FP,,,,,,,,,0.00
+2020-2021,,Senior,WC,Stockholm,Sweden,Europe,,FP,,,,,,,,,0.00
+2020-2021,,Senior,WC,Stockholm,Sweden,Europe,,FP,,,,,,,,,0.00
+2021-2022,,Senior,CS,Boston,United States,North America,,SP,,,,,,,,,0.00
+2021-2022,,Senior,CS,Boston,United States,North America,,SP,,,,,,,,,0.00
+2021-2022,,Senior,CS,Boston,United States,North America,,SP,,,,,,,,,0.00
+2021-2022,,Senior,CS,Boston,United States,North America,,FP,,,,,,,,,0.00
+2021-2022,,Senior,CS,Boston,United States,North America,,FP,,,,,,,,,0.00
+2021-2022,,Senior,CS,Boston,United States,North America,,FP,,,,,,,,,0.00
+2021-2022,,Senior,CS,Boston,United States,North America,,FP,,,,,,,,,0.00
+2021-2022,,Senior,CS,Boston,United States,North America,,FP,,,,,,,,,0.00
+2021-2022,,Senior,CS,Boston,United States,North America,,FP,,,,,,,,,0.00
+2021-2022,,Senior,CS,Boston,United States,North America,,FP,,,,,,,,,0.00
+2021-2022,,Senior,GP,Las Vegas,United States,North America,,SP,,,,,,,,,0.00
+2021-2022,,Senior,GP,Las Vegas,United States,North America,,SP,,,,,,,,,0.00
+2021-2022,,Senior,GP,Las Vegas,United States,North America,,SP,,,,,,,,,0.00
+2021-2022,,Senior,GP,Las Vegas,United States,North America,,FP,,,,,,,,,0.00
+2021-2022,,Senior,GP,Las Vegas,United States,North America,,FP,,,,,,,,,0.00
+2021-2022,,Senior,GP,Las Vegas,United States,North America,,FP,,,,,,,,,0.00
+2021-2022,,Senior,GP,Las Vegas,United States,North America,,FP,,,,,,,,,0.00
+2021-2022,,Senior,GP,Las Vegas,United States,North America,,FP,,,,,,,,,0.00
+2021-2022,,Senior,GP,Las Vegas,United States,North America,,FP,,,,,,,,,0.00
+2021-2022,,Senior,GP,Las Vegas,United States,North America,,FP,,,,,,,,,0.00
+2021-2022,,Senior,EU,Tallinn,Estonia,Europe,,SP,,,,,,,,,0.00
+2021-2022,,Senior,EU,Tallinn,Estonia,Europe,,SP,,,,,,,,,0.00
+2021-2022,,Senior,EU,Tallinn,Estonia,Europe,,SP,,,,,,,,,0.00
+2021-2022,,Senior,EU,Tallinn,Estonia,Europe,,FP,,,,,,,,,0.00
+2021-2022,,Senior,EU,Tallinn,Estonia,Europe,,FP,,,,,,,,,0.00
+2021-2022,,Senior,EU,Tallinn,Estonia,Europe,,FP,,,,,,,,,0.00
+2021-2022,,Senior,EU,Tallinn,Estonia,Europe,,FP,,,,,,,,,0.00
+2021-2022,,Senior,EU,Tallinn,Estonia,Europe,,FP,,,,,,,,,0.00
+2021-2022,,Senior,EU,Tallinn,Estonia,Europe,,FP,,,,,,,,,0.00
+2021-2022,,Senior,EU,Tallinn,Estonia,Europe,,FP,,,,,,,,,0.00
+2021-2022,,Senior,OLY,Beijing,China,Asia,,SP,,,,,,,,,0.00
+2021-2022,,Senior,OLY,Beijing,China,Asia,,SP,,,,,,,,,0.00
+2021-2022,,Senior,OLY,Beijing,China,Asia,,SP,,,,,,,,,0.00
+2021-2022,,Senior,OLY,Beijing,China,Asia,,FP,,,,,,,,,0.00
+2021-2022,,Senior,OLY,Beijing,China,Asia,,FP,,,,,,,,,0.00
+2021-2022,,Senior,OLY,Beijing,China,Asia,,FP,,,,,,,,,0.00
+2021-2022,,Senior,OLY,Beijing,China,Asia,,FP,,,,,,,,,0.00
+2021-2022,,Senior,OLY,Beijing,China,Asia,,FP,,,,,,,,,0.00
+2021-2022,,Senior,OLY,Beijing,China,Asia,,FP,,,,,,,,,0.00
+2021-2022,,Senior,OLY,Beijing,China,Asia,,FP,,,,,,,,,0.00
