@@ -74,27 +74,43 @@ glimpse(alexandra_trusova)
 
 ## Introduction and data
 
--   Identify the source of the data.
+-   The data is from the United States Center for Disease Control and Prevention (CDC), website linked here: https://covid.cdc.gov/covid-data-tracker/#datatracker-home
 
--   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
+-   The statistics were all gathered and reviewed by the CDC. The hospital & testing data was reported by hospitals/clinics directly to the U.S. Department of Health and Human Services (HHS) or via a state submission for collection in the HHS Unified Hospital Data Surveillance System.
 
--   Write a brief description of the observations.
+-   [***Write a brief description of the observations.***]{.underline}
 
 ## Research question
 
--   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
+-   Does increased COVID testing improve COVID-19 outcomes in Los Angeles, California and San Diego, California?
 
--   A description of the research topic along with a concise statement of your hypotheses on this topic.
+-   We want to research whether patient outcomes were better when increased testing occurred. To determine patient outcomes, we want to look at the number of weekly deaths, the number of hospital admissions, the percentage of staffed adult inpatient beds used by confirmed COVID-19 patients, and the percentage of staffed adult ICU beds used by confirmed COVID-19 patients. We chose to look at Los Angeles and San Diego as they both have diverse populations (in terms of both ethnicity socioeconomic status), but of different sizes. We thus plan on observing trends both (1) across Los Angeles and San Diego and (2) within the respective counties and examining whether there are differences between the two.
 
--   Identify the types of variables in your research question. Categorical? Quantitative?
+-   Our hypothesis is that increased testing improves patient outcomes. This is because an early diagnosis allows an individual to receive treatment (e.x. paxlovid) earlier and prevents the spreading of COVID to populations who are at high risk of mortality.
+
+-   The variables we will look at include:
+
+    -   Weekly Cases -- Quantitative
+
+    -   Weekly Deaths -- Quantitative
+
+    -   Tests performed (7 day rolling average) -- Quantitative
+
+    -   New Admissions Confirmed COVID-19 per 100000 Population Last 7 Days -- Quantitative
+
+    -   Percentage of staffed adult inpatient beds used by confirmed COVID-19 patients over a trailing 7 day period -- Quantitative
+
+    -   Percentage of staffed adult ICU beds used by confirmed COVID-19 patients over a trailing 7 day period - Quantitative
+
+    -   County -- Categorical (Los Angeles County or San Diego County)
 
 ## Literature
 
--   Find one published credible article on the topic you are interested in researching.
+-   "COVID-19 in the Eastern Mediterranean Region: testing frequency, cumulative cases and mortality analysis" (from EMHJ -- Vol. 26 No. 9 -- 2020) <https://apps.who.int/iris/bitstream/handle/10665/335727/1020-3397-2020-2609-992-1144-eng.pdf#page=19>
 
--   Provide a one paragraph summary about the article.
+-   This article explores the relationship between testing frequency and fatality rates in different countries across the Eastern Mediterranean Region, in comparison with the rest of the world. The article finds that though testing frequency was similar to the rest of the world, average incidence and mortality rates per population were 70% and 90% lower, respectively. It also unexpectedly found that higher-testing Gulf Cooperation Council countries saw similar case-fatality rates as other Eastern Mediterranean countries which was higher than the world average. The article suggests further studies in demographic and genetic factors should be examined to better understand patient outcomes per test frequency. 
 
--   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+-   Our research question similarly examines the relationship between testing frequency and fatality rates, but within the Los Angeles and San Diego county regions. Ours is a much smaller, specialized dataset that closely examines testing-fatality rates in a different geographic and demographic region, but would also require further demographic and genetic data to further analyze and extrapolate trends.
 
 ## Glimpse of data
 
@@ -102,6 +118,8 @@ glimpse(alexandra_trusova)
 #| label: load-data-2
 
 california_covid <- read.csv("data/county_level_timeseries_data_for_california.csv")
+
+glimpse(california_covid)
 ```
 
 # Data 3
