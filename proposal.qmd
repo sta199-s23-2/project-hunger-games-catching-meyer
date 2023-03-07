@@ -16,34 +16,58 @@ library(tidyverse)
 
 ## Introduction and data
 
--   Identify the source of the data.
+-   Identify the source of the data:
 
--   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
+    The International Skating Union (ISU) is the governing body of figure skating competition around the world. ISU-sanctioned competitions have websites containing records of the detailed results of the competition.
 
--   Write a brief description of the observations.
+-   State when and how it was originally collected (by the original data curator, not necessarily how you found the data):
+
+    The ISU keeps records of the detailed score breakdowns, known as protocols, for each skater at each of its competitions. Each competition has its own individual webpage, on which pdfs containing these protocols can be found. Everything is included, from jumps to spins to artistry scores. As the collector of the data file, I selected the competitions attended by Alexandra Trusova and pulled the data for each of her jumping passes into a .csv file.
+
+-   Write a brief description of the observations:
+
+    There is an entry for each jumping pass attempted by Trusova. The data accompanying it include the data the jumping pass was attempted, the competition season it occurred, the location of the competition, and other data such as whether the jumping pass was a solo jump or a combination, any technicall calls issued, and the grade of execution received.
 
 ## Research question
 
--   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
+-   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.):
 
--   A description of the research topic along with a concise statement of your hypotheses on this topic.
+    How do different characteristics of a jump attempt affect its outcome?
 
--   Identify the types of variables in your research question. Categorical? Quantitative?
+    Does the rate of success of a jumping pass change over the years?
 
-## Literature 
+-   A description of the research topic along with a concise statement of your hypotheses on this topic:
 
--   Find one published credible article on the topic you are interested in researching.
+    Alexandra Trusova is a notable Russian figure skater. She has spent 5 seasons competing internationally for Russia at various ISU-sanctioned competitions including the Grand Prix circuit, European championships, World championships, and even the Olympics. She has pushed the technical boundaries of the sport, and her development over the years is interesting to track. This dataset accounts for every one of her international competitions over the years.
 
--   Provide a one paragraph summary about the article.
+    Individual skaters may have preferences for competition location, such as those close to home. They may also be better at jumps attempted in the first half of a competition as compared to the second half. Their success rate at a particular jumping pass may change over the seasons. We hypothesize that there will be strong correlations between different variables and the successful outcome of a jumping pass.
+
+-   Identify the types of variables in your research question. Categorical? Quantitative?:
+
+    There are both categorical and quantitative variables in this dataset. The variables describing the competition and the basic jump info are catgorical, and the variables describing the point value of the jump are quantitative.
+
+## Literature
+
+-   Find one published credible article on the topic you are interested in researching:
+
+    Lockwood KL, Gervais PJ, Mccreary DR. Landing for success: a biomechanical and perceptual analysis of on-ice jumps in figure skating. Sports Biomech. 2006 Jul;5(2):231-41. doi: 10.1080/14763140608522876. PMID: 16939155.
+
+-   Provide a one paragraph summary about the article:
+
+    The study in the article investigated the biomechanical variables affecting the technical success of a jump. The researchers attached markers to anatomical points on the skater's body, filmed the jump, and conducted analysis in two ways: objectively using biomechanical measures and subjectively by accredited figure skating judges. They found that the correlation between "biomechanical landing strategies" and judge perception is strong enough to support the continuation of the current subjective judging methods in figure skating.
 
 -   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+
+    Our research is different than the article cited because it looks at other non-biomechanical factors affecting the outcome of a jump, such as altitude, location, time of year, segment of competition, and position in program. Additionally our data focuses on a single skater rather than multiple.
 
 ## Glimpse of data
 
 ```{r}
 #| label: load-data-1
 
-# add code here
+alexandra_trusova <- read.csv("data/alexandra_trusova_incomplete.csv")
+
+glimpse(alexandra_trusova)
 ```
 
 # Data 2
@@ -64,7 +88,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
@@ -98,7 +122,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
