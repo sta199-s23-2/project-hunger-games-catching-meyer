@@ -22,11 +22,11 @@ library(tidyverse)
 
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data):
 
-    The ISU keeps records of the detailed score breakdowns, known as protocols, for each skater at each of its competitions. Each competition has its own individual webpage, on which pdfs containing these protocols can be found. Everything is included, from jumps to spins to artistry scores. As the collector of the data file, I selected the competitions attended by Alexandra Trusova and pulled the data for each of her jumping passes into a .csv file.
+    The ISU keeps records of the detailed score breakdowns, known as protocols, for each skater at each of its competitions. Each country's skating federation also keeps these records for their domestic competitions, including national championships. Each competition has its own individual webpage, on which pdfs containing these protocols can be found. Everything is included, from jumps to spins to artistry scores. As the collector of the data file, I selected the competitions attended by Alexandra Trusova and pulled the data for each of her jumping passes into a .csv file.
 
 -   Write a brief description of the observations:
 
-    There is an entry for each jumping pass attempted by Trusova. The data accompanying it include the data the jumping pass was attempted, the competition season it occurred, the location of the competition, and other data such as whether the jumping pass was a solo jump or a combination, any technicall calls issued, and the grade of execution received.
+    There is an entry for each jumping pass attempted by Trusova in either ISU-sanctioned international competition or at a Russian National Championship. The data accompanying it include the data the jumping pass was attempted, the competition season it occurred, the location of the competition, and other data such as whether the jumping pass was a solo jump or a combination, any technicall calls issued, and the grade of execution received.
 
 ## Research question
 
