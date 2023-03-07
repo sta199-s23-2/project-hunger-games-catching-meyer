@@ -101,7 +101,7 @@ glimpse(alexandra_trusova)
 ```{r}
 #| label: load-data-2
 
-# add code here
+california_covid <- read.csv("data/county_level_timeseries_data_for_california.csv")
 ```
 
 # Data 3
