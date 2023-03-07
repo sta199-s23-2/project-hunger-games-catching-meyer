@@ -8,6 +8,6 @@ This project was developed by **\[team name\]** For [STA 199: Introduction to Da
 
 -   Janet Jiang: A sophomore studying computer science and economics.
 -   Team member 2: One sentence description of Team member 2 (e.g., year, major, etc.).
--   Team member 3: One sentence description of Team member 3 (e.g., year, major, etc.).
+-   Will Adams: Junior creating a Program II titled, The Global Sports World: Money, Power, & Culture.
 -   Team member 4: One sentence description of Team member 4 (e.g., year, major, etc.).
 -   ...
