@@ -18,7 +18,7 @@ library(tidyverse)
 
 -   Identify the source of the data:
 
-    The International Skating Union (ISU) is the governing body of figure skating competition around the world. ISU-sanctioned competitions have websites containing records of the detailed results of the competition.
+    The data is from the competition records of the International Skating Union, Tallinn Trophy, and the Russian Skating Federation. The International Skating Union (ISU) is the governing body of figure skating competition around the world. ISU-sanctioned and many other competitions have websites containing records of the detailed results of the competition. (There is a separate site for each competition so for brevity's sake sites will not be linked here.)
 
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data):
 
