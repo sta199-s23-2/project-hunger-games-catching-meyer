@@ -110,32 +110,28 @@ glimpse(california_covid)
 
 ## Introduction and data
 
--   Identify the source of the data.
-
--   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
-
--   Write a brief description of the observations.
+-   The dataset titled supreme_court was created primarily by professor Harold J. Spaeth of Michigan State University Law. Individuals who assisted Dr. Spaeth in the initial creation of the dataset and/or the upkeep of the data since include Professor Lee Epstein, Professor Ted Ruger, Professor Jeffrey Segal, Professor Andrew D. Martin, and associate professor Sara Benesh. Dr. Spaeth produced the original dataset in the 1980s with funding from the National Science Foundation, but has been updating it since that date to reflect the outcomes of new Supreme Court cases. He collects data from official Supreme Court reports. The dataset is extensive and covers a wide variety of facts about each case, ranging from more generally known/easily researched facts (votes, date of decision, supreme court party leaning, etc.) to more obscure or generally unknown facts (type of laws considered in each case, originating court of each case, etc.). Because all of the data points were collected from publicly available reports and each individual potentially identified by the data is a public official, there are no ethical concerns about the dataset, particularly regarding privacy.
 
 ## Research question
 
--   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
+-   For this data set, our research question is as follows: What factors of supreme court cases are most indicative of a positive outcome for each reported political ideology?
 
--   A description of the research topic along with a concise statement of your hypotheses on this topic.
-
--   Identify the types of variables in your research question. Categorical? Quantitative?
+-   This is an important question to examine, particularly in political science work, because examining the factors of past Supreme court cases can shed light on which specific aspects of the Supreme court tend to lead to partisan results. Since the Supreme court is not intended to be a partisan body (rather it is intended to curb partisan bodies based off of interpretations of the constitution), knowing which aspects of a Supreme court case affect the hypothetical \"neutral\" nature of the court might be important in determining future policy designed to keep the Supreme court relatively \"unbiased.\" The factors we will be looking at as it relates to each partisan decision (which is a categorical variable coded as \"decision.direction\") are as follows: whether or not this decision overruled a previous Supreme Court decision (categorical), whether or not this decision deemed a government action unconstitutional (categorical), year in which the decision is made (categorical), type of issue the case considers (categorical), head Supreme Court judge at the time (categorical), type of petitioner (categorical), and \# of majority and minority votes (quantitative). We hypothesize that the type of issue and the time period will be the two most salient factors regarding partisan outcome. 
 
 ## Literature
 
--   Find one published credible article on the topic you are interested in researching.
+-   Citation: Hall, M. (2009). Experimental Justice: Random Judicial Assignment and the Partisan Process of Supreme Court Review. American Politics Research, 37(2), 195--226. <https://doi.org/10.1177/1532673X08324887>
 
--   Provide a one paragraph summary about the article.
+-   The article \"Experimental Justice: Random Judicial Assignment and the Partisan Process of Supreme Court Review\" by Matthew Hall details a statistical analysis done by the author. This analysis attempts to determine whether a correlation exists between the party alignment of circuit court panel judges and the Supreme Court\'s rate of overturning circuit court decisions. The author utilizes data obtained by the Chicago Judges Project and alters it to ensure that the sample size only includes circuits in which judges are randomly assigned. The data analyzed is from the years 1995-2004 and covers cases from 16 different issue types. After analysis, the author finds that decisions by circuit courts with 3 Democrat judges were four times as likely to be chosen for review and overturned by the Supreme Court than decisions by circuit courts with 3 Republican judges. 
 
--   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+-   This article is similar to the work we are doing, as it attempts to connect factors of a case to partisanship in order to highlight predictors of Supreme Court partisanship and the existence of the Supreme Court as a partisan body. Our project will be looking at a different dataset and a different set of factors, but will be attempting to highlight similar examinations.
 
 ## Glimpse of data
 
 ```{r}
 #| label: load-data-3
 
-# add code here
+supreme_court <- read.csv("data/supreme_court.csv")
+
+glimpse(supreme_court)
 ```
