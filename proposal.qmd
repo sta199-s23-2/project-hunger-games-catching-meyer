@@ -16,47 +16,33 @@ library(tidyverse)
 
 ## Introduction and data
 
--   Identify the source of the data:
+-   The data is from the competition records of the International Skating Union, Tallinn Trophy, and the Russian Skating Federation. The International Skating Union (ISU) is the governing body of figure skating competition around the world. ISU-sanctioned and many other competitions have websites containing records of the detailed results of the competition. (There is a separate site for each competition so for brevity's sake sites will not be linked here.)
 
-    The data is from the competition records of the International Skating Union, Tallinn Trophy, and the Russian Skating Federation. The International Skating Union (ISU) is the governing body of figure skating competition around the world. ISU-sanctioned and many other competitions have websites containing records of the detailed results of the competition. (There is a separate site for each competition so for brevity's sake sites will not be linked here.)
+-   The ISU keeps records of the detailed score breakdowns, known as protocols, for each skater at each of its competitions. Each country's skating federation also keeps these records for their domestic competitions, including national championships. Each competition has its own individual webpage, on which pdfs containing these protocols can be found. Everything is included, from jumps to spins to artistry scores. As the collector of the data file, I selected the competitions attended by Alexandra Trusova and pulled the data for each of her jumping passes into a .csv file.
 
--   State when and how it was originally collected (by the original data curator, not necessarily how you found the data):
+-   There is an entry for each jumping pass attempted by Trusova in either ISU-sanctioned international competition, another international competition, or at a Russian National Championship. The data accompanying it include the data the jumping pass was attempted, the competition season it occurred, the location of the competition, and other data such as whether the jumping pass was a solo jump or a combination, any technical calls issued, and the grade of execution received.
 
-    The ISU keeps records of the detailed score breakdowns, known as protocols, for each skater at each of its competitions. Each country's skating federation also keeps these records for their domestic competitions, including national championships. Each competition has its own individual webpage, on which pdfs containing these protocols can be found. Everything is included, from jumps to spins to artistry scores. As the collector of the data file, I selected the competitions attended by Alexandra Trusova and pulled the data for each of her jumping passes into a .csv file.
-
--   Write a brief description of the observations:
-
-    There is an entry for each jumping pass attempted by Trusova in either ISU-sanctioned international competition, another international competition, or at a Russian National Championship. The data accompanying it include the data the jumping pass was attempted, the competition season it occurred, the location of the competition, and other data such as whether the jumping pass was a solo jump or a combination, any technicall calls issued, and the grade of execution received.
+-   We are in the process of adding more observations to the dataset, and there will be around 300 once the process is complete.
 
 ## Research question
 
--   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.):
+-   How did Alexandra Trusova's jumping passes evolve over time, and how do different factors affect her successful execution of difficult technical content?
 
-    How did Alexandra Trusova's jumping passes evolve over time, and how do different factors affect her successful execution of difficult technical content?
+-   Alexandra Trusova is a notable Russian figure skater. She has spent 5 seasons competing internationally for Russia at various ISU-sanctioned competitions including the Grand Prix circuit, European championships, World championships, and even the Olympics. She has pushed the technical boundaries of the sport, and her development over the years is interesting to track. In her novice years, she struggled to land clean triple jumps. By her junior years, she was attempting quadruple jumps. By her senior years, she was attempting multiple quadruple jumps in each program, often in combination.
 
--   A description of the research topic along with a concise statement of your hypotheses on this topic:
+    Individual skaters may have preferences for competition location, such as those close to home. They may also be better at jumps attempted in the first half of a competition as compared to the second half. Their success rate at a particular jumping pass may change over the seasons. It's also possible that as a skater introduces a new jumping pass into their program, their success rate for other jumps will be affected. We hypothesize that there will be strong correlations between different variables (specifically jump number and level) and the successful outcome of a jumping pass.
 
-    Alexandra Trusova is a notable Russian figure skater. She has spent 5 seasons competing internationally for Russia at various ISU-sanctioned competitions including the Grand Prix circuit, European championships, World championships, and even the Olympics. She has pushed the technical boundaries of the sport, and her development over the years is interesting to track. In her novice years, she struggled to land clean triple jumps. By her junior years, she was attempting quadruple jumps. By her senior years, she was attempting multiple quadruple jumps in each program, often in combination.
-
-    Individual skaters may have preferences for competition location, such as those close to home. They may also be better at jumps attempted in the first half of a competition as compared to the second half. Their success rate at a particular jumping pass may change over the seasons. It's also possible that as a skater introduces a new jumping pass into their program, their success rate for other jumps will be affected. We hypothesize that there will be strong correlations between different variables and the successful outcome of a jumping pass.
-
--   Identify the types of variables in your research question. Categorical? Quantitative?:
-
-    There are both categorical and quantitative variables in this dataset. The variables describing the competition and the basic jump info are catgorical, and the variables describing the point value of the jump are quantitative.
+-   There are both categorical and quantitative variables in this dataset. The variables jump_bv, goe, and point_value are quantitative, and the remaining variables, which describe the competition and the basic jump info are categorical, and the variables describing the point value of the jump (jump_bv, goe, point_value are quantitative.
 
 ## Literature
 
--   Find one published credible article on the topic you are interested in researching:
+-   The citation for a published credible article on the topic is below:
 
     Lockwood KL, Gervais PJ, Mccreary DR. Landing for success: a biomechanical and perceptual analysis of on-ice jumps in figure skating. Sports Biomech. 2006 Jul;5(2):231-41. doi: 10.1080/14763140608522876. PMID: 16939155.
 
--   Provide a one paragraph summary about the article:
+-   The study in the article investigated the biomechanical variables affecting the technical success of a jump. The researchers attached markers to anatomical points on the skater's body, filmed the jump, and conducted analysis in two ways: objectively using biomechanical measures and subjectively by accredited figure skating judges. They found that the correlation between "biomechanical landing strategies" and judge perception is strong enough to support the continuation of the current subjective judging methods in figure skating.
 
-    The study in the article investigated the biomechanical variables affecting the technical success of a jump. The researchers attached markers to anatomical points on the skater's body, filmed the jump, and conducted analysis in two ways: objectively using biomechanical measures and subjectively by accredited figure skating judges. They found that the correlation between "biomechanical landing strategies" and judge perception is strong enough to support the continuation of the current subjective judging methods in figure skating.
-
--   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
-
-    Our research is different than the article cited because it looks at other non-biomechanical factors affecting the outcome of a jump, such as altitude, location, time of year, segment of competition, and position in program. Additionally our data focuses on a single skater rather than multiple. Of course this means our findings cannot be extrapolated to other skaters, but it will find out what factors specifically influence Alexandra Trusova's technical success in her programs.
+-   Our research is different than the article cited because it looks at other non-biomechanical factors affecting the outcome of a jump, such as altitude, location, time of year, segment of competition, and position in program. Additionally our data focuses on a single skater rather than multiple. Of course this means our findings cannot be extrapolated to other skaters, but it will find out what factors specifically influence Alexandra Trusova's technical success in her programs.
 
 ## Glimpse of data
 
@@ -76,11 +62,11 @@ glimpse(alexandra_trusova)
 
 -   The statistics were all gathered and reviewed by the CDC. The hospital & testing data was reported by hospitals/clinics directly to the U.S. Department of Health and Human Services (HHS) or via a state submission for collection in the HHS Unified Hospital Data Surveillance System.
 
--   [***Write a brief description of the observations.***]{.underline}
+-   Each observation represents data from either Los Angeles or San Diego county during a 7-day period. The end date of that period is specified under the Date column, and the county is specified in the County column. The relevant data included for each entry are the number of cases, deaths, average tests performed, positivity rate, number of hospitalizations, percentage of staffed adult inpatient beds used by COVID-19 patients, and percentage of staffed adult ICU beds used by COVID-19 patients for that time period.
 
 ## Research question
 
--   Does increased COVID testing improve COVID-19 outcomes in Los Angeles, California and San Diego, California?
+-   Does increased COVID testing improve COVID-19 outcomes, specifically in Los Angeles, California and San Diego, California?
 
 -   We want to research whether patient outcomes were better when increased testing occurred. To determine patient outcomes, we want to look at the number of weekly deaths, the number of hospital admissions, the percentage of staffed adult inpatient beds used by confirmed COVID-19 patients, and the percentage of staffed adult ICU beds used by confirmed COVID-19 patients. We chose to look at Los Angeles and San Diego as they both have diverse populations (in terms of both ethnicity socioeconomic status), but of different sizes. We thus plan on observing trends both (1) across Los Angeles and San Diego and (2) within the respective counties and examining whether there are differences between the two.
 
