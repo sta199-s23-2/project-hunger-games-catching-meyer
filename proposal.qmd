@@ -112,9 +112,14 @@ glimpse(california_covid)
 
 ## Introduction and data
 
--   The dataset titled supreme_court was created primarily by professor Harold J. Spaeth of Michigan State University Law.
+-   The dataset titled supreme_court was created primarily by professor Harold J. Spaeth of Michigan State University Law. We found this dataset here: https://think.cs.vt.edu/corgis/csv/supreme_court/
+
+    and here is its official website: http://supremecourtdatabase.org/documentation.php?s=1
+
 -   Individuals who assisted Dr. Spaeth in the initial creation of the dataset and/or the upkeep of the data since include Professor Lee Epstein, Professor Ted Ruger, Professor Jeffrey Segal, Professor Andrew D. Martin, and associate professor Sara Benesh. Dr. Spaeth produced the original dataset in the 1980s with funding from the National Science Foundation, but has been updating it since that date to reflect the outcomes of new Supreme Court cases. He collects data from official Supreme Court reports.
+
 -   The dataset is extensive and covers a wide variety of facts about each case, ranging from more generally known/easily researched facts (votes, date of decision, supreme court party leaning, etc.) to more obscure or generally unknown facts (type of laws considered in each case, originating court of each case, etc.).
+
 -   Because all of the data points were collected from publicly available reports and each individual potentially identified by the data is a public official, there are no ethical concerns about the dataset, particularly regarding privacy.
 
 ## Research question
