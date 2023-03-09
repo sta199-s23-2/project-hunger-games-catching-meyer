@@ -6,7 +6,7 @@ editor: visual
 
 This project was developed by **"Hunger Games, Catching Meyer"** For [STA 199: Introduction to Data Science](https://sta199-s23-2.github.io/) at Duke University. The team is comprised of the following team members.
 
--   Janet Jiang: A sophomore studying computer science and economics.
+-   Janet Jiang: A sophomore studying Computer Science and Economics.
 -   Kyra Chen: A freshman, prospective Biology major.
 -   Will Adams: A junior creating a Program II titled, The Global Sports World: Money, Power, & Culture.
 -   Maile Lehrer: A senior studying Cultural Anthropology and Political Science.
