@@ -137,6 +137,24 @@ glimpse(california_covid)
 
 -   We **hypothesize** that the type of issue and the time period will be the two most salient factors regarding partisan outcome. 
 
+-   The **variables** we will look at include:
+
+    -   Decision.direction -- Categorical
+
+    -   Year (decision.term) -- Categorical
+
+    -   Issue.area - Categorical
+
+    -   Over-ruled previous decision (decision.precedent.altered.) - Categorical
+
+    -   Decision.Unconstitutional - Categorical
+
+    -   Supreme Court judge (natural.court.chief) - Categorical
+
+    -   Type of petitioner (argument.petitioner.entity) - Categorical
+
+    -   Majority/ minority votes (voting.majority, voting.minority) - Quantitative
+
 ## Literature
 
 -   Citation: Hall, M. (2009). Experimental Justice: Random Judicial Assignment and the Partisan Process of Supreme Court Review. American Politics Research, 37(2), 195--226. <https://doi.org/10.1177/1532673X08324887>
