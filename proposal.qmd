@@ -133,9 +133,7 @@ glimpse(california_covid)
 
 -   **This is an important question to examine**, particularly in political science work, **because** examining the factors of past Supreme court cases can shed light on which specific aspects of the Supreme court tend to lead to partisan results. Since the Supreme court is not intended to be a partisan body (rather it is intended to curb partisan bodies based off of interpretations of the constitution), knowing which aspects of a Supreme court case affect the hypothetical "neutral" nature of the court might be important in determining future policy designed to keep the Supreme court relatively "unbiased."
 
--   The **factors** we will be looking at as it relates to each partisan decision (which is a categorical variable coded as "decision.direction") are as follows: whether or not this decision overruled a previous Supreme Court decision (categorical), whether or not this decision deemed a government action unconstitutional (categorical), year in which the decision is made (categorical), type of issue the case considers (categorical), head Supreme Court judge at the time (categorical), type of petitioner (categorical), and \# of majority and minority votes (quantitative).
-
--   We **hypothesize** that the type of issue and the time period will be the two most salient factors regarding partisan outcome. 
+-   **Description of research topic**: We planning on looking at many factors related to each partisan decision and seeing whether they can be used to predict the result of the decision. Some factors we want to examine include whether a decision overruled a previous Supreme Court decision, the year in which the decision is made, and the type of issue the case considers. We **hypothesize** that the type of issue and the time period will be the two most salient factors regarding partisan outcome. 
 
 -   The **variables** we will look at include:
 
