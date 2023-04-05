@@ -11,6 +11,110 @@ execute:
 
 ### Methodology
 
+```{r}
+#| label: load-pkgs
+#| message: false
+
+library(tidyverse)
+library(tidymodels)
+
+
+trusova_jump <- read.csv("data/trusova_jumps.csv")
+
+```
+
+```{r}
+#| label: predictive model with only difficulty
+
+difficulty_model <- linear_reg() |>
+   set_engine("lm") |>
+   fit(goe_raw ~ jump_bv, data = trusova_jump) 
+
+glance(difficulty_model)$adj.r.squared
+
+glance(difficulty_model)$AIC
+
+```
+
+```{r}
+#| label: predictive model with only altitude
+altitude_model <- linear_reg() |>
+   set_engine("lm") |>
+   fit(goe_raw ~ altitude_in_m, data = trusova_jump)
+
+glance(altitude_model)$adj.r.squared
+
+glance(altitude_model)$AIC
+
+```
+
+```{r}
+
+#| label: predictive model with only distance
+
+distance_model <- linear_reg() |>
+   set_engine("lm") |>
+   fit(goe_raw ~ distance_moscow_km, data = trusova_jump)
+
+glance(distance_model)$adj.r.squared
+
+glance(distance_model)$AIC
+
+
+```
+
+```{r}
+#| label: Altitude and Difficulty of Jump
+
+dif_alt_model <- linear_reg() |>
+  set_engine("lm") |>
+  fit(goe_raw ~ jump_bv + altitude_in_m, data = trusova_jump) 
+
+glance(dif_alt_model)$adj.r.squared
+		
+glance(dif_alt_model)$AIC
+
+```
+
+```{r}
+#| label: Model with Distance and Difficulty of Jump
+	
+dd_model <- linear_reg() |>
+  set_engine("lm") |>
+  fit(goe_raw ~ jump_bv + distance_moscow_km, data = trusova_jump) 
+
+glance(dd_model)$adj.r.squared
+		
+glance(dd_model)$AIC
+
+```
+
+```{r}
+#| label: Model with Altitude and Distance
+
+alt_dist_model <- linear_reg() |>
+  set_engine("lm") |>
+  fit(goe_raw ~ altitude_in_m + distance_moscow_km, data = trusova_jump) 
+
+glance(alt_dist_model)$adj.r.squared
+		
+glance(alt_dist_model)$AIC
+
+```
+
+```{r}
+#| labe;: Model with Altitude and Distance and Difficulty of Jump
+
+combined_model <- linear_reg() |>
+  set_engine("lm") |>
+  fit(goe_raw ~ jump_bv + altitude_in_m + distance_moscow_km, data = trusova_jump) 
+
+glance(combined_model)$adj.r.squared
+
+glance(combined_model)$AIC
+
+```
+
 ### Results
 
 ### W+F
