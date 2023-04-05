@@ -10,6 +10,7 @@ editor: visual
 #| message: false
 
 library(tidyverse)
+library(tidymodels)
 ```
 
 # Data 1

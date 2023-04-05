@@ -23,6 +23,23 @@ trusova_jump <- read.csv("data/trusova_jumps.csv")
 
 ```
 
+[HYPOTHESIS TESTS]{.underline}
+
+```{r}
+jump_difficulty <- trusova_jump |>
+  arrange(jump_bv)|>
+  mutate(group = ifelse(row_number() <= n()/2, "easy_jumps", "hard_jumps"))
+
+difficulty_means <- jump_difficulty |>
+  group_by(group) |>
+  summarize(mean_goe_raw = mean(goe_raw),
+            n = n())
+
+difficulty_means
+```
+
+[PREDICTIVE MODELS]{.underline}
+
 ```{r}
 #| label: predictive model with only difficulty
 
