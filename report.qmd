@@ -9,6 +9,30 @@ execute:
 
 ### Introduction and Data
 
+[INTRODUCTION]{.underline}
+
+Figure skating is a sport in which athletes complete programs full of jumps, spins, and footwork while making sure to perform to their music. Scoring for figure skating consists of two components, the technical score and the artistic score. And it's this scoring that is the source of much of the controversy in the figure skating world.
+
+In recent years, women's figure skating has experienced a "quad revolution" of sorts, with female skaters beginning to perform quadruple jumps with a higher frequency. This has been met with many questions, from fans, coaches, and authorities alike. Are quadruple jumps -- where the skater rotate four revolutions in the air -- valued too heavily? Are they leading to degradation in the performance of other elements?
+
+One of the skaters that helped bring this revolution about is Alexandra Trusova, a Russian figure skater whose national and international competitive career spanned from 2014 to 2022. She was the first to perform several types of quadruple jumps in competition, and her earlier competitive years are well documented. Thus, she is a prime subject for analysis.
+
+[THE DATA]{.underline}
+
+Our data is collected from the competition records of the International Skating Union, Tallinn Trophy, and the Russian Skating Federation. The International Skating Union (ISU) is the governing body of figure skating competition around the world. ISU-sanctioned and many other competitions have websites containing records of the detailed results of the competition. Each event has an attached pdf file, recording every skater's detailed scoring breakdown, including the judges' evaluation of their jumps. After obtaining Alexandra Trusova's competitive history, the corresponding data for each of her jumps completed in national championships or international competition was pulled into a dataset, accompanied by relevant data about date and the competition location.
+
+[RELEVANT VARIABLES]{.underline}
+
+Table of relevant variables
+
+[ETHICAL CONCERNS]{.underline}
+
+Despite her fame within the figure skaitng world, Alexandra Trusova was a minor during the time period this dataset covers. As such, the only data we gathered was taken from publicly available records. We also took care to not include variables that evaluated Trusova's skating in a subjective manner and kept our analysis to quantitative data when possible.
+
+[RESEARCH QUESTION & HYPOTHESIS]{.underline}
+
+With this dataset, we are researching how the difficulty of the jump and the location of the competition affect Alexandra Trusova\'s execution of jumps. Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump, distance between training location and competition location, and altitude of the competition will negatively affect Trusova's execution of her jumps.
+
 ### Methodology
 
 ```{r}
@@ -134,4 +158,8 @@ glance(combined_model)$AIC
 
 ### Results
 
-### W+F
+### Conclusion
+
+Paragraph responding to results.
+
+Although our data is reliable due to it being gathered from official competition records, to increase the validity of our claims we would need to gather the same information for more female skaters performing quadruple jumps over their entire careers. Due to how few female skaters have performed numerous types of quads over many years of their career, it was simply not possible to gather data for a large sample of skaters. As such, the conclusions we've drawn regarding Alexandra Trusova's jumps and performance cannot be generalized to the sport of figure skating as a whole until it can be supported by data gathered from the careers of other skaters.
