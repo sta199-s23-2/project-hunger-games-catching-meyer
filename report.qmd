@@ -31,7 +31,7 @@ Despite her fame within the figure skaitng world, Alexandra Trusova was a minor 
 
 [RESEARCH QUESTION & HYPOTHESIS]{.underline}
 
-With this dataset, we are researching how the difficulty of the jump and the location of the competition affect Alexandra Trusova\'s execution of jumps. Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump, distance between training location and competition location, and altitude of the competition will negatively affect Trusova's execution of her jumps.
+With this dataset, we are researching how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps. Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump, distance between training location and competition location, and altitude of the competition will negatively affect Trusova's execution of her jumps.
 
 ### Methodology
 
@@ -50,17 +50,137 @@ trusova_jump <- read.csv("data/trusova_jumps.csv")
 [HYPOTHESIS TESTS]{.underline}
 
 ```{r}
+#| label: jump difficulty hypothesis test
+
 jump_difficulty <- trusova_jump |>
   arrange(jump_bv)|>
-  mutate(group = ifelse(row_number() <= n()/2, "easy_jumps", "hard_jumps"))
+  drop_na(goe_raw) |>
+  mutate(jump_group = ifelse(row_number() <= n()/2, "easy_jumps", "hard_jumps"))
 
 difficulty_means <- jump_difficulty |>
-  group_by(group) |>
+  group_by(jump_group) |>
   summarize(mean_goe_raw = mean(goe_raw),
             n = n())
 
 difficulty_means
 ```
+
+-   **Null:** The difficulty of the jump has no significant effect on the execution of the jump.
+
+-   **Alternate:** The difficulty of the jump affects the execution of the jump. As the difficulty of the jump increases, the execution of the jump, as defined by the raw goe, decreases.
+
+```{r}
+summary(lm(goe_raw ~ jump_bv, data = jump_difficulty))
+```
+
+```{r}
+null_dist_jump <- jump_difficulty |>
+  specify(response = goe_raw, explanatory = jump_group) |>
+  hypothesize(null = "independence") |>
+  generate(reps = 1000, type = "permute") |>
+  calculate(stat = "diff in means", order = c("easy_jumps", "hard_jumps"))
+
+null_dist_jump |>
+  ggplot(
+    aes(x = stat)
+  ) + 
+  geom_histogram() + 
+  geom_vline(xintercept = 0.356138) +
+  geom_vline(xintercept = -0.356138)
+
+null_dist_jump |>
+  get_p_value(obs_stat = 0.356138, direction = "two sided")
+```
+
+The probability of observing our sample statistic, or something more extreme, given that the true (population) difference between the mean raw score of jumps is 0.356138, is equal to \~ 0.352.
+
+alpha = 0.05 \< p-value 0.352. Failing to reject our null hypothesis. Weak evidence to conclude the alternative hypothesis.
+
+```{r}
+#| label: altitude hypothesis test
+
+altitude_filter <- trusova_jump |>
+  arrange(altitude_in_m)|>
+  drop_na(goe_raw) |>
+  mutate(alt_group = ifelse(row_number() <= n()/2, "low_altitude", "high_altitude"))
+
+altitude_means <- altitude_filter |>
+  group_by(alt_group) |>
+  summarize(mean_goe_raw = mean(goe_raw),
+            n = n())
+
+altitude_means
+```
+
+-   **Null:** The altitude of the competition location has no significant effect on the execution of the jump.
+
+-   **Alternate:** The altitude of the competition location relative to Moscow affects the execution of the jump. As the altitude of the competition location relative to Moscow increases, the execution of the jump, as defined by the raw goe, decreases.
+
+```{r}
+null_dist_alt <- altitude_filter |>
+  specify(response = goe_raw, explanatory = alt_group) |>
+  hypothesize(null = "independence") |>
+  generate(reps = 1000, type = "permute") |>
+  calculate(stat = "diff in means", order = c("low_altitude", "high_altitude"))
+
+null_dist_alt |>
+  ggplot(
+    aes(x = stat)
+  ) + 
+  geom_histogram() + 
+  geom_vline(xintercept = 0.605648) +
+  geom_vline(xintercept = -0.605648)
+
+null_dist_alt |>
+  get_p_value(obs_stat = 0.605648, direction = "two sided")
+```
+
+The probability of observing our sample statistic, or something more extreme, given that the true (population) difference between the mean raw score of jumps is 0.605648, is equal to \~ 0.07.
+
+alpha = 0.05 \< p-value 0.07. Failing to reject our null hypothesis. Weak evidence to conclude the alternative hypothesis.
+
+```{r}
+#| label: distance hypothesis test
+
+distance_filter <- trusova_jump |>
+  arrange(distance_moscow_km)|>
+  drop_na(goe_raw) |>
+  mutate(dist_group = ifelse(row_number() <= n()/2, "short_distance", "long_distance"))
+
+distance_means <- distance_filter |>
+  group_by(dist_group) |>
+  summarize(mean_goe_raw = mean(goe_raw),
+            n = n())
+
+distance_means
+```
+
+-   **Null:** The distance of the competition location from Moscow has no significant effect on the execution of the jump.
+
+-   **Alternate**: As the distance between Moscow and the competition location increases, the execution of the jump, as defined by the raw goe, decreases.
+
+```{r}
+null_dist_dist <- distance_filter |>
+  specify(response = goe_raw, explanatory = dist_group) |>
+  hypothesize(null = "independence") |>
+  generate(reps = 1000, type = "permute") |>
+  calculate(stat = "diff in means", order = c("short_distance", "long_distance"))
+
+null_dist_dist |>
+  ggplot(
+    aes(x = stat)
+  ) + 
+  geom_histogram() + 
+  geom_vline(xintercept = 0.603055) +
+  geom_vline(xintercept = -0.603055)
+
+null_dist_dist |>
+  get_p_value(obs_stat = 0.603055, direction = "two sided")
+```
+
+The probability of observing our sample statistic, or something more extreme, given that the true (population) difference between the mean raw score of jumps is 0.603055, is equal to \~ 0.068.
+
+alpha = 0.05 \< p-value 0.068. Failing to reject our null hypothesis. Weak evidence to conclude the alternative hypothesis.
 
 [PREDICTIVE MODELS]{.underline}
 
