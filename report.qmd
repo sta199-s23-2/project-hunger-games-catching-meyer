@@ -188,9 +188,9 @@ trusova_jump |>
   ggplot(aes(x = jump_bv, y = goe_raw, color = jump)) + 
   geom_point() + 
   geom_smooth() + 
-  facet_wrap("competition") + 
+  facet_wrap("season") + 
   labs(title = "Relationship Between Jump Difficulty and Score", 
-       subtitle = "By Competition", 
+       subtitle = "By Competition Season", 
        x = "Difficulty of Jump", 
        y = "Score", 
        color = "Type of Jump") + 
@@ -209,6 +209,7 @@ trusova_jump |>
   theme_minimal()
 ```
 ```{r}
+#| label: altitude-score-comparison
 trusova_jump |> 
   ggplot(aes(x = altitude_in_m, y = goe_raw, color = jump_bv)) + 
   geom_point() + 
