@@ -181,6 +181,46 @@ null_dist_dist |>
 The probability of observing our sample statistic, or something more extreme, given that the true (population) difference between the mean raw score of jumps is 0.603055, is equal to \~ 0.068.
 
 alpha = 0.05 \< p-value 0.068. Failing to reject our null hypothesis. Weak evidence to conclude the alternative hypothesis.
+[GRAPHS] {.underline}
+```{r}
+#| label: difficulty-score-comparison
+trusova_jump |> 
+  ggplot(aes(x = jump_bv, y = goe_raw, color = jump)) + 
+  geom_point() + 
+  geom_smooth() + 
+  facet_wrap("competition") + 
+  labs(title = "Relationship Between Jump Difficulty and Score", 
+       subtitle = "By Competition", 
+       x = "Difficulty of Jump", 
+       y = "Score", 
+       color = "Type of Jump") + 
+  theme_minimal()
+```
+```{r}
+#| label: distance-score-comparison
+trusova_jump |> 
+  ggplot(aes(x = distance_moscow_km, y = goe_raw, color = jump_bv)) + 
+  geom_point() + 
+  geom_smooth() + 
+  labs(title = "Relationship Between Distance Travelled and Score", 
+       x = "Distance of Competition From Moscow", 
+       y = "Score", 
+       color = "Difficulty of Jump") + 
+  theme_minimal()
+```
+```{r}
+trusova_jump |> 
+  ggplot(aes(x = altitude_in_m, y = goe_raw, color = jump_bv)) + 
+  geom_point() + 
+  geom_smooth() + 
+  geom_vline(xintercept = 156) + 
+  labs(title = "Relationship Between Altitude and Score", 
+       x = "Altitude with Line Drawn at Moscow", 
+       y = "Score", 
+       color = "Difficulty of Jump") + 
+  theme_minimal()
+```
+
 
 [PREDICTIVE MODELS]{.underline}
 
