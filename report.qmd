@@ -47,7 +47,7 @@ trusova_jump <- read.csv("data/trusova_jumps.csv")
 
 ```
 
-[HYPOTHESIS TESTS]{.underline}
+[***HYPOTHESIS TESTS***]{.underline}
 
 ```{r}
 #| label: jump difficulty hypothesis test
@@ -181,7 +181,9 @@ null_dist_dist |>
 The probability of observing our sample statistic, or something more extreme, given that the true (population) difference between the mean raw score of jumps is 0.603055, is equal to \~ 0.068.
 
 alpha = 0.05 \< p-value 0.068. Failing to reject our null hypothesis. Weak evidence to conclude the alternative hypothesis.
-[GRAPHS] {.underline}
+
+[***Visualization***]{.underline}
+
 ```{r}
 #| label: difficulty-score-comparison
 trusova_jump |> 
@@ -196,6 +198,7 @@ trusova_jump |>
        color = "Type of Jump") + 
   theme_minimal()
 ```
+
 ```{r}
 #| label: distance-score-comparison
 trusova_jump |> 
@@ -208,6 +211,7 @@ trusova_jump |>
        color = "Difficulty of Jump") + 
   theme_minimal()
 ```
+
 ```{r}
 #| label: altitude-score-comparison
 trusova_jump |> 
@@ -222,8 +226,7 @@ trusova_jump |>
   theme_minimal()
 ```
 
-
-[PREDICTIVE MODELS]{.underline}
+[***Predictive Models***]{.underline}
 
 ```{r}
 #| label: predictive model with only difficulty
@@ -319,8 +322,16 @@ glance(combined_model)$AIC
 
 ### Results
 
+*Our results from our predictive models are as follows:*
+
+The adjusted R squared values were less than 0.05 for all of the models. The model that predicted Trusova\'s raw score using only the altitude of the competition location had the highest adjusted R squared value of 0.04228525. This value, however, is still low, which indicates that none of these regression models are good fits.
+
+The AIC values were above 1400 for all of the models, which indicates that none of the models are good fits. The model that predicted Trusova\'s raw score using only the altitude of the competition location had the lowest AIC value of 1438.663. 
+
+The adjusted R squared and AIC values thus both indicate that the altitude_model is the best at predicting Trusova\'s raw score. However, this model is still not a good fit. There are two possibilities here: (1) that we are looking at incorrect variables, and (2) that there is no singular factor that plays a large role in a skater\'s performance, with critics\' claims regarding jump consistency and overall execution being unfounded.
+
 ### Conclusion
 
 Paragraph responding to results.
 
-Although our data is reliable due to it being gathered from official competition records, to increase the validity of our claims we would need to gather the same information for more female skaters performing quadruple jumps over their entire careers. Due to how few female skaters have performed numerous types of quads over many years of their career, it was simply not possible to gather data for a large sample of skaters. As such, the conclusions we've drawn regarding Alexandra Trusova's jumps and performance cannot be generalized to the sport of figure skating as a whole until it can be supported by data gathered from the careers of other skaters.
+There are only a handful of female skaters who have performed numerous types of quads over many years of their career, so it was simply not possible to gather data for a large sample of skaters. Additionally, we had to create our dataset ourselves by combing through online PDFs of competition results, so it was not feasible to obtain data from more jumpers within the time frame of the project. As such, the conclusions we've drawn regarding Alexandra Trusova's jumps and performance cannot be generalized to the sport of figure skating as a whole until it can be supported by data gathered from the careers of other skaters. This is mainly the result of our methods, and we could improve our analysis by gathering the same information for more female skaters that have performed quadruple jumps over their entire careers.
