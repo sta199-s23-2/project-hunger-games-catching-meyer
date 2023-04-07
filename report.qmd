@@ -83,7 +83,7 @@ Despite her fame within the figure skating world, Alexandra Trusova was a minor 
 
 [RESEARCH QUESTION & HYPOTHESIS]{.underline}
 
-With this dataset, we are researching *how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps*. Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump, distance between training location and competition location, and altitude of the competition will negatively affect Trusova's execution of her jumps.
+With this dataset, we are researching **how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps.** Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump, distance between training location and competition location, and altitude of the competition will negatively affect Trusova's execution of her jumps.
 
 ### Methodology
 
@@ -378,7 +378,9 @@ glance(combined_model)$AIC
 
 ### Results
 
-*Our results from our predictive models are as follows:*
+*The results from our hypothesis tests are as follows:*
+
+*The results from our predictive models are as follows:*
 
 The adjusted R squared values were less than 0.05 for all of the models. The model that predicted Trusova's raw score using only the altitude of the competition location had the highest adjusted R squared value of 0.04228525. This value, however, is still low, which indicates that none of these regression models are good fits.
 
