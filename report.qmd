@@ -16,9 +16,9 @@ Figure skating is a sport in which athletes complete programs full of jumps, spi
 
 In recent years, women's figure skating has experienced a "quad revolution" of sorts, with female skaters beginning to perform quadruple jumps with a higher frequency. This has been met with many questions, from fans, coaches, and authorities alike. Are quadruple jumps -- where the skater rotate four revolutions in the air -- valued too heavily? Are they leading to degradation in the performance of other elements?
 
-Little research has been done on the variables that affect a skater's ability to successfully perform a jump beyond basic biomechanics. A 2006 article presented a study investigating the biomechanical variables affecting the technical success of a jump. The researchers attached markers to anatomical points on the skater's body, filmed the jump, and conducted analysis in two ways: objectively using biomechanical measures and subjectively by accredited figure skating judges. They found that the correlation between "biomechanical landing strategies" and judge perception is strong enough to support the continuation of the current subjective judging methods in figure skating.[@lockwood2006] However, there are many other factors beyond a skater's biomechanics that affect figure skating jump success. Our investigation seeks to explore these variables.
+Little research has been done on the variables that affect a skater's ability to successfully perform a jump beyond basic biomechanics. A 2006 article presented a study investigating the biomechanical variables affecting the technical success of a jump. The researchers attached markers to anatomical points on the skater's body, filmed the jump, and conducted analysis in two ways: objectively using biomechanical measures and subjectively by accredited figure skating judges. They found that the correlation between "biomechanical landing strategies" and judge perception is strong enough to support the continuation of the current subjective judging methods in figure skating [@lockwood2006]. However, there are many other factors beyond a skater's biomechanics that affect figure skating jump success. Our investigation seeks to explore these variables.
 
-The variables we consider within this investigation are jump difficulty and altitude & travel distance from an athlete's home training city. It is important to note that the existing research for these variables in relation specifically to figure skating is sparse. There are many research articles on altitude and how it may affect athletes in other sports, but it was difficult to find articles that specifically mentioned figure skating rather than endurance sports [@chapman2010]. Similarly, there are not many research articles in general about how distance away from an athlete's home city can affect their performance. The closest and most relevant piece was a descriptive review by the NIH about how jet lag could potentially affect physiology in competitive athletes [@lee2012]. It is based on these pieces that we explore these variables further within our project.
+The variables we consider within this investigation are the difficulty of the jump, the altitude of the competition location, and the travel distance from an athlete's home training city of the competition location. It is important to note that the existing research for these variables in relation specifically to figure skating is sparse. There are many research articles on altitude and how it may affect athletes in other sports, but it was difficult to find articles that specifically mentioned figure skating rather than endurance sports [@chapman2010]. Similarly, there are not many research articles in general about how distance away from an athlete's home city can affect their performance. The closest and most relevant piece was a descriptive review by the NIH about how jet lag could potentially affect physiology in competitive athletes [@lee2012]. It is based on these pieces that we explore these variables further within our project.
 
 One of the skaters that helped bring the "quad revolution" about is Alexandra Trusova, a Russian figure skater whose national and international competitive career spanned from 2014 to 2022. She was the first to perform several types of quadruple jumps in competition, and her earlier competitive years are well documented. Thus, she is a prime subject for analysis.
 
@@ -114,9 +114,9 @@ Below is a table containing the sources of our data:
 
 [RELEVANT VARIABLE JUSTIFICATION]{.underline}
 
-*Altitude:* We chose to test jump score by altitude because of how competing at different altitudes can affect the body and sport of an athlete. Less oxygen is available at higher altitudes, which typically corresponds to a lower amount of oxygen in athletes’ muscles. However, air at higher altitudes is less dense than air at lower altitudes, which can indicate less air resistance. This means that competing at higher altitudes could have an interesting effect regarding skill sports such as figure skating, which requires great amounts of muscle strength and the ability to move quickly and precisely through air [@chapman2010].
+*Altitude:* We chose to test jump score by altitude because of how competing at different altitudes can affect the body and sport of an athlete. Less oxygen is available at higher altitudes, which typically corresponds to a lower amount of oxygen in athletes' muscles. However, air at higher altitudes is less dense than air at lower altitudes, which can indicate less air resistance. This means that competing at higher altitudes could have an interesting effect regarding skill sports such as figure skating, which requires great amounts of muscle strength and the ability to move quickly and precisely through air [@chapman2010].
 
-*Location:* The physical location of a competition has the potential to affect an athlete in several ways, particularly taking into account travel time and circadian rhythm adjustment. We will test score by competition distance from Moscow (Trusova’s home training city) to determine whether or not there is a correlation between performance and travel time/travel distance. “Jet lag”, or the necessary adjustment of the body’s circadian rhythm to a new time zone, can affect the energy of an athlete, and therefore may be able to affect performance quality [@lee2012]. 
+*Location:* The physical location of a competition has the potential to affect an athlete in several ways, particularly taking into account travel time and circadian rhythm adjustment. We will test score by competition distance from Moscow (Trusova's home training city) to determine whether or not there is a correlation between performance and travel time/travel distance. "Jet lag", or the necessary adjustment of the body's circadian rhythm to a new time zone, can affect the energy of an athlete, and therefore may be able to affect performance quality [@lee2012].
 
 [ETHICAL CONCERNS]{.underline}
 
@@ -124,7 +124,7 @@ Despite her fame within the figure skating world, Alexandra Trusova was a minor 
 
 [RESEARCH QUESTION & HYPOTHESIS]{.underline}
 
-With this dataset, we are researching **how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps.** Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump, distance between training location and competition location, and altitude of the competition will negatively affect Trusova's execution of her jumps.
+With this dataset, we are researching **how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps.** Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump, distance between training location and competition location, and altitude of the competition location will negatively affect Trusova's execution of her jumps.
 
 ### Methodology
 
@@ -316,6 +316,7 @@ Given that our significance level 0.05 \< p-value 0.068, we conclude there is in
 [***Visualization***]{.underline}
 
 [DIFFICULTY TO SCORE VISUALIZATION]{.underline}
+
 ```{r}
 #| label: difficulty-score-comparison
 trusova_jump |> 
@@ -329,9 +330,11 @@ trusova_jump |>
        color = "Type of Jump") + 
   theme_minimal()
 ```
-*Interpretation:* We created the above graph to visualize the relationship between score and jump difficulty throughout Trusova’s career. We also colored the data points by the type of jump to add an extra level of explanation for the possible trends we are seeing. Observations of the above visualizations suggest that, in general, jump difficulty and score are not correlated. Something we see, however, is that there may be significance regarding jump type and score. Starting with the 2018-2019 competition season, many of the 3Lz jumps seem to be grouped together in terms of both score and difficulty. Starting in the 2017-2018 competition season, it seems as though many data points on the bottom of the score grid (-5.0) are 4Lz and/or 4F jumps. This can indicate significance between score and jump type, rather than score and jump difficulty. 
+
+*Interpretation:* We created the above graph to visualize the relationship between score and jump difficulty throughout Trusova's career. We also colored the data points by the type of jump to add an extra level of explanation for the possible trends we are seeing. Observations of the above visualizations suggest that, in general, jump difficulty and score are not correlated. Something we see, however, is that there may be significance regarding jump type and score. Starting with the 2018-2019 competition season, many of the 3Lz jumps seem to be grouped together in terms of both score and difficulty. Starting in the 2017-2018 competition season, it seems as though many data points on the bottom of the score grid (-5.0) are 4Lz and/or 4F jumps. This can indicate significance between score and jump type, rather than score and jump difficulty.
 
 [DISTANCE FROM MOSCOW TO SCORE VISUALIZATION]{.underline}
+
 ```{r}
 #| label: distance-score-comparison
 trusova_jump |> 
@@ -344,9 +347,11 @@ trusova_jump |>
        color = "Difficulty of Jump") + 
   theme_minimal()
 ```
+
 *Interpretation:* We created the above graph to visualize the relationship between jump score and competition distance away from moscow. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. Based on the graph and the trend line, it seems as though there is a positive swell in score at competitions around 2000 km away from Moscow, which dips at competitions around 6000 km away from Moscow. We also see that the score for Moscow competitions seems to be the lowest related to the other competitions. There is also another uptick in score after passing 6000 km away from Moscow. However, there are not as many data points available for competitions further than 5000 km away from Moscow than there are for competitions less than 5000 km away from Moscow. This means that the current data points could indicate a trend that, if more data was available, may not be consistent. It is difficult, therefore, to identify any conclusive trends from this visualization.
 
 [ALTITUDE TO SCORE VISUALIZATION]{.underline}
+
 ```{r}
 #| label: altitude-score-comparison
 trusova_jump |> 
@@ -360,7 +365,8 @@ trusova_jump |>
        color = "Difficulty of Jump") + 
   theme_minimal()
 ```
-*Interpretation:* We created the above graph to visualize the relationship between jump score and altitude, with a line drawn at Moscow’s altitude to indicate Trusova’s home training altitude. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. According to the graph and the trend line, there seems to be a weak positive linear correlation between score and altitude. However, there are relatively fewer data points available as the altitude gets higher, which can trouble the validity of the correlation.
+
+*Interpretation:* We created the above graph to visualize the relationship between jump score and altitude, with a line drawn at Moscow's altitude to indicate Trusova's home training altitude. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. According to the graph and the trend line, there seems to be a weak positive linear correlation between score and altitude. However, there are relatively fewer data points available as the altitude gets higher, which can trouble the validity of the correlation.
 
 [***Predictive Models***]{.underline}
 
