@@ -86,10 +86,12 @@ difficulty_means
 -   **Alternate:** The difficulty of the jump affects the execution of the jump. As the difficulty of the jump increases, the execution of the jump, as defined by the raw goe, decreases.
 
 ```{r}
+#| label: summary-lm difficulty v goe
 summary(lm(goe_raw ~ jump_bv, data = jump_difficulty))
 ```
 
 ```{r}
+#| label: difficulty-test plot and distribution
 null_dist_jump <- jump_difficulty |>
   specify(response = goe_raw, explanatory = jump_group) |>
   hypothesize(null = "independence") |>
@@ -133,6 +135,7 @@ altitude_means
 -   **Alternate:** The altitude of the competition location relative to Moscow affects the execution of the jump. As the altitude of the competition location relative to Moscow increases, the execution of the jump, as defined by the raw goe, decreases.
 
 ```{r}
+#| label: alt-test plot and distribution
 null_dist_alt <- altitude_filter |>
   specify(response = goe_raw, explanatory = alt_group) |>
   hypothesize(null = "independence") |>
@@ -176,6 +179,7 @@ distance_means
 -   **Alternate**: As the distance between Moscow and the competition location increases, the execution of the jump, as defined by the raw goe, decreases.
 
 ```{r}
+#| label: dist-test plot and distribution
 null_dist_dist <- distance_filter |>
   specify(response = goe_raw, explanatory = dist_group) |>
   hypothesize(null = "independence") |>
@@ -324,7 +328,7 @@ glance(alt_dist_model)$AIC
 ```
 
 ```{r}
-#| labe;: Model with Altitude and Distance and Difficulty of Jump
+#| label: Model with Altitude and Distance and Difficulty of Jump
 
 combined_model <- linear_reg() |>
   set_engine("lm") |>
