@@ -112,6 +112,12 @@ Below is a table containing the sources of our data:
 |                    | Due to adjustments to the GOE system after the 2017-2018 season, GOEs for jumping passes from competitions before June 2018 are scaled up by 5/3 to adjust from the -3 to 3 scale to the -5 to 5 scale.                                                                                                                                   |
 +--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+[RELEVANT VARIABLE JUSTIFICATION] {.underline}
+
+*Altitude:* We chose to test jump score by altitude because of how competing at different altitudes can affect the body and sport of an athlete. Less oxygen is available at higher altitudes, which typically corresponds to a lower amount of oxygen in athletes’ muscles. However, air at higher altitudes is less dense than air at lower altitudes, which can indicate less air resistance. This means that competing at higher altitudes could have an interesting effect regarding skill sports such as figure skating, which requires great amounts of muscle strength and the ability to move quickly and precisely through air. 
+
+*Location:* The physical location of a competition has the potential to affect an athlete in several ways, particularly taking into account travel time and circadian rhythm adjustment. We will test score by competition distance from Moscow (Trusova’s home training city) to determine whether or not there is a correlation between performance and travel time/travel distance. “Jet lag”, or the necessary adjustment of the body’s circadian rhythm to a new time zone, can affect the energy of an athlete, and therefore may be able to affect performance quality. 
+
 [ETHICAL CONCERNS]{.underline}
 
 Despite her fame within the figure skating world, Alexandra Trusova was a minor during the time period this dataset covers. As such, the only data we gathered was taken from publicly available records. We also took care to not include variables that evaluated Trusova's skating in a subjective manner and kept our analysis to quantitative data when possible.
