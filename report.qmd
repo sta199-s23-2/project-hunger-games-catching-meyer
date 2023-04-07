@@ -1,5 +1,5 @@
 ---
-title: "Project title"
+title: "Impact of Select Variables on Trusova's Jump Execution"
 subtitle: "Report"
 format: html
 editor: visual
@@ -18,7 +18,7 @@ In recent years, women's figure skating has experienced a "quad revolution" of s
 
 Little research has been done on the variables that affect a skater's ability to successfully perform a jump beyond basic biomechanics. A 2006 article presented a study investigating the biomechanical variables affecting the technical success of a jump. The researchers attached markers to anatomical points on the skater's body, filmed the jump, and conducted analysis in two ways: objectively using biomechanical measures and subjectively by accredited figure skating judges. They found that the correlation between "biomechanical landing strategies" and judge perception is strong enough to support the continuation of the current subjective judging methods in figure skating.[@lockwood2006] However, there are many other factors beyond a skater's biomechanics that affect figure skating jump success. Our investigation seeks to explore these variables.
 
-The variables we consider within this investigation are altitude and travel distance from an athlete's home training city. It is important to note that the existing research for these variables in relation specifically to figure skating is sparse. There are many research articles on altitude and how it may affect athletes in other sports, but it was difficult to find articles that specifically mentioned figure skating rather than endurance sports [@chapman2010]. Similarly, there are not many research articles in general about how distance away from an athlete's home city can affect their performance. The closest and most relevant piece was a descriptive review by the NIH about how jet lag could potentially affect physiology in competitive athletes [@lee2012]. It is based on these pieces that we explore these variables further within our project.
+The variables we consider within this investigation are jump difficulty and altitude & travel distance from an athlete's home training city. It is important to note that the existing research for these variables in relation specifically to figure skating is sparse. There are many research articles on altitude and how it may affect athletes in other sports, but it was difficult to find articles that specifically mentioned figure skating rather than endurance sports [@chapman2010]. Similarly, there are not many research articles in general about how distance away from an athlete's home city can affect their performance. The closest and most relevant piece was a descriptive review by the NIH about how jet lag could potentially affect physiology in competitive athletes [@lee2012]. It is based on these pieces that we explore these variables further within our project.
 
 One of the skaters that helped bring the "quad revolution" about is Alexandra Trusova, a Russian figure skater whose national and international competitive career spanned from 2014 to 2022. She was the first to perform several types of quadruple jumps in competition, and her earlier competitive years are well documented. Thus, she is a prime subject for analysis.
 
@@ -154,9 +154,10 @@ trusova_jump <- read.csv("data/trusova_jumps.csv")
 #| label: jump difficulty hypothesis test
 
 jump_difficulty <- trusova_jump |>
-  arrange(jump_bv)|>
+  arrange(jump_bv) |>
   drop_na(goe_raw) |>
-  mutate(jump_group = ifelse(row_number() <= n()/2, "easy_jumps", "hard_jumps"))
+  mutate(jump_group = ifelse(row_number() <= n()/2, 
+                             "easy_jumps", "hard_jumps"))
 
 difficulty_means <- jump_difficulty |>
   group_by(jump_group) |>
@@ -213,7 +214,8 @@ Given that our significance level 0.05 \< p-value 0.352, we conclude there is in
 altitude_filter <- trusova_jump |>
   arrange(altitude_in_m)|>
   drop_na(goe_raw) |>
-  mutate(alt_group = ifelse(row_number() <= n()/2, "low_altitude", "high_altitude"))
+  mutate(alt_group = ifelse(row_number() <= n()/2, 
+                            "low_altitude", "high_altitude"))
 
 altitude_means <- altitude_filter |>
   group_by(alt_group) |>
@@ -265,7 +267,8 @@ Given that our significance level 0.05 \< p-value 0.07, we conclude there is ins
 distance_filter <- trusova_jump |>
   arrange(distance_moscow_km)|>
   drop_na(goe_raw) |>
-  mutate(dist_group = ifelse(row_number() <= n()/2, "short_distance", "long_distance"))
+  mutate(dist_group = ifelse(row_number() <= n()/2, 
+                             "short_distance", "long_distance"))
 
 distance_means <- distance_filter |>
   group_by(dist_group) |>
@@ -291,7 +294,8 @@ null_dist_dist <- distance_filter |>
   specify(response = goe_raw, explanatory = dist_group) |>
   hypothesize(null = "independence") |>
   generate(reps = 1000, type = "permute") |>
-  calculate(stat = "diff in means", order = c("short_distance", "long_distance"))
+  calculate(stat = "diff in means", 
+            order = c("short_distance", "long_distance"))
 
 null_dist_dist |>
   ggplot(
@@ -311,12 +315,12 @@ Given that our significance level 0.05 \< p-value 0.068, we conclude there is in
 
 [***Visualization***]{.underline}
 
+[DIFFICULTY TO SCORE VISUALIZATION]{.underline}
 ```{r}
 #| label: difficulty-score-comparison
 trusova_jump |> 
   ggplot(aes(x = jump_bv, y = goe_raw, color = jump)) + 
   geom_point() + 
-  geom_smooth() + 
   facet_wrap("season") + 
   labs(title = "Relationship Between Jump Difficulty and Score", 
        subtitle = "By Competition Season", 
@@ -327,6 +331,7 @@ trusova_jump |>
 ```
 *Interpretation:* We created the above graph to visualize the relationship between score and jump difficulty throughout Trusova’s career. We also colored the data points by the type of jump to add an extra level of explanation for the possible trends we are seeing. Observations of the above visualizations suggest that, in general, jump difficulty and score are not correlated. Something we see, however, is that there may be significance regarding jump type and score. Starting with the 2018-2019 competition season, many of the 3Lz jumps seem to be grouped together in terms of both score and difficulty. Starting in the 2017-2018 competition season, it seems as though many data points on the bottom of the score grid (-5.0) are 4Lz and/or 4F jumps. This can indicate significance between score and jump type, rather than score and jump difficulty. 
 
+[DISTANCE FROM MOSCOW TO SCORE VISUALIZATION]{.underline}
 ```{r}
 #| label: distance-score-comparison
 trusova_jump |> 
@@ -341,6 +346,7 @@ trusova_jump |>
 ```
 *Interpretation:* We created the above graph to visualize the relationship between jump score and competition distance away from moscow. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. Based on the graph and the trend line, it seems as though there is a positive swell in score at competitions around 2000 km away from Moscow, which dips at competitions around 6000 km away from Moscow. We also see that the score for Moscow competitions seems to be the lowest related to the other competitions. There is also another uptick in score after passing 6000 km away from Moscow. However, there are not as many data points available for competitions further than 5000 km away from Moscow than there are for competitions less than 5000 km away from Moscow. This means that the current data points could indicate a trend that, if more data was available, may not be consistent. It is difficult, therefore, to identify any conclusive trends from this visualization.
 
+[ALTITUDE TO SCORE VISUALIZATION]{.underline}
 ```{r}
 #| label: altitude-score-comparison
 trusova_jump |> 
@@ -384,8 +390,7 @@ glance(altitude_model)$AIC
 ```
 
 ```{r}
-
-#| label: predictive model with only distance
+#| label: Predictive model with only distance
 
 distance_model <- linear_reg() |>
    set_engine("lm") |>
@@ -442,7 +447,8 @@ glance(alt_dist_model)$AIC
 
 combined_model <- linear_reg() |>
   set_engine("lm") |>
-  fit(goe_raw ~ jump_bv + altitude_in_m + distance_moscow_km, data = trusova_jump) 
+  fit(goe_raw ~ jump_bv + 
+      altitude_in_m + distance_moscow_km, data = trusova_jump) 
 
 glance(combined_model)$adj.r.squared
 

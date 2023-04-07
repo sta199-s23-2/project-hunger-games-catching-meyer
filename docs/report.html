@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Project title</title>
+<title>Impact of Select Variables on Trusova’s Jump Execution</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -198,7 +198,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project title</h1>
+<h1 class="title">Impact of Select Variables on Trusova’s Jump Execution</h1>
 <p class="subtitle lead">Report</p>
 </div>
 
@@ -219,7 +219,7 @@ div.csl-indent {
 <p>Figure skating is a sport in which athletes complete programs full of jumps, spins, and footwork while making sure to perform to their music. Scoring for figure skating consists of two components, the technical score and the artistic score. And it’s this scoring that is the source of much of the controversy in the figure skating world.</p>
 <p>In recent years, women’s figure skating has experienced a “quad revolution” of sorts, with female skaters beginning to perform quadruple jumps with a higher frequency. This has been met with many questions, from fans, coaches, and authorities alike. Are quadruple jumps – where the skater rotate four revolutions in the air – valued too heavily? Are they leading to degradation in the performance of other elements?</p>
 <p>Little research has been done on the variables that affect a skater’s ability to successfully perform a jump beyond basic biomechanics. A 2006 article presented a study investigating the biomechanical variables affecting the technical success of a jump. The researchers attached markers to anatomical points on the skater’s body, filmed the jump, and conducted analysis in two ways: objectively using biomechanical measures and subjectively by accredited figure skating judges. They found that the correlation between “biomechanical landing strategies” and judge perception is strong enough to support the continuation of the current subjective judging methods in figure skating.<span class="citation" data-cites="lockwood2006">(<a href="#ref-lockwood2006" role="doc-biblioref">Lockwood, Gervais, and Mccreary 2006</a>)</span> However, there are many other factors beyond a skater’s biomechanics that affect figure skating jump success. Our investigation seeks to explore these variables.</p>
-<p>The variables we consider within this investigation are altitude and travel distance from an athlete’s home training city. It is important to note that the existing research for these variables in relation specifically to figure skating is sparse. There are many research articles on altitude and how it may affect athletes in other sports, but it was difficult to find articles that specifically mentioned figure skating rather than endurance sports <span class="citation" data-cites="chapman2010">(<a href="#ref-chapman2010" role="doc-biblioref">Chapman, Stickford, and Levine 2010</a>)</span>. Similarly, there are not many research articles in general about how distance away from an athlete’s home city can affect their performance. The closest and most relevant piece was a descriptive review by the NIH about how jet lag could potentially affect physiology in competitive athletes <span class="citation" data-cites="lee2012">(<a href="#ref-lee2012" role="doc-biblioref">Lee and Galvez 2012</a>)</span>. It is based on these pieces that we explore these variables further within our project.</p>
+<p>The variables we consider within this investigation are jump difficulty and altitude &amp; travel distance from an athlete’s home training city. It is important to note that the existing research for these variables in relation specifically to figure skating is sparse. There are many research articles on altitude and how it may affect athletes in other sports, but it was difficult to find articles that specifically mentioned figure skating rather than endurance sports <span class="citation" data-cites="chapman2010">(<a href="#ref-chapman2010" role="doc-biblioref">Chapman, Stickford, and Levine 2010</a>)</span>. Similarly, there are not many research articles in general about how distance away from an athlete’s home city can affect their performance. The closest and most relevant piece was a descriptive review by the NIH about how jet lag could potentially affect physiology in competitive athletes <span class="citation" data-cites="lee2012">(<a href="#ref-lee2012" role="doc-biblioref">Lee and Galvez 2012</a>)</span>. It is based on these pieces that we explore these variables further within our project.</p>
 <p>One of the skaters that helped bring the “quad revolution” about is Alexandra Trusova, a Russian figure skater whose national and international competitive career spanned from 2014 to 2022. She was the first to perform several types of quadruple jumps in competition, and her earlier competitive years are well documented. Thus, she is a prime subject for analysis.</p>
 <p><u>THE DATA</u></p>
 <p>Our data is collected from the competition records of the International Skating Union, Tallinn Trophy, and the Russian Skating Federation. The International Skating Union (ISU) is the governing body of figure skating competition around the world. ISU-sanctioned and many other competitions have websites containing records of the detailed results of the competition. Each event has an attached pdf file, recording every skater’s detailed scoring breakdown, including the judges’ evaluation of their jumps. After obtaining Alexandra Trusova’s competitive history, the corresponding data for each of her jumps completed in national championships or international competition was pulled into a dataset, accompanied by relevant data about date and the competition location. We created this dataset ourselves as there were only PDF versions of her competition records available online.</p>
@@ -416,16 +416,17 @@ div.csl-indent {
 <p><u>Jump Difficulty Test</u></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>jump_difficulty <span class="ot">&lt;-</span> trusova_jump <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(jump_bv)<span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(jump_bv) <span class="sc">|&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(goe_raw) <span class="sc">|&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">jump_group =</span> <span class="fu">ifelse</span>(<span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="fu">n</span>()<span class="sc">/</span><span class="dv">2</span>, <span class="st">"easy_jumps"</span>, <span class="st">"hard_jumps"</span>))</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>difficulty_means <span class="ot">&lt;-</span> jump_difficulty <span class="sc">|&gt;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(jump_group) <span class="sc">|&gt;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_goe_raw =</span> <span class="fu">mean</span>(goe_raw),</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>())</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>difficulty_means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">jump_group =</span> <span class="fu">ifelse</span>(<span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="fu">n</span>()<span class="sc">/</span><span class="dv">2</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"easy_jumps"</span>, <span class="st">"hard_jumps"</span>))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>difficulty_means <span class="ot">&lt;-</span> jump_difficulty <span class="sc">|&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(jump_group) <span class="sc">|&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_goe_raw =</span> <span class="fu">mean</span>(goe_raw),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>())</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>difficulty_means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   jump_group mean_goe_raw     n
@@ -490,7 +491,7 @@ F-statistic: 0.06492 on 1 and 291 DF,  p-value: 0.7991</code></pre>
 <pre><code># A tibble: 1 × 1
   p_value
     &lt;dbl&gt;
-1   0.272</code></pre>
+1   0.248</code></pre>
 </div>
 </div>
 <p>Assuming that the true mean goe_raw score for easy jumps is equal to the true mean goe_raw score for hard jumps, the probability that we observe a sample mean difference of 0.356138 or something more extreme is about ~ 0.352.</p>
@@ -500,14 +501,15 @@ F-statistic: 0.06492 on 1 and 291 DF,  p-value: 0.7991</code></pre>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>altitude_filter <span class="ot">&lt;-</span> trusova_jump <span class="sc">|&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(altitude_in_m)<span class="sc">|&gt;</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(goe_raw) <span class="sc">|&gt;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alt_group =</span> <span class="fu">ifelse</span>(<span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="fu">n</span>()<span class="sc">/</span><span class="dv">2</span>, <span class="st">"low_altitude"</span>, <span class="st">"high_altitude"</span>))</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>altitude_means <span class="ot">&lt;-</span> altitude_filter <span class="sc">|&gt;</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(alt_group) <span class="sc">|&gt;</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_goe_raw =</span> <span class="fu">mean</span>(goe_raw),</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>())</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>altitude_means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alt_group =</span> <span class="fu">ifelse</span>(<span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="fu">n</span>()<span class="sc">/</span><span class="dv">2</span>, </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"low_altitude"</span>, <span class="st">"high_altitude"</span>))</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>altitude_means <span class="ot">&lt;-</span> altitude_filter <span class="sc">|&gt;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(alt_group) <span class="sc">|&gt;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_goe_raw =</span> <span class="fu">mean</span>(goe_raw),</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>())</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>altitude_means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   alt_group     mean_goe_raw     n
@@ -549,7 +551,7 @@ F-statistic: 0.06492 on 1 and 291 DF,  p-value: 0.7991</code></pre>
 <pre><code># A tibble: 1 × 1
   p_value
     &lt;dbl&gt;
-1   0.076</code></pre>
+1   0.074</code></pre>
 </div>
 </div>
 <p>Assuming that the true mean goe_raw score for low altitude competitions is equal to the true mean goe_raw score for high altitude competitions, the probability that we observe a sample mean difference of 0.605648 or something more extreme is about ~ 0.07.</p>
@@ -559,14 +561,15 @@ F-statistic: 0.06492 on 1 and 291 DF,  p-value: 0.7991</code></pre>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>distance_filter <span class="ot">&lt;-</span> trusova_jump <span class="sc">|&gt;</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(distance_moscow_km)<span class="sc">|&gt;</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(goe_raw) <span class="sc">|&gt;</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dist_group =</span> <span class="fu">ifelse</span>(<span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="fu">n</span>()<span class="sc">/</span><span class="dv">2</span>, <span class="st">"short_distance"</span>, <span class="st">"long_distance"</span>))</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>distance_means <span class="ot">&lt;-</span> distance_filter <span class="sc">|&gt;</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dist_group) <span class="sc">|&gt;</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_goe_raw =</span> <span class="fu">mean</span>(goe_raw),</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>())</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>distance_means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dist_group =</span> <span class="fu">ifelse</span>(<span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="fu">n</span>()<span class="sc">/</span><span class="dv">2</span>, </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"short_distance"</span>, <span class="st">"long_distance"</span>))</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>distance_means <span class="ot">&lt;-</span> distance_filter <span class="sc">|&gt;</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dist_group) <span class="sc">|&gt;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_goe_raw =</span> <span class="fu">mean</span>(goe_raw),</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>())</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>distance_means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   dist_group     mean_goe_raw     n
@@ -587,15 +590,16 @@ F-statistic: 0.06492 on 1 and 291 DF,  p-value: 0.7991</code></pre>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="at">response =</span> goe_raw, <span class="at">explanatory =</span> dist_group) <span class="sc">|&gt;</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"permute"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"diff in means"</span>, <span class="at">order =</span> <span class="fu">c</span>(<span class="st">"short_distance"</span>, <span class="st">"long_distance"</span>))</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>null_dist_dist <span class="sc">|&gt;</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> stat)</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.603055</span>) <span class="sc">+</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="sc">-</span><span class="fl">0.603055</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"diff in means"</span>, </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">order =</span> <span class="fu">c</span>(<span class="st">"short_distance"</span>, <span class="st">"long_distance"</span>))</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>null_dist_dist <span class="sc">|&gt;</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> stat)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.603055</span>) <span class="sc">+</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="sc">-</span><span class="fl">0.603055</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
@@ -608,362 +612,24 @@ F-statistic: 0.06492 on 1 and 291 DF,  p-value: 0.7991</code></pre>
 <pre><code># A tibble: 1 × 1
   p_value
     &lt;dbl&gt;
-1   0.078</code></pre>
+1    0.06</code></pre>
 </div>
 </div>
 <p>Assuming that the true mean goe_raw score for competitions a short distance from Moscow is equal to the true mean goe_raw score for competitions a long distance from Moscow, the probability that we observe a sample mean difference of 0.603055 or something more extreme is about ~ 0.068.</p>
 <p>Given that our significance level 0.05 &lt; p-value 0.068, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that distance a competition is from Moscow affects the execution of the jump.</p>
 <p><u><strong><em>Visualization</em></strong></u></p>
+<p><u>DIFFICULTY TO SCORE VISUALIZATION</u></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>trusova_jump <span class="sc">|&gt;</span> </span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> jump_bv, <span class="at">y =</span> goe_raw, <span class="at">color =</span> jump)) <span class="sc">+</span> </span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span> </span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="st">"season"</span>) <span class="sc">+</span> </span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship Between Jump Difficulty and Score"</span>, </span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"By Competition Season"</span>, </span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Difficulty of Jump"</span>, </span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Score"</span>, </span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Type of Jump"</span>) <span class="sc">+</span> </span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing non-finite values (`stat_smooth()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at 4.6131</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 1.3869</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : at 6.0069</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : radius 4.761e-05</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : all data on boundary of neighborhood. make span bigger</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 4.761e-05</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : zero-width neighborhood. make span bigger</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Computation failed in `stat_smooth()`
-Caused by error in `predLoess()`:
-! NA/NaN/Inf in foreign function call (arg 5)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at 3.2983</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 0.33165</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : at 3.6317</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : radius 2.7225e-06</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : all data on boundary of neighborhood. make span bigger</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 2.7225e-06</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : zero-width neighborhood. make span bigger</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Computation failed in `stat_smooth()`
-Caused by error in `predLoess()`:
-! NA/NaN/Inf in foreign function call (arg 5)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at 4.3695</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 3.7305</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 5.9073</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : zero-width neighborhood. make span bigger</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Computation failed in `stat_smooth()`
-Caused by error in `predLoess()`:
-! NA/NaN/Inf in foreign function call (arg 5)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : at 3.299</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : radius 1e-06</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : all data on boundary of neighborhood. make span bigger</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at 3.299</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 0.001</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 0.040401</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : zero-width neighborhood. make span bigger</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Computation failed in `stat_smooth()`
-Caused by error in `predLoess()`:
-! NA/NaN/Inf in foreign function call (arg 5)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : at 5.2973</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : radius 7.0225e-06</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : all data on boundary of neighborhood. make span bigger</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at 5.2973</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 0.00265</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 0.28372</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : zero-width neighborhood. make span bigger</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Computation failed in `stat_smooth()`
-Caused by error in `predLoess()`:
-! NA/NaN/Inf in foreign function call (arg 5)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at 9.1885</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 0.9315</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 1.9363</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : span too small. fewer
-data values than degrees of freedom.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used at
-9.1885</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-0.9315</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : reciprocal condition
-number 0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : There are other near
-singularities as well. 1.9363</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : at 9.8709</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : radius 0.00084972</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : all data on boundary of neighborhood. make span bigger</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at 9.8709</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 0.02915</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : at 15.759</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : radius 0.00084972</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : all data on boundary of neighborhood. make span bigger</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 0.00084972</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : zero-width neighborhood. make span bigger
-
-Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : zero-width neighborhood. make span bigger</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Computation failed in `stat_smooth()`
-Caused by error in `predLoess()`:
-! NA/NaN/Inf in foreign function call (arg 5)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at 6.392</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 1.608</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : at 8.008</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : radius 6.4e-05</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : all data on boundary of neighborhood. make span bigger</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 6.4e-05</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : zero-width neighborhood. make span bigger</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Computation failed in `stat_smooth()`
-Caused by error in `predLoess()`:
-! NA/NaN/Inf in foreign function call (arg 5)</code></pre>
-</div>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="st">"season"</span>) <span class="sc">+</span> </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship Between Jump Difficulty and Score"</span>, </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"By Competition Season"</span>, </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Difficulty of Jump"</span>, </span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Score"</span>, </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Type of Jump"</span>) <span class="sc">+</span> </span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
 </div>
@@ -972,16 +638,17 @@ Caused by error in `predLoess()`:
 </div>
 </div>
 <p><em>Interpretation:</em> We created the above graph to visualize the relationship between score and jump difficulty throughout Trusova’s career. We also colored the data points by the type of jump to add an extra level of explanation for the possible trends we are seeing. Observations of the above visualizations suggest that, in general, jump difficulty and score are not correlated. Something we see, however, is that there may be significance regarding jump type and score. Starting with the 2018-2019 competition season, many of the 3Lz jumps seem to be grouped together in terms of both score and difficulty. Starting in the 2017-2018 competition season, it seems as though many data points on the bottom of the score grid (-5.0) are 4Lz and/or 4F jumps. This can indicate significance between score and jump type, rather than score and jump difficulty.</p>
+<p><u>DISTANCE FROM MOSCOW TO SCORE VISUALIZATION</u></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>trusova_jump <span class="sc">|&gt;</span> </span>
-<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> distance_moscow_km, <span class="at">y =</span> goe_raw, <span class="at">color =</span> jump_bv)) <span class="sc">+</span> </span>
-<span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb104-4"><a href="#cb104-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span> </span>
-<span id="cb104-5"><a href="#cb104-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship Between Distance Travelled and Score"</span>, </span>
-<span id="cb104-6"><a href="#cb104-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Distance of Competition From Moscow"</span>, </span>
-<span id="cb104-7"><a href="#cb104-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Score"</span>, </span>
-<span id="cb104-8"><a href="#cb104-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Difficulty of Jump"</span>) <span class="sc">+</span> </span>
-<span id="cb104-9"><a href="#cb104-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>trusova_jump <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> distance_moscow_km, <span class="at">y =</span> goe_raw, <span class="at">color =</span> jump_bv)) <span class="sc">+</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span> </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship Between Distance Travelled and Score"</span>, </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Distance of Competition From Moscow"</span>, </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Score"</span>, </span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Difficulty of Jump"</span>) <span class="sc">+</span> </span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
 </div>
@@ -1003,17 +670,18 @@ Caused by error in `predLoess()`:
 </div>
 </div>
 <p><em>Interpretation:</em> We created the above graph to visualize the relationship between jump score and competition distance away from moscow. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. Based on the graph and the trend line, it seems as though there is a positive swell in score at competitions around 2000 km away from Moscow, which dips at competitions around 6000 km away from Moscow. We also see that the score for Moscow competitions seems to be the lowest related to the other competitions. There is also another uptick in score after passing 6000 km away from Moscow. However, there are not as many data points available for competitions further than 5000 km away from Moscow than there are for competitions less than 5000 km away from Moscow. This means that the current data points could indicate a trend that, if more data was available, may not be consistent. It is difficult, therefore, to identify any conclusive trends from this visualization.</p>
+<p><u>ALTITUDE TO SCORE VISUALIZATION</u></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>trusova_jump <span class="sc">|&gt;</span> </span>
-<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> altitude_in_m, <span class="at">y =</span> goe_raw, <span class="at">color =</span> jump_bv)) <span class="sc">+</span> </span>
-<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span> </span>
-<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">156</span>) <span class="sc">+</span> </span>
-<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship Between Altitude and Score"</span>, </span>
-<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Altitude with Line Drawn at Moscow"</span>, </span>
-<span id="cb109-8"><a href="#cb109-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Score"</span>, </span>
-<span id="cb109-9"><a href="#cb109-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Difficulty of Jump"</span>) <span class="sc">+</span> </span>
-<span id="cb109-10"><a href="#cb109-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>trusova_jump <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> altitude_in_m, <span class="at">y =</span> goe_raw, <span class="at">color =</span> jump_bv)) <span class="sc">+</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span> </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">156</span>) <span class="sc">+</span> </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship Between Altitude and Score"</span>, </span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Altitude with Line Drawn at Moscow"</span>, </span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Score"</span>, </span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Difficulty of Jump"</span>) <span class="sc">+</span> </span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
 </div>
@@ -1037,101 +705,100 @@ Caused by error in `predLoess()`:
 <p><em>Interpretation:</em> We created the above graph to visualize the relationship between jump score and altitude, with a line drawn at Moscow’s altitude to indicate Trusova’s home training altitude. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. According to the graph and the trend line, there seems to be a weak positive linear correlation between score and altitude. However, there are relatively fewer data points available as the altitude gets higher, which can trouble the validity of the correlation.</p>
 <p><u><strong><em>Predictive Models</em></strong></u></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>difficulty_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">fit</span>(goe_raw <span class="sc">~</span> jump_bv, <span class="at">data =</span> trusova_jump) </span>
-<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(difficulty_model)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>difficulty_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">fit</span>(goe_raw <span class="sc">~</span> jump_bv, <span class="at">data =</span> trusova_jump) </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(difficulty_model)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.003212615</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(difficulty_model)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(difficulty_model)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1452.262</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>altitude_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">fit</span>(goe_raw <span class="sc">~</span> altitude_in_m, <span class="at">data =</span> trusova_jump)</span>
-<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(altitude_model)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>altitude_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">fit</span>(goe_raw <span class="sc">~</span> altitude_in_m, <span class="at">data =</span> trusova_jump)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(altitude_model)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.04228525</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(altitude_model)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(altitude_model)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1438.663</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: predictive model with only distance</span></span>
-<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>distance_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb122-4"><a href="#cb122-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb122-5"><a href="#cb122-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">fit</span>(goe_raw <span class="sc">~</span> distance_moscow_km, <span class="at">data =</span> trusova_jump)</span>
-<span id="cb122-6"><a href="#cb122-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-7"><a href="#cb122-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(distance_model)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>distance_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">fit</span>(goe_raw <span class="sc">~</span> distance_moscow_km, <span class="at">data =</span> trusova_jump)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(distance_model)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.0003385914</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(distance_model)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(distance_model)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1451.421</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>dif_alt_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(goe_raw <span class="sc">~</span> jump_bv <span class="sc">+</span> altitude_in_m, <span class="at">data =</span> trusova_jump) </span>
-<span id="cb126-4"><a href="#cb126-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb126-5"><a href="#cb126-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(dif_alt_model)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>dif_alt_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(goe_raw <span class="sc">~</span> jump_bv <span class="sc">+</span> altitude_in_m, <span class="at">data =</span> trusova_jump) </span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(dif_alt_model)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.03911718</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(dif_alt_model)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(dif_alt_model)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1440.622</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>dd_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(goe_raw <span class="sc">~</span> jump_bv <span class="sc">+</span> distance_moscow_km, <span class="at">data =</span> trusova_jump) </span>
-<span id="cb130-4"><a href="#cb130-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb130-5"><a href="#cb130-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(dd_model)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>dd_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(goe_raw <span class="sc">~</span> jump_bv <span class="sc">+</span> distance_moscow_km, <span class="at">data =</span> trusova_jump) </span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(dd_model)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.003458247</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(dd_model)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(dd_model)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1453.325</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>alt_dist_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(goe_raw <span class="sc">~</span> altitude_in_m <span class="sc">+</span> distance_moscow_km, <span class="at">data =</span> trusova_jump) </span>
-<span id="cb134-4"><a href="#cb134-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb134-5"><a href="#cb134-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(alt_dist_model)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>alt_dist_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(goe_raw <span class="sc">~</span> altitude_in_m <span class="sc">+</span> distance_moscow_km, <span class="at">data =</span> trusova_jump) </span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(alt_dist_model)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.04217186</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(alt_dist_model)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(alt_dist_model)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1439.689</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>combined_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(goe_raw <span class="sc">~</span> jump_bv <span class="sc">+</span> altitude_in_m <span class="sc">+</span> distance_moscow_km, <span class="at">data =</span> trusova_jump) </span>
-<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-5"><a href="#cb138-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(combined_model)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>combined_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(goe_raw <span class="sc">~</span> jump_bv <span class="sc">+</span> </span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>      altitude_in_m <span class="sc">+</span> distance_moscow_km, <span class="at">data =</span> trusova_jump) </span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(combined_model)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.03907736</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(combined_model)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(combined_model)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1441.622</code></pre>
 </div>
