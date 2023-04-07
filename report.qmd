@@ -137,6 +137,8 @@ trusova_jump <- read.csv("data/trusova_jumps.csv")
 
 [***HYPOTHESIS TESTS***]{.underline}
 
+[Jump Difficulty Test]{.underline}
+
 ```{r}
 #| label: jump difficulty hypothesis test
 
@@ -152,6 +154,12 @@ difficulty_means <- jump_difficulty |>
 
 difficulty_means
 ```
+
+$\bar{x_s}$ - $\bar{x_v}$ = 0.356138
+
+$H_o:$ $\mu_s - \mu_v$ = 0
+
+$H_a:$ $\mu_s - \mu_v$ $\neq$ 0
 
 -   **Null:** The difficulty of the jump has no significant effect on the execution of the jump.
 
@@ -182,9 +190,11 @@ null_dist_jump |>
   get_p_value(obs_stat = 0.356138, direction = "two sided")
 ```
 
-The probability of observing our sample statistic, or something more extreme, given that the true (population) difference between the mean raw score of jumps is 0.356138, is equal to \~ 0.352.
+Assuming that the true mean goe_raw score for easy jumps is equal to the true mean goe_raw score for hard jumps, the probability that we observe a sample mean difference of 0.356138 or something more extreme is about \~ 0.352.
 
-alpha = 0.05 \< p-value 0.352. Failing to reject our null hypothesis. Weak evidence to conclude the alternative hypothesis.
+Given that our significance level 0.05 \< p-value 0.352, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that difficulty of the jump affects the execution of the jump.
+
+[Altitude Test]{.underline}
 
 ```{r}
 #| label: altitude hypothesis test
@@ -201,6 +211,12 @@ altitude_means <- altitude_filter |>
 
 altitude_means
 ```
+
+$\bar{x_s}$ - $\bar{x_v}$ = 0.605648
+
+$H_o:$ $\mu_s - \mu_v$ = 0
+
+$H_a:$ $\mu_s - \mu_v$ $\neq$ 0
 
 -   **Null:** The altitude of the competition location has no significant effect on the execution of the jump.
 
@@ -226,9 +242,11 @@ null_dist_alt |>
   get_p_value(obs_stat = 0.605648, direction = "two sided")
 ```
 
-The probability of observing our sample statistic, or something more extreme, given that the true (population) difference between the mean raw score of jumps is 0.605648, is equal to \~ 0.07.
+Assuming that the true mean goe_raw score for low altitude competitions is equal to the true mean goe_raw score for high altitude competitions, the probability that we observe a sample mean difference of 0.605648 or something more extreme is about \~ 0.07.
 
-alpha = 0.05 \< p-value 0.07. Failing to reject our null hypothesis. Weak evidence to conclude the alternative hypothesis.
+Given that our significance level 0.05 \< p-value 0.07, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that altitude of the competition affects the execution of the jump.
+
+[Distance Test]{.underline}
 
 ```{r}
 #| label: distance hypothesis test
@@ -245,6 +263,12 @@ distance_means <- distance_filter |>
 
 distance_means
 ```
+
+$\bar{x_s}$ - $\bar{x_v}$ = 0.603055
+
+$H_o:$ $\mu_s - \mu_v$ = 0
+
+$H_a:$ $\mu_s - \mu_v$ $\neq$ 0
 
 -   **Null:** The distance of the competition location from Moscow has no significant effect on the execution of the jump.
 
@@ -270,9 +294,9 @@ null_dist_dist |>
   get_p_value(obs_stat = 0.603055, direction = "two sided")
 ```
 
-The probability of observing our sample statistic, or something more extreme, given that the true (population) difference between the mean raw score of jumps is 0.603055, is equal to \~ 0.068.
+Assuming that the true mean goe_raw score for competitions a short distance from Moscow is equal to the true mean goe_raw score for competitions a long distance from Moscow, the probability that we observe a sample mean difference of 0.603055 or something more extreme is about \~ 0.068.
 
-alpha = 0.05 \< p-value 0.068. Failing to reject our null hypothesis. Weak evidence to conclude the alternative hypothesis.
+Given that our significance level 0.05 \< p-value 0.068, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that distance a competition is from Moscow affects the execution of the jump.
 
 [***Visualization***]{.underline}
 
@@ -415,6 +439,10 @@ glance(combined_model)$AIC
 ### Results
 
 *The results from our hypothesis tests are as follows:*
+
+We failed to reject our null hypotheses for all of the hypothesis tests. The test that was closest to rejecting our null hypothesis at a significance level of 5% was the test that looked at the execution score by the distance (long vs. short) of competitions from Moscow, followed closely by the test that looked at the execution score by the altitude (high vs. low) of competitions. However, all of the tests failed to provide sufficient evidence that the difficulty of the jump or the location of the competitions affects Trusova's execution of her jumps.
+
+This might be because we split the sample set in half to create the top group and the bottom group in each instance. It would be better if we had a larger sample set from which to draw conclusions.
 
 *The results from our predictive models are as follows:*
 
