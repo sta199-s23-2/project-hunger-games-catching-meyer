@@ -5,6 +5,7 @@ format: html
 editor: visual
 execute:
   echo: true
+bibliography: references.bib
 ---
 
 ### Introduction and Data
@@ -15,7 +16,9 @@ Figure skating is a sport in which athletes complete programs full of jumps, spi
 
 In recent years, women's figure skating has experienced a "quad revolution" of sorts, with female skaters beginning to perform quadruple jumps with a higher frequency. This has been met with many questions, from fans, coaches, and authorities alike. Are quadruple jumps -- where the skater rotate four revolutions in the air -- valued too heavily? Are they leading to degradation in the performance of other elements?
 
-One of the skaters that helped bring this revolution about is Alexandra Trusova, a Russian figure skater whose national and international competitive career spanned from 2014 to 2022. She was the first to perform several types of quadruple jumps in competition, and her earlier competitive years are well documented. Thus, she is a prime subject for analysis.
+Little research has been done on the variables that affect a skater's ability to successfully perform a jump beyond basic biomechanics. A 2006 article presented a study investigating the biomechanical variables affecting the technical success of a jump. The researchers attached markers to anatomical points on the skater's body, filmed the jump, and conducted analysis in two ways: objectively using biomechanical measures and subjectively by accredited figure skating judges. They found that the correlation between "biomechanical landing strategies" and judge perception is strong enough to support the continuation of the current subjective judging methods in figure skating.[@lockwood2006] However, there are many other factors beyond a skater's biomechanics that affect figure skating jump success. Our investigation seeks to find these variables.
+
+One of the skaters that helped bring the "quad revolution" about is Alexandra Trusova, a Russian figure skater whose national and international competitive career spanned from 2014 to 2022. She was the first to perform several types of quadruple jumps in competition, and her earlier competitive years are well documented. Thus, she is a prime subject for analysis.
 
 [THE DATA]{.underline}
 
