@@ -87,6 +87,12 @@ With this dataset, we are researching **how the difficulty of the jump and the l
 
 ### Methodology
 
+We plan on answering our research question using hypothesis testing and modeling.
+
+We conducted hypothesis tests to determine whether differences in the execution score of the jump are influenced by certain variables, by comparing mean execution scores for certain predictor variable groups.
+
+We also created linear regression models and calculated their adjusted R\^2 and AIC. We used the adjusted R\^2 and AIC as benchmarks to evaluate the effectiveness of our three variables at predicting Trusova's jump execution as they respectively penalize the addition of bad variables and penalize models with more variables.
+
 ```{r}
 #| label: load-pkgs
 #| message: false
