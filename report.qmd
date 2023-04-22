@@ -10,8 +10,6 @@ bibliography: references.bib
 
 ### Introduction and Data
 
-[INTRODUCTION]{.underline}
-
 Figure skating is a sport in which athletes complete programs full of jumps, spins, and footwork while making sure to perform to their music. Scoring for figure skating consists of two components, the technical score and the artistic score. And it's this scoring that is the source of much of the controversy in the figure skating world.
 
 In recent years, women's figure skating has experienced a "quad revolution" of sorts, with female skaters beginning to perform quadruple jumps with a higher frequency. This has been met with many questions, from fans, coaches, and authorities alike. Are quadruple jumps -- where the skater rotate four revolutions in the air -- valued too heavily? Are they leading to degradation in the performance of other elements?
@@ -22,7 +20,7 @@ The variables we consider within this investigation are the difficulty of the ju
 
 One of the skaters that helped bring the "quad revolution" about is Alexandra Trusova, a Russian figure skater whose national and international competitive career spanned from 2014 to 2022. She was the first to perform several types of quadruple jumps in competition, and her earlier competitive years are well documented. Thus, she is a prime subject for analysis.
 
-[THE DATA]{.underline}
+[*THE DATA*]{.underline}
 
 Our data is collected from the competition records of the International Skating Union, Tallinn Trophy, and the Russian Skating Federation. The International Skating Union (ISU) is the governing body of figure skating competition around the world. ISU-sanctioned and many other competitions have websites containing records of the detailed results of the competition. Each event has an attached pdf file, recording every skater's detailed scoring breakdown, including the judges' evaluation of their jumps. After obtaining Alexandra Trusova's competitive history, the corresponding data for each of her jumps completed in national championships or international competition was pulled into a dataset, accompanied by relevant data about date and the competition location. We created this dataset ourselves as there were only PDF versions of her competition records available online.
 
@@ -92,7 +90,7 @@ Below is a table containing the sources of our data:
 | 2022 Winter Olympics                                     | <https://results.isu.org/results/season2122/owg2022/>                                                   |
 +----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
 
-[RELEVANT VARIABLES]{.underline}
+[RELEVANT VARIABLES AND JUSTIFICATION]{.underline}
 
 +--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Variable           | Description                                                                                                                                                                                                                                                                                                                               |
@@ -112,17 +110,15 @@ Below is a table containing the sources of our data:
 |                    | Due to adjustments to the GOE system after the 2017-2018 season, GOEs for jumping passes from competitions before June 2018 are scaled up by 5/3 to adjust from the -3 to 3 scale to the -5 to 5 scale.                                                                                                                                   |
 +--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-[RELEVANT VARIABLE JUSTIFICATION]{.underline}
-
 *Altitude:* We chose to test jump score by altitude because of how competing at different altitudes can affect the body and sport of an athlete. Less oxygen is available at higher altitudes, which typically corresponds to a lower amount of oxygen in athletes' muscles. However, air at higher altitudes is less dense than air at lower altitudes, which can indicate less air resistance. This means that competing at higher altitudes could have an interesting effect regarding skill sports such as figure skating, which requires great amounts of muscle strength and the ability to move quickly and precisely through air [@chapman2010].
 
 *Location:* The physical location of a competition has the potential to affect an athlete in several ways, particularly taking into account travel time and circadian rhythm adjustment. We will test score by competition distance from Moscow (Trusova's home training city) to determine whether or not there is a correlation between performance and travel time/travel distance. "Jet lag", or the necessary adjustment of the body's circadian rhythm to a new time zone, can affect the energy of an athlete, and therefore may be able to affect performance quality [@lee2012].
 
-[ETHICAL CONCERNS]{.underline}
+[*ETHICAL CONCERNS*]{.underline}
 
 Despite her fame within the figure skating world, Alexandra Trusova was a minor during the time period this dataset covers. As such, the only data we gathered was taken from publicly available records. We also took care to not include variables that evaluated Trusova's skating in a subjective manner and kept our analysis to quantitative data when possible.
 
-[RESEARCH QUESTION & HYPOTHESIS]{.underline}
+[*RESEARCH QUESTION & HYPOTHESIS*]{.underline}
 
 With this dataset, we are researching **how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps.** Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump, distance between training location and competition location, and altitude of the competition location will negatively affect Trusova's execution of her jumps.
 
@@ -146,7 +142,7 @@ trusova_jump <- read.csv("data/trusova_jumps.csv")
 
 ```
 
-[***HYPOTHESIS TESTS***]{.underline}
+#### *Hypothesis Testing*
 
 [Jump Difficulty Test]{.underline}
 
@@ -319,7 +315,7 @@ Assuming that the true mean goe_raw score for competitions a short distance from
 
 Given that our significance level 0.05 \< p-value 0.084, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that distance a competition is from Moscow affects the execution of the jump.
 
-[***Visualization***]{.underline}
+#### *Visualizations*
 
 [DIFFICULTY TO SCORE VISUALIZATION]{.underline}
 
@@ -374,7 +370,7 @@ trusova_jump |>
 
 *Interpretation:* We created the above graph to visualize the relationship between jump score and altitude, with a line drawn at Moscow's altitude to indicate Trusova's home training altitude. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. According to the graph and the trend line, there seems to be a weak positive linear correlation between score and altitude. However, there are relatively fewer data points available as the altitude gets higher, which can trouble the validity of the correlation.
 
-[***Predictive Models***]{.underline}
+#### *Predictive Models*
 
 ```{r}
 #| label: predictive model with only difficulty
