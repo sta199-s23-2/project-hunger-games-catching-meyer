@@ -167,11 +167,11 @@ difficulty_means <- jump_difficulty |>
 difficulty_means
 ```
 
-$\bar{x_s}$ - $\bar{x_v}$ = 0.356138
+$\bar{x_e}$ - $\bar{x_h}$ = 0.356138
 
-$H_o:$ $\mu_s - \mu_v$ = 0
+$H_o:$ $\mu_e - \mu_h$ = 0
 
-$H_a:$ $\mu_s - \mu_v$ $\neq$ 0
+$H_a:$ $\mu_e - \mu_h$ $\neq$ 0
 
 -   **Null:** The difficulty of the jump has no significant effect on the execution of the jump.
 
@@ -202,9 +202,9 @@ null_dist_jump |>
   get_p_value(obs_stat = 0.356138, direction = "two sided")
 ```
 
-Assuming that the true mean goe_raw score for easy jumps is equal to the true mean goe_raw score for hard jumps, the probability that we observe a sample mean difference of 0.356138 or something more extreme is about \~ 0.352.
+Assuming that the true mean goe_raw score for easy jumps is equal to the true mean goe_raw score for hard jumps, the probability that we observe a sample mean difference of 0.356138 or something more extreme is about \~ 0.288.
 
-Given that our significance level 0.05 \< p-value 0.352, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that difficulty of the jump affects the execution of the jump.
+Given that our significance level 0.05 \< p-value 0.288, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that difficulty of the jump affects the execution of the jump.
 
 [Altitude Test]{.underline}
 
@@ -225,11 +225,11 @@ altitude_means <- altitude_filter |>
 altitude_means
 ```
 
-$\bar{x_s}$ - $\bar{x_v}$ = 0.605648
+$\bar{x_h}$ - $\bar{x_l}$ = 0.605648
 
-$H_o:$ $\mu_s - \mu_v$ = 0
+$H_o:$ $\mu_h - \mu_l$ = 0
 
-$H_a:$ $\mu_s - \mu_v$ $\neq$ 0
+$H_a:$ $\mu_h - \mu_l$ $\neq$ 0
 
 -   **Null:** The altitude of the competition location has no significant effect on the execution of the jump.
 
@@ -241,7 +241,7 @@ null_dist_alt <- altitude_filter |>
   specify(response = goe_raw, explanatory = alt_group) |>
   hypothesize(null = "independence") |>
   generate(reps = 1000, type = "permute") |>
-  calculate(stat = "diff in means", order = c("low_altitude", "high_altitude"))
+  calculate(stat = "diff in means", order = c("high_altitude", "low_altitude"))
 
 null_dist_alt |>
   ggplot(
@@ -278,11 +278,11 @@ distance_means <- distance_filter |>
 distance_means
 ```
 
-$\bar{x_s}$ - $\bar{x_v}$ = 0.603055
+$\bar{x_l}$ - $\bar{x_s}$ = 0.603055
 
-$H_o:$ $\mu_s - \mu_v$ = 0
+$H_o:$ $\mu_l - \mu_s$ = 0
 
-$H_a:$ $\mu_s - \mu_v$ $\neq$ 0
+$H_a:$ $\mu_l - \mu_s$ $\neq$ 0
 
 -   **Null:** The distance of the competition location from Moscow has no significant effect on the execution of the jump.
 
@@ -295,7 +295,7 @@ null_dist_dist <- distance_filter |>
   hypothesize(null = "independence") |>
   generate(reps = 1000, type = "permute") |>
   calculate(stat = "diff in means", 
-            order = c("short_distance", "long_distance"))
+            order = c("long_distance", "short_distance"))
 
 null_dist_dist |>
   ggplot(
@@ -309,9 +309,9 @@ null_dist_dist |>
   get_p_value(obs_stat = 0.603055, direction = "two sided")
 ```
 
-Assuming that the true mean goe_raw score for competitions a short distance from Moscow is equal to the true mean goe_raw score for competitions a long distance from Moscow, the probability that we observe a sample mean difference of 0.603055 or something more extreme is about \~ 0.068.
+Assuming that the true mean goe_raw score for competitions a short distance from Moscow is equal to the true mean goe_raw score for competitions a long distance from Moscow, the probability that we observe a sample mean difference of 0.603055 or something more extreme is about \~ 0.066.
 
-Given that our significance level 0.05 \< p-value 0.068, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that distance a competition is from Moscow affects the execution of the jump.
+Given that our significance level 0.05 \< p-value 0.066, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that distance a competition is from Moscow affects the execution of the jump.
 
 [***Visualization***]{.underline}
 
