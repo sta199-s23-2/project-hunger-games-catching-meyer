@@ -10,6 +10,8 @@ bibliography: references.bib
 
 ### Introduction and Data
 
+#### Introduction
+
 Figure skating is a sport in which athletes complete programs full of jumps, spins, and footwork while making sure to perform to their music. Scoring for figure skating consists of two components, the technical score and the artistic score. And it's this scoring that is the source of much of the controversy in the figure skating world.
 
 In recent years, women's figure skating has experienced a "quad revolution" of sorts, with female skaters beginning to perform quadruple jumps with a higher frequency. This has been met with many questions, from fans, coaches, and authorities alike. Are quadruple jumps -- where the skater rotate four revolutions in the air -- valued too heavily? Are they leading to degradation in the performance of other elements?
@@ -20,77 +22,11 @@ The variables we consider within this investigation are the difficulty of the ju
 
 One of the skaters that helped bring the "quad revolution" about is Alexandra Trusova, a Russian figure skater whose national and international competitive career spanned from 2014 to 2022. She was the first to perform several types of quadruple jumps in competition, and her earlier competitive years are well documented. Thus, she is a prime subject for analysis.
 
-[*THE DATA*]{.underline}
+#### The Data
 
 Our data is collected from the competition records of the International Skating Union, Tallinn Trophy, and the Russian Skating Federation. The International Skating Union (ISU) is the governing body of figure skating competition around the world. ISU-sanctioned and many other competitions have websites containing records of the detailed results of the competition. Each event has an attached pdf file, recording every skater's detailed scoring breakdown, including the judges' evaluation of their jumps. After obtaining Alexandra Trusova's competitive history, the corresponding data for each of her jumps completed in national championships or international competition was pulled into a dataset, accompanied by relevant data about date and the competition location. We created this dataset ourselves as there were only PDF versions of her competition records available online.
 
-Below is a table containing the sources of our data:
-
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| **Competition**                                          | **Link**                                                                                                |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2015 Russian Novice National Championships (Younger Age) | <https://allskaters.info/wp-content/uploads/Protocols/2014-2015/specprogramma1415_protocol.pdf>         |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2015 Tallinn Trophy (Advanced Novice)                    | <https://web.archive.org/web/20160221082023/https://data.tallinntrophy.eu/2015/Tallinn_Trophy/>         |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2016 Russian Novice National Championships (Elder Age)   | <https://allskaters.info/wp-content/uploads/Protocols/2015-2016/specprogramma1516_protocol_revised.pdf> |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2017 Russian Junior National Championships               | <https://www.fsrussia.ru/results/1617/junnat1617/index.htm>                                             |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2017 JGP Brisbane                                        | <http://www.isuresults.com/results/season1718/jgpaus2017/index.htm>                                     |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2017 JGP Minsk                                           | <http://www.isuresults.com/results/season1718/jgpblr2017/index.htm>                                     |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2017 JGP Final                                           | <http://www.isuresults.com/results/season1718/gpf1718/>                                                 |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2018 Russian Junior National Championships               | <https://www.fsrussia.ru/results/1718/junnat1718/index.htm>                                             |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2018 World Junior Championships                          | <http://www.isuresults.com/results/season1718/wjc2018/index.htm>                                        |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2018 JGP Kaunas                                          | <http://www.isuresults.com/results/season1819/jgpltu2018/>                                              |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2018 JGP Yerevan                                         | <http://www.isuresults.com/results/season1819/jgparm2018/>                                              |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2018 JGP Final                                           | <http://www.isuresults.com/results/season1819/gpf1819/>                                                 |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2019 Russian Senior National Championships               | <https://www.fsrussia.ru/results/1819/rusnat1819_ENG/index.htm>                                         |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2019 Russian Junior National Championships               | <https://www.fsrussia.ru/results/1819/junnat1819/index.htm>                                             |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2019 World Junior Championships                          | <http://www.isuresults.com/results/season1819/wjc2019/>                                                 |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2019 27th Nepala Memorial                                | <http://www.kraso.sk/wp-content/uploads/sutaze/2019_2020/20190920_mon/>                                 |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2019 Japan Open                                          | <https://www.jsfresults.com/InterNational/2019-2020/japanopen/>                                         |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2019 GP Skate Canada                                     | <http://www.isuresults.com/results/season1920/gpcan2019/>                                               |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2019 GP Rostlecom Cup                                    | <http://www.isuresults.com/results/season1920/gprus2019/>                                               |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2019 GP Final                                            | <http://www.isuresults.com/results/season1920/gpf1920/>                                                 |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2020 Russian Senior National Championships               | <https://www.fsrussia.ru/results/1920/rusnat1920/ENG/index.htm>                                         |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2020 European Figure Skating Championships               | <http://www.isuresults.com/results/season1920/ec2020/>                                                  |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2020 GP Rostelecom Cup                                   | <https://fsrussia.ru/results/2021/gprus2020/>                                                           |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2021 Russian Senior National Championships               | <https://fsrussia.ru/results/2021/rusnat2021/ENG/index.htm>                                             |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2021 World Championships                                 | <http://www.isuresults.com/results/season2021/wc2021/>                                                  |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2021 US International Figure Skating Classic             | <https://ijs.usfigureskating.org/leaderboard/results/2021/30212/index.asp>                              |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2021 GP Skate America                                    | <http://www.isuresults.com/results/season2122/gpusa2021/>                                               |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2022 Russian Senior National Championships               | <https://fsrussia.ru/results/2122/rusnat2122/ENG/index.htm>                                             |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2022 European Championships                              | <http://www.isuresults.com/results/season2122/ec2022/>                                                  |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-| 2022 Winter Olympics                                     | <https://results.isu.org/results/season2122/owg2022/>                                                   |
-+----------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
-
-[RELEVANT VARIABLES AND JUSTIFICATION]{.underline}
+#### Relevant Variables & Justification
 
 +--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Variable           | Description                                                                                                                                                                                                                                                                                                                               |
@@ -114,11 +50,11 @@ Below is a table containing the sources of our data:
 
 *Location:* The physical location of a competition has the potential to affect an athlete in several ways, particularly taking into account travel time and circadian rhythm adjustment. We will test score by competition distance from Moscow (Trusova's home training city) to determine whether or not there is a correlation between performance and travel time/travel distance. "Jet lag", or the necessary adjustment of the body's circadian rhythm to a new time zone, can affect the energy of an athlete, and therefore may be able to affect performance quality [@lee2012].
 
-[*ETHICAL CONCERNS*]{.underline}
+#### Ethical Concerns
 
 Despite her fame within the figure skating world, Alexandra Trusova was a minor during the time period this dataset covers. As such, the only data we gathered was taken from publicly available records. We also took care to not include variables that evaluated Trusova's skating in a subjective manner and kept our analysis to quantitative data when possible.
 
-[*RESEARCH QUESTION & HYPOTHESIS*]{.underline}
+#### Research Question & Hypothesis
 
 With this dataset, we are researching **how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps.** Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump, distance between training location and competition location, and altitude of the competition location will negatively affect Trusova's execution of her jumps.
 
@@ -142,12 +78,13 @@ trusova_jump <- read.csv("data/trusova_jumps.csv")
 
 ```
 
-#### *Hypothesis Testing*
+#### Hypothesis Testing
 
 [Jump Difficulty Test]{.underline}
 
 ```{r}
-#| label: jump difficulty hypothesis test
+#| label: jump-difficulty-hypothesis-test
+#| echo: false
 
 jump_difficulty <- trusova_jump |>
   arrange(jump_bv) |>
@@ -174,12 +111,17 @@ $H_a:$ $\mu_e - \mu_h$ $>$ 0
 -   **Alternate:** The difficulty of the jump affects the execution of the jump. As the difficulty of the jump increases, the execution of the jump, as defined by the raw goe, decreases.
 
 ```{r}
-#| label: summary-lm difficulty v goe
+#| label: summary-lm-difficulty-v-goe
+#| echo: false
+
 summary(lm(goe_raw ~ jump_bv, data = jump_difficulty))
+
 ```
 
 ```{r}
 #| label: difficulty-test plot and distribution
+#| echo: false
+
 set.seed(4)
 
 null_dist_jump <- jump_difficulty |>
@@ -207,7 +149,8 @@ Given that our significance level 0.05 \< p-value 0.152, we conclude there is in
 [Altitude Test]{.underline}
 
 ```{r}
-#| label: altitude hypothesis test
+#| label: altitude-hypothesis-test
+#| echo: false
 
 altitude_filter <- trusova_jump |>
   arrange(altitude_in_m)|>
@@ -234,7 +177,9 @@ $H_a:$ $\mu_h - \mu_l$ $\neq$ 0
 -   **Alternate:** The altitude of the competition location (low or high) affects the execution of the jump.
 
 ```{r}
-#| label: alt-test plot and distribution
+#| label: alt-test-plot-and-distribution
+#| echo: false
+
 set.seed(4)
 
 null_dist_alt <- altitude_filter |>
@@ -262,7 +207,8 @@ Given that our significance level 0.05 \< p-value 0.056, we conclude there is in
 [Distance Test]{.underline}
 
 ```{r}
-#| label: distance hypothesis test
+#| label: distance-hypothesis-test
+#| echo: false
 
 distance_filter <- trusova_jump |>
   arrange(distance_moscow_km)|>
@@ -289,7 +235,9 @@ $H_a:$ $\mu_l - \mu_s$ $<$ 0
 -   **Alternate**: As the distance between Moscow and the competition location increases, the execution of the jump, as defined by the raw goe, decreases.
 
 ```{r}
-#| label: dist-test plot and distribution
+#| label: dist-test-plot-and-distribution
+#| echo: false
+
 set.seed(4)
 
 null_dist_dist <- distance_filter |>
@@ -315,12 +263,14 @@ Assuming that the true mean goe_raw score for competitions a short distance from
 
 Given that our significance level 0.05 \< p-value 0.958, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that distance a competition is from Moscow affects the execution of the jump.
 
-#### *Visualizations*
+#### Visualizations
 
 [DIFFICULTY TO SCORE VISUALIZATION]{.underline}
 
 ```{r}
 #| label: difficulty-score-comparison
+#| echo: false
+
 trusova_jump |> 
   ggplot(aes(x = jump_bv, y = goe_raw)) + 
   geom_point() + 
@@ -338,6 +288,8 @@ trusova_jump |>
 
 ```{r}
 #| label: distance-score-comparison
+#| echo: false
+
 trusova_jump |> 
   ggplot(aes(x = distance_moscow_km, y = goe_raw, color = jump_bv)) + 
   geom_point() + 
@@ -356,6 +308,7 @@ trusova_jump |>
 
 ```{r}
 #| label: altitude-score-comparison
+
 trusova_jump |> 
   ggplot(aes(x = altitude_in_m, y = goe_raw, color = jump_bv)) + 
   geom_point() + 
@@ -371,10 +324,11 @@ trusova_jump |>
 
 *Interpretation:* We created the above graph to visualize the relationship between jump score and altitude, with a line drawn at Moscow's altitude to indicate Trusova's home training altitude. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. According to the graph and the trend line, there seems to be a weak positive linear correlation between score and altitude. However, there are relatively fewer data points available as the altitude gets higher, which can trouble the validity of the correlation.
 
-#### *Predictive Models*
+#### Predictive Models
 
 ```{r}
-#| label: predictive model with only difficulty
+#| label: predictive-model-with-only-difficulty
+#| echo: false
 
 difficulty_model <- linear_reg() |>
    set_engine("lm") |>
@@ -387,7 +341,9 @@ glance(difficulty_model)$AIC
 ```
 
 ```{r}
-#| label: predictive model with only altitude
+#| label: predictive-model-with-only-altitude
+#| echo: false
+
 altitude_model <- linear_reg() |>
    set_engine("lm") |>
    fit(goe_raw ~ altitude_in_m, data = trusova_jump)
@@ -399,7 +355,8 @@ glance(altitude_model)$AIC
 ```
 
 ```{r}
-#| label: Predictive model with only distance
+#| label: predictive-model-with-only-distance
+#| echo: false
 
 distance_model <- linear_reg() |>
    set_engine("lm") |>
@@ -413,7 +370,8 @@ glance(distance_model)$AIC
 ```
 
 ```{r}
-#| label: Altitude and Difficulty of Jump
+#| label: altitude-and-difficulty-of-jump
+#| echo: false
 
 dif_alt_model <- linear_reg() |>
   set_engine("lm") |>
@@ -426,7 +384,8 @@ glance(dif_alt_model)$AIC
 ```
 
 ```{r}
-#| label: Model with Distance and Difficulty of Jump
+#| label: model-with-distance-and-difficulty-of-jump
+#| echo: false
 	
 dd_model <- linear_reg() |>
   set_engine("lm") |>
@@ -439,7 +398,8 @@ glance(dd_model)$AIC
 ```
 
 ```{r}
-#| label: Model with Altitude and Distance
+#| label: model-with-altitude-and-distance
+#| echo: false
 
 alt_dist_model <- linear_reg() |>
   set_engine("lm") |>
@@ -452,7 +412,8 @@ glance(alt_dist_model)$AIC
 ```
 
 ```{r}
-#| label: Model with Altitude and Distance and Difficulty of Jump
+#| label: model-with-altitude-and-distance-and-difficulty-of-jump
+#| echo: false
 
 combined_model <- linear_reg() |>
   set_engine("lm") |>
@@ -481,7 +442,7 @@ The AIC values were above 1400 for all of the models, which indicates that none 
 
 The adjusted R squared and AIC values thus both indicate that the altitude_model is the best at predicting Trusova's raw score. However, this model is still not a good fit. There are two possibilities here: (1) that we are looking at incorrect variables, and (2) that there is no singular factor that plays a large role in a skater's performance, with critics' claims regarding jump consistency and overall execution being unfounded.
 
-### Conclusion
+### Discussion
 
 Our results indicate that there is no singular factor that has a significant impact on Trusova's jump performance. We failed to reject our null hypothesis in all of our hypothesis tests, and all 7 of our predictive models had AIC values above 1430 and adjusted R squared values below 0.05.
 
