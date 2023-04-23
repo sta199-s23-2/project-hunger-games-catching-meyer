@@ -56,7 +56,7 @@ Despite her fame within the figure skating world, Alexandra Trusova was a minor 
 
 #### Research Question & Hypothesis
 
-With this dataset, we are researching **how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps.** Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump, distance between training location and competition location, and altitude of the competition location will negatively affect Trusova's execution of her jumps.
+With this dataset, we are researching **how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps.** Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump and distance between training location (Moscow) and competition location will negatively affect Trusova's execution of her jumps, and the altitude of the competition location will also have an impact.
 
 ### Methodology
 
