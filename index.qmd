@@ -1,8 +1,8 @@
 ---
-title: "TEAM NAME"
+title: "Hunger Games: Catching Meyer"
 subtitle: "STA 199 Project"
 format: html
 editor: visual
 ---
 
-Add project abstract here.
+This project aims to determine what factors impact Alexandra Trusova's jump performance in ice skating competitions. We sourced data from the International Skating Union's databases and individual countrys' skating association websites and conducted hypothesis tests to evaluate whether changes in altitude, competition distance from Moscow, and the difficulty of the jump respectively impacted Trusova's jump performance. We also created predictive models and visualizations to support our results. We conclude that no singular factor has a significant impact on Trusova's jump performance. Although our conclusions cannot be generalized to the sport as a whole until it can be supported by data gathered from the careers of other skaters, our results speak to Trusova's high level of training and how even Olympic-level figure skaters can fall and mess up periodically with no particular pattern. Additionally, our results indicate that additional data of varying types, as well as more skater-specific sensitive information like body weight, injury status, and mental health, should be collected to allow for future research regarding patterns in the quality of a jumping pass’s execution. 
