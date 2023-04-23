@@ -4,7 +4,7 @@ subtitle: "Report"
 format: html
 editor: visual
 execute:
-  echo: true
+  echo: false
 bibliography: references.bib
 ---
 
@@ -176,7 +176,7 @@ $H_a:$ $\mu_e - \mu_h$ $>$ 0
 
 -   **Null:** The difficulty of the jump has no significant effect on the execution of the jump.
 
--   **Alternate:** The difficulty of the jump affects the execution of the jump. As the difficulty of the jump increases, the execution of the jump, as defined by the raw goe, decreases.
+-   **Alternate:** As the difficulty of the jump increases, the execution of the jump, as defined by the raw goe, decreases.
 
 ```{r}
 #| label: summary-lm-difficulty-v-goe
@@ -437,9 +437,11 @@ glance(combined_model)$AIC
 
 *The results from our hypothesis tests are as follows:*
 
-We failed to reject our null hypotheses for all of the hypothesis tests. The test that was closest to rejecting our null hypothesis at a significance level of 5% was the test that looked at the execution score by the distance (long vs. short) of competitions from Moscow, followed closely by the test that looked at the execution score by the altitude (high vs. low) of competitions. However, all of the tests failed to provide sufficient evidence that the difficulty of the jump or the location of the competitions affects Trusova's execution of her jumps.
+We failed to reject our null hypotheses for all of the hypothesis tests. The test that was closest to rejecting our null hypothesis at a significance level of 5% was the test that looked at the execution score by the altitude of competitions, followed closely by the test that looked at the execution score by the difficulty of jumps. However, all of the tests failed to provide sufficient evidence that the difficulty of the jump or the location of the competitions affects Trusova's execution of her jumps.
 
-This might be because we split the sample set in half to create the top group and the bottom group in each instance. It would be better if we had a larger sample set from which to draw conclusions.
+These results make sense, because is likely that professional skaters such as Trusova try to mitigate the effect of variables such as distance and altitude on their execution scores. Professional skaters likely travel way in advance of competitions to ensure they are not jet-lagged, and train difficult jumps more than easy ones.
+
+These results could also be explained by the process in which we split the sample set in half to create the top and bottom groups for the difference in mean goe_raw scores in each instance. If we were to conduct further hypothesis testing, we could adjust the different groups created, and it would be better to have a larger sample set from other skaters and more compeititons from which to draw conclusions.
 
 *The results from our predictive models are as follows:*
 
