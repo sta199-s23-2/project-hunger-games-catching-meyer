@@ -187,6 +187,7 @@ div.csl-indent {
    
   <ul>
   <li><a href="#introduction-and-data" id="toc-introduction-and-data" class="nav-link active" data-scroll-target="#introduction-and-data">Introduction and Data</a></li>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
   <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
@@ -226,6 +227,7 @@ div.csl-indent {
 <section id="the-data" class="level4">
 <h4 class="anchored" data-anchor-id="the-data">The Data</h4>
 <p>Our data is collected from the competition records of the International Skating Union, Tallinn Trophy, and the Russian Skating Federation. The International Skating Union (ISU) is the governing body of figure skating competition around the world. ISU-sanctioned and many other competitions have websites containing records of the detailed results of the competition. Each event has an attached pdf file, recording every skater’s detailed scoring breakdown, including the judges’ evaluation of their jumps. After obtaining Alexandra Trusova’s competitive history, the corresponding data for each of her jumps completed in national championships or international competition was pulled into a dataset, accompanied by relevant data about date and the competition location. We created this dataset ourselves as there were only PDF versions of her competition records available online.</p>
+<p>Because we created our own dataset, there was no need to extensively clean the data. However, before importing the dataset to R, we added the altitude and distance variables based on references values from google maps and calculated the goe_raw variable according to the ISU rules: dropping the highest and lowest GOE and averaging the remaining GOE values. This could not be done by code due to different competitions having different numbers of judges.</p>
 </section>
 <section id="relevant-variables-justification" class="level4">
 <h4 class="anchored" data-anchor-id="relevant-variables-justification">Relevant Variables &amp; Justification</h4>
@@ -277,14 +279,12 @@ div.csl-indent {
 </section>
 <section id="research-question-hypothesis" class="level4">
 <h4 class="anchored" data-anchor-id="research-question-hypothesis">Research Question &amp; Hypothesis</h4>
-<p>With this dataset, we are researching <strong>how the difficulty of the jump and the location of the competition affect Alexandra Trusova’s execution of jumps.</strong> Through this, we seek to find patterns in Trusova’s jump data that support or do not support the questions surrounding quadruple jumps in women’s figure skating. We hypothesize that increases in difficulty of the jump, distance between training location and competition location, and altitude of the competition location will negatively affect Trusova’s execution of her jumps.</p>
+<p>With this dataset, we are researching <strong>how the difficulty of the jump and the location of the competition affect Alexandra Trusova’s execution of jumps.</strong> Through this, we seek to find patterns in Trusova’s jump data that support or do not support the questions surrounding quadruple jumps in women’s figure skating. We hypothesize that increases in difficulty of the jump and distance between training location (Moscow) and competition location will negatively affect Trusova’s execution of her jumps, and the altitude of the competition location will have an impact on execution as well.</p>
 </section>
 </section>
-<section id="methodology" class="level3">
-<h3 class="anchored" data-anchor-id="methodology">Methodology</h3>
-<p>We plan on answering our research question using hypothesis testing and modeling.</p>
-<p>We conducted hypothesis tests to determine whether differences in the execution score of the jump are influenced by certain variables, by comparing mean execution scores for certain predictor variable groups.</p>
-<p>We also created linear regression models and calculated their adjusted R^2 and AIC. We used the adjusted R^2 and AIC as benchmarks to evaluate the effectiveness of our three variables at predicting Trusova’s jump execution as they respectively penalize the addition of bad variables and penalize models with more variables.</p>
+<section id="exploratory-data-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h3>
+<p>To explore our data, we created three different visualizations based on the variables we wanted to test. First, we created a visualization that compared jump difficulty and score to determine whether or not those variables were correlated. We facet-wrapped this data by season to determine if there is a significant correlation between season and these results. We then created two visualizations comparing score, jump difficulty, and both distance from Moscow and altitude, respectively. These visualizations represent the major factors we are interested in.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
@@ -292,6 +292,81 @@ div.csl-indent {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>trusova_jump <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/trusova_jumps.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><u>DIFFICULTY TO SCORE</u></p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/difficulty-score-comparison-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><em>Interpretation:</em> We created the above graph to visualize the relationship between score and jump difficulty throughout Trusova’s career. Observations of the above visualizations suggest that, in general, jump difficulty and score are not correlated. The data points seem to be scattered regardless of jump difficulty, score, and competition season. There is a difference in the number of data points that are distributed throughout the seasons, which reflects the increasing number of competitions she attends as her career continues.</p>
+<p><u>DISTANCE FROM MOSCOW TO SCORE</u></p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 10 rows containing non-finite values (`stat_smooth()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The following aesthetics were dropped during statistical transformation: colour
+ℹ This can happen when ggplot fails to infer the correct grouping structure in
+  the data.
+ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+  variable into a factor?</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/distance-score-comparison-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><em>Interpretation:</em> We created the above graph to visualize the relationship between jump score and competition distance away from moscow. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. Based on the graph and the trend line, it seems as though there is a positive swell in score at competitions around 2000 km away from Moscow, which dips at competitions around 6000 km away from Moscow. We also see that the score for Moscow competitions seems to be the lowest related to the other competitions. There is also another uptick in score after passing 6000 km away from Moscow. However, there are not as many data points available for competitions further than 5000 km away from Moscow than there are for competitions less than 5000 km away from Moscow. This means that the current data points could indicate a trend that, if more data was available, may not be consistent. It is difficult, therefore, to identify any conclusive trends from this visualization.</p>
+<p><u>ALTITUDE TO SCORE</u></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>trusova_jump <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> altitude_in_m, <span class="at">y =</span> goe_raw, <span class="at">color =</span> jump_bv)) <span class="sc">+</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">156</span>) <span class="sc">+</span> </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship Between Altitude and Score"</span>, </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Altitude with Line Drawn at Moscow"</span>, </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Score"</span>, </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Difficulty of Jump"</span>) <span class="sc">+</span> </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_b</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 10 rows containing non-finite values (`stat_smooth()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The following aesthetics were dropped during statistical transformation: colour
+ℹ This can happen when ggplot fails to infer the correct grouping structure in
+  the data.
+ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+  variable into a factor?</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/altitude-score-comparison-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><em>Interpretation:</em> We created the above graph to visualize the relationship between jump score and altitude, with a line drawn at Moscow’s altitude to indicate Trusova’s home training altitude. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. According to the graph and the trend line, there seems to be a weak positive linear correlation between score and altitude. However, there are relatively fewer data points available as the altitude gets higher, which can trouble the validity of the correlation.</p>
+</section>
+<section id="methodology" class="level3">
+<h3 class="anchored" data-anchor-id="methodology">Methodology</h3>
+<p>We plan on answering our research question using hypothesis testing and modeling.</p>
+<p>We conducted hypothesis tests to determine whether differences in the execution score of the jump are influenced by certain variables, by comparing mean execution scores for certain predictor variable groups.</p>
+<p>We utilized bootstrapping methods instead of the central limit theorem because we cannot prove independence, since all of the jumps are done by the same individual.&nbsp;</p>
+<p>We also created linear regression models and calculated their adjusted R^2 and AIC. We used the adjusted R^2 and AIC as benchmarks to evaluate the effectiveness of our three variables at predicting Trusova’s jump execution as they respectively penalize the addition of bad variables and penalize models with more variables.</p>
+<p>We chose to use additive models because the variables we decided to test do not interact with each other, and are not correlated. Because there are only three factors, we created models of every possible variable combination, so a stepwise model selection process was not necessary.&nbsp;</p>
 <section id="hypothesis-testing" class="level4">
 <h4 class="anchored" data-anchor-id="hypothesis-testing">Hypothesis Testing</h4>
 <p><u>Jump Difficulty Test</u></p>
@@ -415,76 +490,6 @@ F-statistic: 0.06492 on 1 and 291 DF,  p-value: 0.7991</code></pre>
 </div>
 <p>Assuming that the true mean goe_raw score for competitions a short distance from Moscow is equal to the true mean goe_raw score for competitions a long distance from Moscow, the probability that we observe a sample mean difference of 0.603055 or something more extreme is about ~ 0.958.</p>
 <p>Given that our significance level 0.05 &lt; p-value 0.958, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that distance a competition is from Moscow affects the execution of the jump.</p>
-</section>
-<section id="visualizations" class="level4">
-<h4 class="anchored" data-anchor-id="visualizations">Visualizations</h4>
-<p><u>DIFFICULTY TO SCORE VISUALIZATION</u></p>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="report_files/figure-html/difficulty-score-comparison-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p><em>Interpretation:</em> We created the above graph to visualize the relationship between score and jump difficulty throughout Trusova’s career. Observations of the above visualizations suggest that, in general, jump difficulty and score are not correlated. The data points seem to be scattered regardless of jump difficulty, score, and competition season. There is a difference in the number of data points that are distributed throughout the seasons, which reflects the increasing number of competitions she attends as her career continues.</p>
-<p><u>DISTANCE FROM MOSCOW TO SCORE VISUALIZATION</u></p>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing non-finite values (`stat_smooth()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: The following aesthetics were dropped during statistical transformation: colour
-ℹ This can happen when ggplot fails to infer the correct grouping structure in
-  the data.
-ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
-  variable into a factor?</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="report_files/figure-html/distance-score-comparison-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p><em>Interpretation:</em> We created the above graph to visualize the relationship between jump score and competition distance away from moscow. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. Based on the graph and the trend line, it seems as though there is a positive swell in score at competitions around 2000 km away from Moscow, which dips at competitions around 6000 km away from Moscow. We also see that the score for Moscow competitions seems to be the lowest related to the other competitions. There is also another uptick in score after passing 6000 km away from Moscow. However, there are not as many data points available for competitions further than 5000 km away from Moscow than there are for competitions less than 5000 km away from Moscow. This means that the current data points could indicate a trend that, if more data was available, may not be consistent. It is difficult, therefore, to identify any conclusive trends from this visualization.</p>
-<p><u>ALTITUDE TO SCORE VISUALIZATION</u></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>trusova_jump <span class="sc">|&gt;</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> altitude_in_m, <span class="at">y =</span> goe_raw, <span class="at">color =</span> jump_bv)) <span class="sc">+</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span> </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">156</span>) <span class="sc">+</span> </span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship Between Altitude and Score"</span>, </span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Altitude with Line Drawn at Moscow"</span>, </span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Score"</span>, </span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Difficulty of Jump"</span>) <span class="sc">+</span> </span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_b</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing non-finite values (`stat_smooth()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: The following aesthetics were dropped during statistical transformation: colour
-ℹ This can happen when ggplot fails to infer the correct grouping structure in
-  the data.
-ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
-  variable into a factor?</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="report_files/figure-html/altitude-score-comparison-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p><em>Interpretation:</em> We created the above graph to visualize the relationship between jump score and altitude, with a line drawn at Moscow’s altitude to indicate Trusova’s home training altitude. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. According to the graph and the trend line, there seems to be a weak positive linear correlation between score and altitude. However, there are relatively fewer data points available as the altitude gets higher, which can trouble the validity of the correlation.</p>
 </section>
 <section id="predictive-models" class="level4">
 <h4 class="anchored" data-anchor-id="predictive-models">Predictive Models</h4>

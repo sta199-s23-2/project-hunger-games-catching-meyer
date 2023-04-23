@@ -26,6 +26,8 @@ One of the skaters that helped bring the "quad revolution" about is Alexandra Tr
 
 Our data is collected from the competition records of the International Skating Union, Tallinn Trophy, and the Russian Skating Federation. The International Skating Union (ISU) is the governing body of figure skating competition around the world. ISU-sanctioned and many other competitions have websites containing records of the detailed results of the competition. Each event has an attached pdf file, recording every skater's detailed scoring breakdown, including the judges' evaluation of their jumps. After obtaining Alexandra Trusova's competitive history, the corresponding data for each of her jumps completed in national championships or international competition was pulled into a dataset, accompanied by relevant data about date and the competition location. We created this dataset ourselves as there were only PDF versions of her competition records available online.
 
+Because we created our own dataset, there was no need to extensively clean the data. However, before importing the dataset to R, we added the altitude and distance variables based on references values from google maps and calculated the goe_raw variable according to the ISU rules: dropping the highest and lowest GOE and averaging the remaining GOE values. This could not be done by code due to different competitions having different numbers of judges.
+
 #### Relevant Variables & Justification
 
 +--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -56,15 +58,11 @@ Despite her fame within the figure skating world, Alexandra Trusova was a minor 
 
 #### Research Question & Hypothesis
 
-With this dataset, we are researching **how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps.** Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump and distance between training location (Moscow) and competition location will negatively affect Trusova's execution of her jumps, and the altitude of the competition location will also have an impact.
+With this dataset, we are researching **how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps.** Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump and distance between training location (Moscow) and competition location will negatively affect Trusova's execution of her jumps, and the altitude of the competition location will have an impact on execution as well.
 
-### Methodology
+### Exploratory Data Analysis
 
-We plan on answering our research question using hypothesis testing and modeling.
-
-We conducted hypothesis tests to determine whether differences in the execution score of the jump are influenced by certain variables, by comparing mean execution scores for certain predictor variable groups.
-
-We also created linear regression models and calculated their adjusted R\^2 and AIC. We used the adjusted R\^2 and AIC as benchmarks to evaluate the effectiveness of our three variables at predicting Trusova's jump execution as they respectively penalize the addition of bad variables and penalize models with more variables.
+To explore our data, we created three different visualizations based on the variables we wanted to test. First, we created a visualization that compared jump difficulty and score to determine whether or not those variables were correlated. We facet-wrapped this data by season to determine if there is a significant correlation between season and these results. We then created two visualizations comparing score, jump difficulty, and both distance from Moscow and altitude, respectively. These visualizations represent the major factors we are interested in.
 
 ```{r}
 #| label: load-pkgs
@@ -75,8 +73,78 @@ library(tidymodels)
 
 
 trusova_jump <- read.csv("data/trusova_jumps.csv")
-
 ```
+
+[DIFFICULTY TO SCORE]{.underline}
+
+```{r}
+#| label: difficulty-score-comparison
+#| echo: false
+
+trusova_jump |> 
+  ggplot(aes(x = jump_bv, y = goe_raw)) + 
+  geom_point() + 
+  facet_wrap("season") + 
+  labs(title = "Relationship Between Jump Difficulty and Score", 
+       subtitle = "By Competition Season", 
+       x = "Difficulty of Jump", 
+       y = "Score") + 
+  theme_minimal()
+```
+
+*Interpretation:* We created the above graph to visualize the relationship between score and jump difficulty throughout Trusova's career. Observations of the above visualizations suggest that, in general, jump difficulty and score are not correlated. The data points seem to be scattered regardless of jump difficulty, score, and competition season. There is a difference in the number of data points that are distributed throughout the seasons, which reflects the increasing number of competitions she attends as her career continues.
+
+[DISTANCE FROM MOSCOW TO SCORE]{.underline}
+
+```{r}
+#| label: distance-score-comparison
+#| echo: false
+
+trusova_jump |> 
+  ggplot(aes(x = distance_moscow_km, y = goe_raw, color = jump_bv)) + 
+  geom_point() + 
+  geom_smooth() + 
+  labs(title = "Relationship Between Distance Travelled and Score", 
+       x = "Distance of Competition From Moscow", 
+       y = "Score", 
+       color = "Difficulty of Jump") + 
+  theme_minimal() + 
+  scale_color_viridis_b()
+```
+
+*Interpretation:* We created the above graph to visualize the relationship between jump score and competition distance away from moscow. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. Based on the graph and the trend line, it seems as though there is a positive swell in score at competitions around 2000 km away from Moscow, which dips at competitions around 6000 km away from Moscow. We also see that the score for Moscow competitions seems to be the lowest related to the other competitions. There is also another uptick in score after passing 6000 km away from Moscow. However, there are not as many data points available for competitions further than 5000 km away from Moscow than there are for competitions less than 5000 km away from Moscow. This means that the current data points could indicate a trend that, if more data was available, may not be consistent. It is difficult, therefore, to identify any conclusive trends from this visualization.
+
+[ALTITUDE TO SCORE]{.underline}
+
+```{r}
+#| label: altitude-score-comparison
+
+trusova_jump |> 
+  ggplot(aes(x = altitude_in_m, y = goe_raw, color = jump_bv)) + 
+  geom_point() + 
+  geom_smooth() + 
+  geom_vline(xintercept = 156) + 
+  labs(title = "Relationship Between Altitude and Score", 
+       x = "Altitude with Line Drawn at Moscow", 
+       y = "Score", 
+       color = "Difficulty of Jump") + 
+  theme_minimal() + 
+  scale_color_viridis_b()
+```
+
+*Interpretation:* We created the above graph to visualize the relationship between jump score and altitude, with a line drawn at Moscow's altitude to indicate Trusova's home training altitude. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. According to the graph and the trend line, there seems to be a weak positive linear correlation between score and altitude. However, there are relatively fewer data points available as the altitude gets higher, which can trouble the validity of the correlation.
+
+### Methodology
+
+We plan on answering our research question using hypothesis testing and modeling.
+
+We conducted hypothesis tests to determine whether differences in the execution score of the jump are influenced by certain variables, by comparing mean execution scores for certain predictor variable groups.
+
+We utilized bootstrapping methods instead of the central limit theorem because we cannot prove independence, since all of the jumps are done by the same individual. 
+
+We also created linear regression models and calculated their adjusted R\^2 and AIC. We used the adjusted R\^2 and AIC as benchmarks to evaluate the effectiveness of our three variables at predicting Trusova's jump execution as they respectively penalize the addition of bad variables and penalize models with more variables.
+
+We chose to use additive models because the variables we decided to test do not interact with each other, and are not correlated. Because there are only three factors, we created models of every possible variable combination, so a stepwise model selection process was not necessary. 
 
 #### Hypothesis Testing
 
@@ -262,67 +330,6 @@ null_dist_dist |>
 Assuming that the true mean goe_raw score for competitions a short distance from Moscow is equal to the true mean goe_raw score for competitions a long distance from Moscow, the probability that we observe a sample mean difference of 0.603055 or something more extreme is about \~ 0.958.
 
 Given that our significance level 0.05 \< p-value 0.958, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that distance a competition is from Moscow affects the execution of the jump.
-
-#### Visualizations
-
-[DIFFICULTY TO SCORE VISUALIZATION]{.underline}
-
-```{r}
-#| label: difficulty-score-comparison
-#| echo: false
-
-trusova_jump |> 
-  ggplot(aes(x = jump_bv, y = goe_raw)) + 
-  geom_point() + 
-  facet_wrap("season") + 
-  labs(title = "Relationship Between Jump Difficulty and Score", 
-       subtitle = "By Competition Season", 
-       x = "Difficulty of Jump", 
-       y = "Score") + 
-  theme_minimal()
-```
-
-*Interpretation:* We created the above graph to visualize the relationship between score and jump difficulty throughout Trusova's career. Observations of the above visualizations suggest that, in general, jump difficulty and score are not correlated. The data points seem to be scattered regardless of jump difficulty, score, and competition season. There is a difference in the number of data points that are distributed throughout the seasons, which reflects the increasing number of competitions she attends as her career continues.
-
-[DISTANCE FROM MOSCOW TO SCORE VISUALIZATION]{.underline}
-
-```{r}
-#| label: distance-score-comparison
-#| echo: false
-
-trusova_jump |> 
-  ggplot(aes(x = distance_moscow_km, y = goe_raw, color = jump_bv)) + 
-  geom_point() + 
-  geom_smooth() + 
-  labs(title = "Relationship Between Distance Travelled and Score", 
-       x = "Distance of Competition From Moscow", 
-       y = "Score", 
-       color = "Difficulty of Jump") + 
-  theme_minimal() + 
-  scale_color_viridis_b()
-```
-
-*Interpretation:* We created the above graph to visualize the relationship between jump score and competition distance away from moscow. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. Based on the graph and the trend line, it seems as though there is a positive swell in score at competitions around 2000 km away from Moscow, which dips at competitions around 6000 km away from Moscow. We also see that the score for Moscow competitions seems to be the lowest related to the other competitions. There is also another uptick in score after passing 6000 km away from Moscow. However, there are not as many data points available for competitions further than 5000 km away from Moscow than there are for competitions less than 5000 km away from Moscow. This means that the current data points could indicate a trend that, if more data was available, may not be consistent. It is difficult, therefore, to identify any conclusive trends from this visualization.
-
-[ALTITUDE TO SCORE VISUALIZATION]{.underline}
-
-```{r}
-#| label: altitude-score-comparison
-
-trusova_jump |> 
-  ggplot(aes(x = altitude_in_m, y = goe_raw, color = jump_bv)) + 
-  geom_point() + 
-  geom_smooth() + 
-  geom_vline(xintercept = 156) + 
-  labs(title = "Relationship Between Altitude and Score", 
-       x = "Altitude with Line Drawn at Moscow", 
-       y = "Score", 
-       color = "Difficulty of Jump") + 
-  theme_minimal() + 
-  scale_color_viridis_b()
-```
-
-*Interpretation:* We created the above graph to visualize the relationship between jump score and altitude, with a line drawn at Moscow's altitude to indicate Trusova's home training altitude. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. According to the graph and the trend line, there seems to be a weak positive linear correlation between score and altitude. However, there are relatively fewer data points available as the altitude gets higher, which can trouble the validity of the correlation.
 
 #### Predictive Models
 
