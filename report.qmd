@@ -167,7 +167,7 @@ $\bar{x_e}$ - $\bar{x_h}$ = 0.356138
 
 $H_o:$ $\mu_e - \mu_h$ = 0
 
-$H_a:$ $\mu_e - \mu_h$ $\neq$ 0
+$H_a:$ $\mu_e - \mu_h$ $>$ 0
 
 -   **Null:** The difficulty of the jump has no significant effect on the execution of the jump.
 
@@ -197,12 +197,12 @@ null_dist_jump |>
   geom_vline(xintercept = -0.356138)
 
 null_dist_jump |>
-  get_p_value(obs_stat = 0.356138, direction = "two sided")
+  get_p_value(obs_stat = 0.356138, direction = "right")
 ```
 
-Assuming that the true mean goe_raw score for easy jumps is equal to the true mean goe_raw score for hard jumps, the probability that we observe a sample mean difference of 0.356138 or something more extreme is about \~ 0.304.
+Assuming that the true mean goe_raw score for easy jumps is equal to the true mean goe_raw score for hard jumps, the probability that we observe a sample mean difference of 0.356138 or something more extreme is about \~ 0.152.
 
-Given that our significance level 0.05 \< p-value 0.304, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that difficulty of the jump affects the execution of the jump.
+Given that our significance level 0.05 \< p-value 0.152, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that difficulty of the jump affects the execution of the jump.
 
 [Altitude Test]{.underline}
 
@@ -231,7 +231,7 @@ $H_a:$ $\mu_h - \mu_l$ $\neq$ 0
 
 -   **Null:** The altitude of the competition location has no significant effect on the execution of the jump.
 
--   **Alternate:** The altitude of the competition location relative to Moscow affects the execution of the jump. As the altitude of the competition location relative to Moscow increases, the execution of the jump, as defined by the raw goe, decreases.
+-   **Alternate:** The altitude of the competition location (low or high) affects the execution of the jump.
 
 ```{r}
 #| label: alt-test plot and distribution
@@ -282,7 +282,7 @@ $\bar{x_l}$ - $\bar{x_s}$ = 0.603055
 
 $H_o:$ $\mu_l - \mu_s$ = 0
 
-$H_a:$ $\mu_l - \mu_s$ $\neq$ 0
+$H_a:$ $\mu_l - \mu_s$ $<$ 0
 
 -   **Null:** The distance of the competition location from Moscow has no significant effect on the execution of the jump.
 
@@ -308,12 +308,12 @@ null_dist_dist |>
   geom_vline(xintercept = -0.603055)
 
 null_dist_dist |>
-  get_p_value(obs_stat = 0.603055, direction = "two sided")
+  get_p_value(obs_stat = 0.603055, direction = "left")
 ```
 
-Assuming that the true mean goe_raw score for competitions a short distance from Moscow is equal to the true mean goe_raw score for competitions a long distance from Moscow, the probability that we observe a sample mean difference of 0.603055 or something more extreme is about \~ 0.084.
+Assuming that the true mean goe_raw score for competitions a short distance from Moscow is equal to the true mean goe_raw score for competitions a long distance from Moscow, the probability that we observe a sample mean difference of 0.603055 or something more extreme is about \~ 0.958.
 
-Given that our significance level 0.05 \< p-value 0.084, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that distance a competition is from Moscow affects the execution of the jump.
+Given that our significance level 0.05 \< p-value 0.958, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that distance a competition is from Moscow affects the execution of the jump.
 
 #### *Visualizations*
 
