@@ -322,18 +322,17 @@ Given that our significance level 0.05 \< p-value 0.084, we conclude there is in
 ```{r}
 #| label: difficulty-score-comparison
 trusova_jump |> 
-  ggplot(aes(x = jump_bv, y = goe_raw, color = jump)) + 
+  ggplot(aes(x = jump_bv, y = goe_raw)) + 
   geom_point() + 
   facet_wrap("season") + 
   labs(title = "Relationship Between Jump Difficulty and Score", 
        subtitle = "By Competition Season", 
        x = "Difficulty of Jump", 
-       y = "Score", 
-       color = "Type of Jump") + 
+       y = "Score") + 
   theme_minimal()
 ```
 
-*Interpretation:* We created the above graph to visualize the relationship between score and jump difficulty throughout Trusova's career. We also colored the data points by the type of jump to add an extra level of explanation for the possible trends we are seeing. Observations of the above visualizations suggest that, in general, jump difficulty and score are not correlated. Something we see, however, is that there may be significance regarding jump type and score. Starting with the 2018-2019 competition season, many of the 3Lz jumps seem to be grouped together in terms of both score and difficulty. Starting in the 2017-2018 competition season, it seems as though many data points on the bottom of the score grid (-5.0) are 4Lz and/or 4F jumps. This can indicate significance between score and jump type, rather than score and jump difficulty.
+*Interpretation:* We created the above graph to visualize the relationship between score and jump difficulty throughout Trusova's career. Observations of the above visualizations suggest that, in general, jump difficulty and score are not correlated. The data points seem to be scattered regardless of jump difficulty, score, and competition season. There is a difference in the number of data points that are distributed throughout the seasons, which reflects the increasing number of competitions she attends as her career continues.
 
 [DISTANCE FROM MOSCOW TO SCORE VISUALIZATION]{.underline}
 
@@ -347,7 +346,8 @@ trusova_jump |>
        x = "Distance of Competition From Moscow", 
        y = "Score", 
        color = "Difficulty of Jump") + 
-  theme_minimal()
+  theme_minimal() + 
+  scale_color_viridis_b()
 ```
 
 *Interpretation:* We created the above graph to visualize the relationship between jump score and competition distance away from moscow. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. Based on the graph and the trend line, it seems as though there is a positive swell in score at competitions around 2000 km away from Moscow, which dips at competitions around 6000 km away from Moscow. We also see that the score for Moscow competitions seems to be the lowest related to the other competitions. There is also another uptick in score after passing 6000 km away from Moscow. However, there are not as many data points available for competitions further than 5000 km away from Moscow than there are for competitions less than 5000 km away from Moscow. This means that the current data points could indicate a trend that, if more data was available, may not be consistent. It is difficult, therefore, to identify any conclusive trends from this visualization.
@@ -365,7 +365,8 @@ trusova_jump |>
        x = "Altitude with Line Drawn at Moscow", 
        y = "Score", 
        color = "Difficulty of Jump") + 
-  theme_minimal()
+  theme_minimal() + 
+  scale_color_viridis_b()
 ```
 
 *Interpretation:* We created the above graph to visualize the relationship between jump score and altitude, with a line drawn at Moscow's altitude to indicate Trusova's home training altitude. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. According to the graph and the trend line, there seems to be a weak positive linear correlation between score and altitude. However, there are relatively fewer data points available as the altitude gets higher, which can trouble the validity of the correlation.
