@@ -20,7 +20,7 @@ In recent years, women's figure skating has experienced a "quad revolution" of s
 
 #### Literature Review
 
-Little research has been done on the variables that affect a skater's ability to successfully perform a jump beyond basic biomechanics. A 2006 article presented a study investigating the biomechanical variables affecting the technical success of a jump. The researchers attached markers to anatomical points on the skater's body, filmed the jump, and conducted analysis in two ways: objectively using biomechanical measures and subjectively by accredited figure skating judges. They found that the correlation between "biomechanical landing strategies" and judge perception is strong enough to support the continuation of the current subjective judging methods in figure skating [@lockwood2006]. However, there are many other factors beyond a skater's biomechanics that affect figure skating jump success. Our investigation seeks to explore these variables.
+Little research has been done on the variables that affect a skater's ability to successfully perform a jump beyond basic biomechanics. A 2006 article presented a study investigating the biomechanical variables affecting the technical success of a jump. The researchers attached markers to anatomical points on the skater's body, filmed the jump, and conducted analysis in two ways: objectively using biomechanical measures and subjectively by accredited figure skating judges. They found that the correlation between "biomechanical landing strategies" and judge perception is strong enough to support the continuation of the current subjective judging methods in figure skating [@lockwood2006]. However, there are many other factors beyond a figure skater's biomechanics that affect their jump success. Our investigation seeks to explore these variables.
 
 The variables we consider within this investigation are the difficulty of the jump, the altitude of the competition location, and the travel distance from an athlete's home training city of the competition location. It is important to note that the existing research for these variables in relation specifically to figure skating is sparse. There are many research articles on altitude and how it may affect athletes in other sports, but it was difficult to find articles that specifically mentioned figure skating rather than endurance sports [@chapman2010]. Similarly, there are not many research articles in general about how distance away from an athlete's home city can affect their performance. The closest and most relevant piece was a descriptive review by the NIH about how jet lag could potentially affect physiology in competitive athletes [@lee2012]. It is based on these pieces that we explore these variables further within our project.
 
@@ -34,23 +34,23 @@ Because we created our own dataset, there was no need to extensively clean the d
 
 #### Relevant Variables & Justification
 
-+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Variable           | Description                                                                                                                                                                                                                                                                                                                               |
-+====================+===========================================================================================================================================================================================================================================================================================================================================+
-| season             | The competition season in which the jumping pass was completed. Spans two calendar years (from summer of one year to spring of the next year).                                                                                                                                                                                            |
-+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| altitude_in_m      | The altitude, in meters, of the competition location.                                                                                                                                                                                                                                                                                     |
-+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| distance_moscow_km | Distance, in kilometers, of the competition location from Moscow, Trusova's training city.                                                                                                                                                                                                                                                |
-+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| jump               | The code entered for the jumping pass completed. The 5 types of jumps are axel (denoted by "A"), salchow ("S"), toeloop ("T"), loop ("Lo"), flip ("F"), and lutz ("Lz"). These jumps can have anywhere between 1-4 rotations and can be performed as a solo (ex. 2A) or combination jump (denoted by plus sign, ex. 3Lz+3T or 3F+2T+2Lo). |
-+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| jump_bv            | The difficulty value, in points, of the jumping pass completed.                                                                                                                                                                                                                                                                           |
-+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| goe_raw            | The grade of execution, a measure of the quality of the jump. Each judge - there are typically 7 or 9 - assign a GOE value between -5 (bad) to +5 (excellent). Raw GOE is calculated by dropping the highest and lowest values and finding the average of the remaining values.                                                           |
-|                    |                                                                                                                                                                                                                                                                                                                                           |
-|                    | Due to adjustments to the GOE system after the 2017-2018 season, GOEs for jumping passes from competitions before June 2018 are scaled up by 5/3 to adjust from the -3 to 3 scale to the -5 to 5 scale.                                                                                                                                   |
-+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++--------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Variable           | Description                                                                                                                                                                                                                                                                                                                     |
++====================+=================================================================================================================================================================================================================================================================================================================================+
+| season             | The competition season in which the jumping pass was completed. Spans two calendar years (from summer of one year to spring of the next year).                                                                                                                                                                                  |
++--------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| altitude_in_m      | The altitude, in meters, of the competition location.                                                                                                                                                                                                                                                                           |
++--------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| distance_moscow_km | Distance, in kilometers, of the competition location from Moscow, Trusova's training city.                                                                                                                                                                                                                                      |
++--------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| jump               | The code entered for the jumping pass completed. The 5 types of jumps are axel (denoted by "A"), salchow ("S"), toeloop ("T"), loop ("Lo"), flip ("F"), and lutz ("Lz"). These jumps can have anywhere between 1-4 rotations and can be performed as a solo (ex. 2A) or combination jump (denoted by plus sign, ex. 3F+2T+2Lo). |
++--------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| jump_bv            | The difficulty value, in points, of the jumping pass completed.                                                                                                                                                                                                                                                                 |
++--------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| goe_raw            | The grade of execution, a measure of the quality of the jump. Each judge - there are typically 7 or 9 - assign a GOE value between -5 (bad) to +5 (excellent). Raw GOE is calculated by dropping the highest and lowest values and finding the average of the remaining values.                                                 |
+|                    |                                                                                                                                                                                                                                                                                                                                 |
+|                    | Due to adjustments to the GOE system after the 2017-2018 season, GOEs for jumping passes from competitions before June 2018 are scaled up by 5/3 to adjust from the -3 to 3 scale to the -5 to 5 scale.                                                                                                                         |
++--------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 *Altitude:* We chose to test jump score by altitude because of how competing at different altitudes can affect the body and sport of an athlete. Less oxygen is available at higher altitudes, which typically corresponds to a lower amount of oxygen in athletes' muscles. However, air at higher altitudes is less dense than air at lower altitudes, which can indicate less air resistance. This means that competing at higher altitudes could have an interesting effect regarding skill sports such as figure skating, which requires great amounts of muscle strength and the ability to move quickly and precisely through air [@chapman2010].
 
@@ -62,7 +62,7 @@ Despite her fame within the figure skating world, Alexandra Trusova was a minor 
 
 #### Research Question & Hypothesis
 
-With this dataset, we are researching **how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps.** Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump and distance between training location (Moscow) and competition location will negatively affect Trusova's execution of her jumps, and the altitude of the competition location will have an impact on execution as well.
+With this dataset, we are researching **how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps.** Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump and distance between training location (Moscow) and competition location will negatively affect Trusova's execution of her jumps, and that the altitude of the competition location will have an impact on execution as well.
 
 #### Exploratory Data Analysis
 
@@ -138,11 +138,9 @@ trusova_jump |>
 
 ### Methodology
 
-We plan on answering our research question using hypothesis testing and modeling.
+We answered our research question using hypothesis testing and modeling.
 
-We conducted hypothesis tests to determine whether differences in the execution score of the jump are influenced by certain variables, by comparing mean execution scores for certain predictor variable groups.
-
-We utilized bootstrapping methods instead of the central limit theorem because we cannot prove independence, since all of the jumps are done by the same individual. 
+We conducted hypothesis tests to determine whether differences in the execution score of the jump are influenced by certain variables, by comparing mean execution scores for certain predictor variable groups. We utilized bootstrapping methods instead of the central limit theorem because we cannot prove independence, since all of the jumps are done by the same individual. 
 
 We also created linear regression models and calculated their adjusted R\^2 and AIC. We used the adjusted R\^2 and AIC as benchmarks to evaluate the effectiveness of our three variables at predicting Trusova's jump execution as they respectively penalize the addition of bad variables and penalize models with more variables.
 
@@ -150,7 +148,7 @@ We chose to use additive models because the variables we decided to test do not 
 
 #### Hypothesis Testing
 
-[Jump Difficulty Test]{.underline}
+[Jump Difficulty]{.underline}
 
 ```{r}
 #| label: jump-difficulty-hypothesis-test
@@ -188,8 +186,8 @@ summary(lm(goe_raw ~ jump_bv, data = jump_difficulty))
 
 ```{r}
 #| label: difficulty-test plot and distribution
-#| fig-height: 4
-#| fig-width: 4
+#| fig-height: 3
+#| fig-width: 3
 
 set.seed(4)
 
@@ -215,7 +213,7 @@ Assuming that the true mean goe_raw score for easy jumps is equal to the true me
 
 Given that our significance level 0.05 \< p-value 0.152, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that difficulty of the jump affects the execution of the jump.
 
-[Altitude Test]{.underline}
+[Altitude]{.underline}
 
 ```{r}
 #| label: altitude-hypothesis-test
@@ -246,8 +244,8 @@ $H_a:$ $\mu_h - \mu_l$ $\neq$ 0
 
 ```{r}
 #| label: alt-test-plot-and-distribution
-#| fig-height: 4
-#| fig-width: 4
+#| fig-height: 3
+#| fig-width: 3
 
 set.seed(4)
 
@@ -273,7 +271,7 @@ Assuming that the true mean goe_raw score for low altitude competitions is equal
 
 Given that our significance level 0.05 \< p-value 0.056, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that altitude of the competition affects the execution of the jump.
 
-[Distance Test]{.underline}
+[Distance]{.underline}
 
 ```{r}
 #| label: distance-hypothesis-test
@@ -304,8 +302,8 @@ $H_a:$ $\mu_l - \mu_s$ $<$ 0
 
 ```{r}
 #| label: dist-test-plot-and-distribution
-#| #| fig-height: 4
-#| fig-width: 4
+#| fig-height: 3
+#| fig-width: 3
 
 set.seed(4)
 
@@ -373,7 +371,6 @@ distance_model <- linear_reg() |>
 glance(distance_model)$adj.r.squared
 
 glance(distance_model)$AIC
-
 
 ```
 
@@ -452,8 +449,8 @@ The adjusted R squared and AIC values thus both indicate that the altitude_model
 
 Our results indicate that there is no singular factor that has a significant impact on Trusova's jump performance. We failed to reject our null hypothesis in all of our hypothesis tests, and all 7 of our predictive models had AIC values above 1430 and adjusted R squared values below 0.05.
 
-Our data is valid because it is gathered from official competition data from the International Skating Union and individual countries' skating federations. However, it is not necessarily reliable for several reasons: 1) Due to the guidelines for GOE being rather up for interpretation, there is a small amount of bias and variability inherent in figure skating judging. This can create inconsistencies in scoring across competitions. 2) The data focuses on one skater and only her performances at national championships and international competitions. This small sample size allows for variability in patterns in the data. There are only a handful of female skaters who have performed numerous types of quads over many years of their career, so it was simply not possible to gather data for a large sample of skaters. Additionally, we had to create our dataset ourselves by combing through online PDFs of competition results, so it was not feasible to obtain data from more jumpers within the time frame of the project.
+Our data is valid as it is gathered from official competition data from the International Skating Union and individual countries' skating federations. However, it is not necessarily reliable because: 1) There is a small amount of bias and variability inherent in figure skating judging as a result of vague GOE guidelines. 2) The data focuses on one skater's performances at national championships and international competitions. This small sample size allows for variability in patterns in the data. There are also only a handful of female skaters who have performed numerous types of quads, so it was not possible to gather data for a large sample of skaters. Additionally, it was not feasible to include data from more jumpers within the time frame of the project.
 
-As such, the conclusions we've drawn regarding Alexandra Trusova's jumps and performance cannot be generalized to the sport of figure skating as a whole until it can be supported by data gathered from the careers of other skaters. This is mainly the result of our methods, and we could improve our analysis by gathering the same information for more female skaters that have performed quadruple jumps over their entire careers. In future research, additional data of varying types should be collected beyond what is contained in publicly available records to find other potential predictors of jump outcome. More skater-specific sensitive information, like body weight, injury status, and mental health state could also prove to create patterns in the quality of a jumping pass's execution. Because this information is not online, it would be necessary in future research to gather this data from a cohort of skaters for a duration of several seasons. Additionally, different types of hypothesis testing could be performed to potentially find a better predictor of jump outcome.
+As such, the conclusions we've drawn regarding Alexandra Trusova's jumps and performance cannot be generalized to the sport of figure skating as a whole until it can be supported by data gathered from the careers of other skaters. This is mainly the result of our methods, and we could improve our analysis by gathering the same information for more female skaters that have performed quadruple jumps over their entire careers. In future research, additional data of varying types, including skater-specific sensitive information, should be collected to find other potential predictors of jump outcome via hypothesis testing. It may be helpful to collect this information from a cohort of skaters over a duration of several seasons.
 
-While we cannot generalize the analysis we've done of one of the most talented figure skaters in the world to every other skater, there are a few key takeaways specific to Alexandra Trusova herself. It is notable that no variables appear to be able to predict the execution of Trusova's jumps. That is, no matter the factors involved, Trusova performs her jumps to a similar level of quality every time. This consistency speaks to Trusova's high level of training. It also speaks to how even Olympic-level figure skaters fall and mess up periodically with no particular pattern.
+While we cannot generalize the analysis we've done of one of the most talented figure skaters in the world to every other skater, there are a few key takeaways specific to Alexandra Trusova herself. It is notable that no variables appear to be able to predict the execution of Trusova's jumps, which are of similar quality every time. This speaks to both her high level of training and how even Olympic-level figure skaters mess up periodically with no particular pattern.
