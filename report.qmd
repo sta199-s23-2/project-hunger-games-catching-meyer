@@ -16,6 +16,8 @@ Figure skating is a sport in which athletes complete programs full of jumps, spi
 
 In recent years, women's figure skating has experienced a "quad revolution" of sorts, with female skaters beginning to perform quadruple jumps with a higher frequency. This has been met with many questions, from fans, coaches, and authorities alike. Are quadruple jumps -- where the skater rotate four revolutions in the air -- valued too heavily? Are they leading to degradation in the performance of other elements?
 
+#### Lit Review
+
 Little research has been done on the variables that affect a skater's ability to successfully perform a jump beyond basic biomechanics. A 2006 article presented a study investigating the biomechanical variables affecting the technical success of a jump. The researchers attached markers to anatomical points on the skater's body, filmed the jump, and conducted analysis in two ways: objectively using biomechanical measures and subjectively by accredited figure skating judges. They found that the correlation between "biomechanical landing strategies" and judge perception is strong enough to support the continuation of the current subjective judging methods in figure skating [@lockwood2006]. However, there are many other factors beyond a skater's biomechanics that affect figure skating jump success. Our investigation seeks to explore these variables.
 
 The variables we consider within this investigation are the difficulty of the jump, the altitude of the competition location, and the travel distance from an athlete's home training city of the competition location. It is important to note that the existing research for these variables in relation specifically to figure skating is sparse. There are many research articles on altitude and how it may affect athletes in other sports, but it was difficult to find articles that specifically mentioned figure skating rather than endurance sports [@chapman2010]. Similarly, there are not many research articles in general about how distance away from an athlete's home city can affect their performance. The closest and most relevant piece was a descriptive review by the NIH about how jet lag could potentially affect physiology in competitive athletes [@lee2012]. It is based on these pieces that we explore these variables further within our project.
@@ -189,6 +191,8 @@ summary(lm(goe_raw ~ jump_bv, data = jump_difficulty))
 ```{r}
 #| label: difficulty-test plot and distribution
 #| echo: false
+#| #| fig-height: 4
+#| fig-width: 4
 
 set.seed(4)
 
@@ -247,6 +251,8 @@ $H_a:$ $\mu_h - \mu_l$ $\neq$ 0
 ```{r}
 #| label: alt-test-plot-and-distribution
 #| echo: false
+#| fig-height: 4
+#| fig-width: 4
 
 set.seed(4)
 
@@ -305,6 +311,8 @@ $H_a:$ $\mu_l - \mu_s$ $<$ 0
 ```{r}
 #| label: dist-test-plot-and-distribution
 #| echo: false
+#| #| fig-height: 4
+#| fig-width: 4
 
 set.seed(4)
 
