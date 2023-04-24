@@ -5,6 +5,8 @@ format: html
 editor: visual
 execute:
   echo: false
+  message: false
+  warning: false
 bibliography: references.bib
 ---
 
@@ -16,7 +18,7 @@ Figure skating is a sport in which athletes complete programs full of jumps, spi
 
 In recent years, women's figure skating has experienced a "quad revolution" of sorts, with female skaters beginning to perform quadruple jumps with a higher frequency. This has been met with many questions, from fans, coaches, and authorities alike. Are quadruple jumps -- where the skater rotate four revolutions in the air -- valued too heavily? Are they leading to degradation in the performance of other elements?
 
-#### Lit Review
+#### Literature Review
 
 Little research has been done on the variables that affect a skater's ability to successfully perform a jump beyond basic biomechanics. A 2006 article presented a study investigating the biomechanical variables affecting the technical success of a jump. The researchers attached markers to anatomical points on the skater's body, filmed the jump, and conducted analysis in two ways: objectively using biomechanical measures and subjectively by accredited figure skating judges. They found that the correlation between "biomechanical landing strategies" and judge perception is strong enough to support the continuation of the current subjective judging methods in figure skating [@lockwood2006]. However, there are many other factors beyond a skater's biomechanics that affect figure skating jump success. Our investigation seeks to explore these variables.
 
@@ -62,7 +64,7 @@ Despite her fame within the figure skating world, Alexandra Trusova was a minor 
 
 With this dataset, we are researching **how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps.** Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump and distance between training location (Moscow) and competition location will negatively affect Trusova's execution of her jumps, and the altitude of the competition location will have an impact on execution as well.
 
-### Exploratory Data Analysis
+#### Exploratory Data Analysis
 
 To explore our data, we created three different visualizations based on the variables we wanted to test. First, we created a visualization that compared jump difficulty and score to determine whether or not those variables were correlated. We facet-wrapped this data by season to determine if there is a significant correlation between season and these results. We then created two visualizations comparing score, jump difficulty, and both distance from Moscow and altitude, respectively. These visualizations represent the major factors we are interested in.
 
@@ -81,7 +83,6 @@ trusova_jump <- read.csv("data/trusova_jumps.csv")
 
 ```{r}
 #| label: difficulty-score-comparison
-#| echo: false
 
 trusova_jump |> 
   ggplot(aes(x = jump_bv, y = goe_raw)) + 
@@ -100,7 +101,6 @@ trusova_jump |>
 
 ```{r}
 #| label: distance-score-comparison
-#| echo: false
 
 trusova_jump |> 
   ggplot(aes(x = distance_moscow_km, y = goe_raw, color = jump_bv)) + 
@@ -154,7 +154,6 @@ We chose to use additive models because the variables we decided to test do not 
 
 ```{r}
 #| label: jump-difficulty-hypothesis-test
-#| echo: false
 
 jump_difficulty <- trusova_jump |>
   arrange(jump_bv) |>
@@ -182,7 +181,6 @@ $H_a:$ $\mu_e - \mu_h$ $>$ 0
 
 ```{r}
 #| label: summary-lm-difficulty-v-goe
-#| echo: false
 
 summary(lm(goe_raw ~ jump_bv, data = jump_difficulty))
 
@@ -190,8 +188,7 @@ summary(lm(goe_raw ~ jump_bv, data = jump_difficulty))
 
 ```{r}
 #| label: difficulty-test plot and distribution
-#| echo: false
-#| #| fig-height: 4
+#| fig-height: 4
 #| fig-width: 4
 
 set.seed(4)
@@ -222,7 +219,6 @@ Given that our significance level 0.05 \< p-value 0.152, we conclude there is in
 
 ```{r}
 #| label: altitude-hypothesis-test
-#| echo: false
 
 altitude_filter <- trusova_jump |>
   arrange(altitude_in_m)|>
@@ -250,7 +246,6 @@ $H_a:$ $\mu_h - \mu_l$ $\neq$ 0
 
 ```{r}
 #| label: alt-test-plot-and-distribution
-#| echo: false
 #| fig-height: 4
 #| fig-width: 4
 
@@ -282,7 +277,6 @@ Given that our significance level 0.05 \< p-value 0.056, we conclude there is in
 
 ```{r}
 #| label: distance-hypothesis-test
-#| echo: false
 
 distance_filter <- trusova_jump |>
   arrange(distance_moscow_km)|>
@@ -310,7 +304,6 @@ $H_a:$ $\mu_l - \mu_s$ $<$ 0
 
 ```{r}
 #| label: dist-test-plot-and-distribution
-#| echo: false
 #| #| fig-height: 4
 #| fig-width: 4
 
@@ -345,7 +338,6 @@ The adjusted R squared and AIC values (in that order) are below. The models resp
 
 ```{r}
 #| label: predictive-model-with-only-difficulty
-#| echo: false
 
 difficulty_model <- linear_reg() |>
    set_engine("lm") |>
@@ -373,7 +365,6 @@ glance(altitude_model)$AIC
 
 ```{r}
 #| label: predictive-model-with-only-distance
-#| echo: false
 
 distance_model <- linear_reg() |>
    set_engine("lm") |>
@@ -388,7 +379,6 @@ glance(distance_model)$AIC
 
 ```{r}
 #| label: altitude-and-difficulty-of-jump
-#| echo: false
 
 dif_alt_model <- linear_reg() |>
   set_engine("lm") |>
@@ -402,7 +392,6 @@ glance(dif_alt_model)$AIC
 
 ```{r}
 #| label: model-with-distance-and-difficulty-of-jump
-#| echo: false
 	
 dd_model <- linear_reg() |>
   set_engine("lm") |>
@@ -416,7 +405,6 @@ glance(dd_model)$AIC
 
 ```{r}
 #| label: model-with-altitude-and-distance
-#| echo: false
 
 alt_dist_model <- linear_reg() |>
   set_engine("lm") |>
@@ -430,7 +418,6 @@ glance(alt_dist_model)$AIC
 
 ```{r}
 #| label: model-with-altitude-and-distance-and-difficulty-of-jump
-#| echo: false
 
 combined_model <- linear_reg() |>
   set_engine("lm") |>
