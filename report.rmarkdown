@@ -8,6 +8,7 @@ execute:
 bibliography: references.bib
 ---
 
+
 ### Introduction and Data
 
 #### Introduction
@@ -64,6 +65,7 @@ With this dataset, we are researching **how the difficulty of the jump and the l
 
 To explore our data, we created three different visualizations based on the variables we wanted to test. First, we created a visualization that compared jump difficulty and score to determine whether or not those variables were correlated. We facet-wrapped this data by season to determine if there is a significant correlation between season and these results. We then created two visualizations comparing score, jump difficulty, and both distance from Moscow and altitude, respectively. These visualizations represent the major factors we are interested in.
 
+
 ```{r}
 #| label: load-pkgs
 #| message: false
@@ -75,7 +77,9 @@ library(tidymodels)
 trusova_jump <- read.csv("data/trusova_jumps.csv")
 ```
 
+
 [DIFFICULTY TO SCORE]{.underline}
+
 
 ```{r}
 #| label: difficulty-score-comparison
@@ -92,9 +96,11 @@ trusova_jump |>
   theme_minimal()
 ```
 
+
 *Interpretation:* We created the above graph to visualize the relationship between score and jump difficulty throughout Trusova's career. Observations of the above visualizations suggest that, in general, jump difficulty and score are not correlated. The data points seem to be scattered regardless of jump difficulty, score, and competition season. There is a difference in the number of data points that are distributed throughout the seasons, which reflects the increasing number of competitions she attends as her career continues.
 
 [DISTANCE FROM MOSCOW TO SCORE]{.underline}
+
 
 ```{r}
 #| label: distance-score-comparison
@@ -112,9 +118,11 @@ trusova_jump |>
   scale_color_viridis_b()
 ```
 
+
 *Interpretation:* We created the above graph to visualize the relationship between jump score and competition distance away from moscow. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. Based on the graph and the trend line, it seems as though there is a positive swell in score at competitions around 2000 km away from Moscow, which dips at competitions around 6000 km away from Moscow. We also see that the score for Moscow competitions seems to be the lowest related to the other competitions. There is also another uptick in score after passing 6000 km away from Moscow. However, there are not as many data points available for competitions further than 5000 km away from Moscow than there are for competitions less than 5000 km away from Moscow. This means that the current data points could indicate a trend that, if more data was available, may not be consistent. It is difficult, therefore, to identify any conclusive trends from this visualization.
 
 [ALTITUDE TO SCORE]{.underline}
+
 
 ```{r}
 #| label: altitude-score-comparison
@@ -131,6 +139,7 @@ trusova_jump |>
   theme_minimal() + 
   scale_color_viridis_b()
 ```
+
 
 *Interpretation:* We created the above graph to visualize the relationship between jump score and altitude, with a line drawn at Moscow's altitude to indicate Trusova's home training altitude. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. According to the graph and the trend line, there seems to be a weak positive linear correlation between score and altitude. However, there are relatively fewer data points available as the altitude gets higher, which can trouble the validity of the correlation.
 
@@ -150,6 +159,7 @@ We chose to use additive models because the variables we decided to test do not 
 
 [Jump Difficulty Test]{.underline}
 
+
 ```{r}
 #| label: jump-difficulty-hypothesis-test
 #| echo: false
@@ -168,6 +178,7 @@ difficulty_means <- jump_difficulty |>
 difficulty_means
 ```
 
+
 $\bar{x_e}$ - $\bar{x_h}$ = 0.356138
 
 $H_o:$ $\mu_e - \mu_h$ = 0
@@ -177,6 +188,7 @@ $H_a:$ $\mu_e - \mu_h$ $>$ 0
 -   **Null:** The difficulty of the jump has no significant effect on the execution of the jump.
 
 -   **Alternate:** As the difficulty of the jump increases, the execution of the jump, as defined by the raw goe, decreases.
+
 
 ```{r}
 #| label: summary-lm-difficulty-v-goe
@@ -210,11 +222,13 @@ null_dist_jump |>
   get_p_value(obs_stat = 0.356138, direction = "right")
 ```
 
+
 Assuming that the true mean goe_raw score for easy jumps is equal to the true mean goe_raw score for hard jumps, the probability that we observe a sample mean difference of 0.356138 or something more extreme is about \~ 0.152.
 
 Given that our significance level 0.05 \< p-value 0.152, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that difficulty of the jump affects the execution of the jump.
 
 [Altitude Test]{.underline}
+
 
 ```{r}
 #| label: altitude-hypothesis-test
@@ -234,6 +248,7 @@ altitude_means <- altitude_filter |>
 altitude_means
 ```
 
+
 $\bar{x_h}$ - $\bar{x_l}$ = 0.605648
 
 $H_o:$ $\mu_h - \mu_l$ = 0
@@ -243,6 +258,7 @@ $H_a:$ $\mu_h - \mu_l$ $\neq$ 0
 -   **Null:** The altitude of the competition location has no significant effect on the execution of the jump.
 
 -   **Alternate:** The altitude of the competition location (low or high) affects the execution of the jump.
+
 
 ```{r}
 #| label: alt-test-plot-and-distribution
@@ -268,11 +284,13 @@ null_dist_alt |>
   get_p_value(obs_stat = 0.605648, direction = "two sided")
 ```
 
+
 Assuming that the true mean goe_raw score for low altitude competitions is equal to the true mean goe_raw score for high altitude competitions, the probability that we observe a sample mean difference of 0.605648 or something more extreme is about \~ 0.056.
 
 Given that our significance level 0.05 \< p-value 0.056, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that altitude of the competition affects the execution of the jump.
 
 [Distance Test]{.underline}
+
 
 ```{r}
 #| label: distance-hypothesis-test
@@ -292,6 +310,7 @@ distance_means <- distance_filter |>
 distance_means
 ```
 
+
 $\bar{x_l}$ - $\bar{x_s}$ = 0.603055
 
 $H_o:$ $\mu_l - \mu_s$ = 0
@@ -301,6 +320,7 @@ $H_a:$ $\mu_l - \mu_s$ $<$ 0
 -   **Null:** The distance of the competition location from Moscow has no significant effect on the execution of the jump.
 
 -   **Alternate**: As the distance between Moscow and the competition location increases, the execution of the jump, as defined by the raw goe, decreases.
+
 
 ```{r}
 #| label: dist-test-plot-and-distribution
@@ -327,6 +347,7 @@ null_dist_dist |>
   get_p_value(obs_stat = 0.603055, direction = "left")
 ```
 
+
 Assuming that the true mean goe_raw score for competitions a short distance from Moscow is equal to the true mean goe_raw score for competitions a long distance from Moscow, the probability that we observe a sample mean difference of 0.603055 or something more extreme is about \~ 0.958.
 
 Given that our significance level 0.05 \< p-value 0.958, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that distance a competition is from Moscow affects the execution of the jump.
@@ -334,6 +355,7 @@ Given that our significance level 0.05 \< p-value 0.958, we conclude there is in
 #### Predictive Models
 
 The adjusted R squared and AIC values (in that order) are below. The models respectively take into account: (1) difficulty, (2) altitude, (3) distance, (4) altitude and difficulty, (5) distance and difficulty, (6) altitude and distance, (7) altitude, distance, and difficulty.
+
 
 ```{r}
 #| label: predictive-model-with-only-difficulty
@@ -435,6 +457,7 @@ glance(combined_model)$AIC
 
 ```
 
+
 ### Results
 
 *The results from our hypothesis tests are as follows:*
@@ -462,3 +485,4 @@ Our data is valid because it is gathered from official competition data from the
 As such, the conclusions we've drawn regarding Alexandra Trusova's jumps and performance cannot be generalized to the sport of figure skating as a whole until it can be supported by data gathered from the careers of other skaters. This is mainly the result of our methods, and we could improve our analysis by gathering the same information for more female skaters that have performed quadruple jumps over their entire careers. In future research, additional data of varying types should be collected beyond what is contained in publicly available records to find other potential predictors of jump outcome. More skater-specific sensitive information, like body weight, injury status, and mental health state could also prove to create patterns in the quality of a jumping pass's execution. Because this information is not online, it would be necessary in future research to gather this data from a cohort of skaters for a duration of several seasons. Additionally, different types of hypothesis testing could be performed to potentially find a better predictor of jump outcome.
 
 While we cannot generalize the analysis we've done of one of the most talented figure skaters in the world to every other skater, there are a few key takeaways specific to Alexandra Trusova herself. It is notable that no variables appear to be able to predict the execution of Trusova's jumps. That is, no matter the factors involved, Trusova performs her jumps to a similar level of quality every time. This consistency speaks to Trusova's high level of training. It also speaks to how even Olympic-level figure skaters fall and mess up periodically with no particular pattern.
+
