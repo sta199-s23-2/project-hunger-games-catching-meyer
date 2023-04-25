@@ -22,13 +22,13 @@ In recent years, women's figure skating has experienced a "quad revolution" of s
 
 Little research has been done on the variables that affect a skater's ability to successfully perform a jump beyond basic biomechanics. A 2006 article presented a study investigating the biomechanical variables affecting the technical success of a jump. The researchers attached markers to anatomical points on the skater's body, filmed the jump, and conducted analysis in two ways: objectively using biomechanical measures and subjectively by accredited figure skating judges. They found that the correlation between "biomechanical landing strategies" and judge perception is strong enough to support the continuation of the current subjective judging methods in figure skating [@lockwood2006]. However, there are many other factors beyond a figure skater's biomechanics that affect their jump success. Our investigation seeks to explore these variables.
 
-The variables we consider within this investigation are the difficulty of the jump, the altitude of the competition location, and the travel distance from an athlete's home training city of the competition location. It is important to note that the existing research for these variables in relation specifically to figure skating is sparse. There are many research articles on altitude and how it may affect athletes in other sports, but it was difficult to find articles that specifically mentioned figure skating rather than endurance sports [@chapman2010]. Similarly, there are not many research articles in general about how distance away from an athlete's home city can affect their performance. The closest and most relevant piece was a descriptive review by the NIH about how jet lag could potentially affect physiology in competitive athletes [@lee2012]. It is based on these pieces that we explore these variables further within our project.
+The variables we consider for this investigation are the jump difficulty, the altitude of the competition location, and the travel distance between competition location and home training location. It is important to note that the existing research for these variables in relation specifically to figure skating is sparse. It was difficult to find articles that specifically mentioned figure skating and altitude rather than endurance sports [@chapman2010]. Similarly, there are not many research articles about how distance away from an athlete's home city can affect their performance. The closest and most relevant piece was a descriptive review by the NIH considering jet lag and physiology in competitive athletes [@lee2012]. It is based on these pieces that we explore these variables further within our project.
 
 One of the skaters that helped bring the "quad revolution" about is Alexandra Trusova, a Russian figure skater whose national and international competitive career spanned from 2014 to 2022. She was the first to perform several types of quadruple jumps in competition, and her earlier competitive years are well documented. Thus, she is a prime subject for analysis.
 
 #### The Data
 
-Our data is collected from the competition records of the International Skating Union, Tallinn Trophy, and the Russian Skating Federation. The International Skating Union (ISU) is the governing body of figure skating competition around the world. ISU-sanctioned and many other competitions have websites containing records of the detailed results of the competition. Each event has an attached pdf file, recording every skater's detailed scoring breakdown, including the judges' evaluation of their jumps. After obtaining Alexandra Trusova's competitive history, the corresponding data for each of her jumps completed in national championships or international competition was pulled into a dataset, accompanied by relevant data about date and the competition location. We created this dataset ourselves as there were only PDF versions of her competition records available online.
+Our data is collected from the competition records of the International Skating Union (ISU), Tallinn Trophy, and the Russian Skating Federation. The ISU is the governing body of figure skating competition around the world. ISU-sanctioned and many other competitions have websites containing records of the detailed results of the competition. Each event has an attached pdf file, recording every skater's detailed scoring breakdown, including the judges' evaluation of their jumps. After obtaining Alexandra Trusova's competitive history, the corresponding data for each of her jumps completed in national championships or international competition was pulled into a dataset, accompanied by relevant data about date and the competition location. We created this dataset ourselves as there were only PDF versions of her competition records available online.
 
 Because we created our own dataset, there was no need to extensively clean the data. However, before importing the dataset to R, we added the altitude and distance variables based on references values from google maps and calculated the goe_raw variable according to the ISU rules: dropping the highest and lowest GOE and averaging the remaining GOE values. This could not be done by code due to different competitions having different numbers of judges.
 
@@ -66,7 +66,7 @@ With this dataset, we are researching **how the difficulty of the jump and the l
 
 #### Exploratory Data Analysis
 
-To explore our data, we created three different visualizations based on the variables we wanted to test. First, we created a visualization that compared jump difficulty and score to determine whether or not those variables were correlated. We facet-wrapped this data by season to determine if there is a significant correlation between season and these results. We then created two visualizations comparing score, jump difficulty, and both distance from Moscow and altitude, respectively. These visualizations represent the major factors we are interested in.
+To explore our data, we created three different visualizations based on the variables we wanted to test. First, we created a visualization that compared jump difficulty and score to determine whether or not those variables were correlated. We then created two visualizations comparing score, jump difficulty, and both distance from Moscow and altitude, respectively. These visualizations represent the major factors we are interested in.
 
 ```{r}
 #| label: load-pkgs
@@ -83,6 +83,8 @@ trusova_jump <- read.csv("data/trusova_jumps.csv")
 
 ```{r}
 #| label: difficulty-score-comparison
+#| fig-height: 4
+#| fig-width: 7
 
 trusova_jump |> 
   ggplot(aes(x = jump_bv, y = goe_raw)) + 
@@ -101,6 +103,8 @@ trusova_jump |>
 
 ```{r}
 #| label: distance-score-comparison
+#| fig-height: 3
+#| fig-width: 7
 
 trusova_jump |> 
   ggplot(aes(x = distance_moscow_km, y = goe_raw, color = jump_bv)) + 
@@ -114,12 +118,14 @@ trusova_jump |>
   scale_color_viridis_b()
 ```
 
-*Interpretation:* We created the above graph to visualize the relationship between jump score and competition distance away from moscow. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. Based on the graph and the trend line, it seems as though there is a positive swell in score at competitions around 2000 km away from Moscow, which dips at competitions around 6000 km away from Moscow. We also see that the score for Moscow competitions seems to be the lowest related to the other competitions. There is also another uptick in score after passing 6000 km away from Moscow. However, there are not as many data points available for competitions further than 5000 km away from Moscow than there are for competitions less than 5000 km away from Moscow. This means that the current data points could indicate a trend that, if more data was available, may not be consistent. It is difficult, therefore, to identify any conclusive trends from this visualization.
+*Interpretation:* We created the above graph to visualize the relationship between jump score and competition distance away from moscow. We colored the data points by jump difficulty to add an extra level of explanation for the possible trends we are seeing. Based on the graph and the trend line, it seems as though there is a positive swell in score at competitions around 2000 km away from Moscow, which dips at competitions around 6000 km away from Moscow. We also see that the score for Moscow competitions seems to be the lowest related to the other competitions. There is also another uptick in score after passing 6000 km away from Moscow. However, there are not as many data points available for competitions further than 5000 km away from Moscow than there are for competitions less than 5000 km away from Moscow. This means that the current data points could indicate a trend that, if more data was available, may not be consistent. Therefore, it is difficult to identify any conclusive trends from this visualization.
 
 [ALTITUDE TO SCORE]{.underline}
 
 ```{r}
 #| label: altitude-score-comparison
+#| fig-height: 3
+#| fig-width: 7
 
 trusova_jump |> 
   ggplot(aes(x = altitude_in_m, y = goe_raw, color = jump_bv)) + 
@@ -138,13 +144,9 @@ trusova_jump |>
 
 ### Methodology
 
-We answered our research question using hypothesis testing and modeling.
+We answered our research question using hypothesis testing and modeling. We conducted hypothesis tests to determine whether differences in the execution score of the jump are influenced by certain variables, by comparing mean execution scores for certain predictor variable groups. We utilized bootstrapping methods instead of the central limit theorem because we cannot prove independence, since all of the jumps are done by the same individual. 
 
-We conducted hypothesis tests to determine whether differences in the execution score of the jump are influenced by certain variables, by comparing mean execution scores for certain predictor variable groups. We utilized bootstrapping methods instead of the central limit theorem because we cannot prove independence, since all of the jumps are done by the same individual. 
-
-We also created linear regression models and calculated their adjusted R\^2 and AIC. We used the adjusted R\^2 and AIC as benchmarks to evaluate the effectiveness of our three variables at predicting Trusova's jump execution as they respectively penalize the addition of bad variables and penalize models with more variables.
-
-We chose to use additive models because the variables we decided to test do not interact with each other, and are not correlated. Because there are only three factors, we created models of every possible variable combination, so a stepwise model selection process was not necessary. 
+We also created linear regression models and calculated their adjusted R\^2 and AIC. We used the adjusted R\^2 and AIC as benchmarks to evaluate the effectiveness of our three variables at predicting Trusova's jump execution as they respectively penalize the addition of bad variables and penalize models with more variables. We chose to use additive models because the variables we decided to test do not interact with each other, and are not correlated. Because there are only three factors, we created models of every possible variable combination, so a stepwise model selection process was not necessary. 
 
 #### Hypothesis Testing
 
