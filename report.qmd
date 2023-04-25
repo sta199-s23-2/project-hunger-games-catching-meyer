@@ -205,8 +205,10 @@ null_dist_jump |>
   geom_vline(xintercept = 0.356138) +
   geom_vline(xintercept = -0.356138)
 
-null_dist_jump |>
-  get_p_value(obs_stat = 0.356138, direction = "right")
+visualize(null_dist_jump) +
+  shade_p_value(obs_stat = 0.356138, direction = "right") +
+  labs(title = "Jump Difficulty Simulation-Based Null Distribution",
+       x = "Observed mean goe_raw difference between hard/ easy jumps")
 ```
 
 Assuming that the true mean goe_raw score for easy jumps is equal to the true mean goe_raw score for hard jumps, the probability that we observe a sample mean difference of 0.356138 or something more extreme is about \~ 0.152.
@@ -263,8 +265,11 @@ null_dist_alt |>
   geom_vline(xintercept = 0.605648) +
   geom_vline(xintercept = -0.605648)
 
-null_dist_alt |>
-  get_p_value(obs_stat = 0.605648, direction = "two sided")
+visualize(null_dist_alt) +
+  shade_p_value(obs_stat = 0.605648, direction = "two-sided") +
+  shade_p_value(obs_stat = -0.605648, direction = "two sided") +
+  labs(title = "Altitude Simulation-Based Null Distribution",
+       x = "Observed mean goe_raw difference between high/ low altitude jumps")
 ```
 
 Assuming that the true mean goe_raw score for low altitude competitions is equal to the true mean goe_raw score for high altitude competitions, the probability that we observe a sample mean difference of 0.605648 or something more extreme is about \~ 0.056.
@@ -322,8 +327,10 @@ null_dist_dist |>
   geom_vline(xintercept = 0.603055) +
   geom_vline(xintercept = -0.603055)
 
-null_dist_dist |>
-  get_p_value(obs_stat = 0.603055, direction = "left")
+visualize(null_dist_dist) +
+  shade_p_value(obs_stat = 0.603055, direction = "left") +
+  labs(title = "Distance from Moscow Simulation-Based Null Distribution",
+       x = "Observed mean goe_raw difference between long/ short distance from Moscow jumps")
 ```
 
 Assuming that the true mean goe_raw score for competitions a short distance from Moscow is equal to the true mean goe_raw score for competitions a long distance from Moscow, the probability that we observe a sample mean difference of 0.603055 or something more extreme is about \~ 0.958.
@@ -435,7 +442,7 @@ We failed to reject our null hypotheses for all of the hypothesis tests. The tes
 
 These results make sense, because is likely that professional skaters such as Trusova try to mitigate the effect of variables such as distance and altitude on their execution scores. Professional skaters likely travel way in advance of competitions to ensure they are not jet-lagged, and train difficult jumps more than easy ones.
 
-These results could also be explained by the process in which we split the sample set in half to create the top and bottom groups for the difference in mean goe_raw scores in each instance. If we were to conduct further hypothesis testing, we could adjust the different groups created, and it would be better to have a larger sample set from other skaters and more compeititons from which to draw conclusions.
+These results could also be explained by the process in which we split the sample set by the median to create the top and bottom groups for the difference in mean goe_raw scores in each instance. If we were to conduct further hypothesis testing, we could adjust the ways we created the "high" and "low" groups, perhaps changing to above or below a mean value, and it would be better to have a larger sample set from other skaters and more compeititons from which to draw conclusions.
 
 *The results from our predictive models are as follows:*
 
