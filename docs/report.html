@@ -297,11 +297,8 @@ F-statistic: 0.06492 on 1 and 291 DF,  p-value: 0.7991</code></pre>
 <div class="cell-output-display">
 <p><img src="report_files/figure-html/difficulty-test%20plot%20and%20distribution-1.png" class="img-fluid" width="288"></p>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 1
-  p_value
-    &lt;dbl&gt;
-1   0.152</code></pre>
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/difficulty-test%20plot%20and%20distribution-2.png" class="img-fluid" width="288"></p>
 </div>
 </div>
 <p>Assuming that the true mean goe_raw score for easy jumps is equal to the true mean goe_raw score for hard jumps, the probability that we observe a sample mean difference of 0.356138 or something more extreme is about ~ 0.152.</p>
@@ -327,11 +324,8 @@ F-statistic: 0.06492 on 1 and 291 DF,  p-value: 0.7991</code></pre>
 <div class="cell-output-display">
 <p><img src="report_files/figure-html/alt-test-plot-and-distribution-1.png" class="img-fluid" width="288"></p>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 1
-  p_value
-    &lt;dbl&gt;
-1   0.056</code></pre>
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/alt-test-plot-and-distribution-2.png" class="img-fluid" width="288"></p>
 </div>
 </div>
 <p>Assuming that the true mean goe_raw score for low altitude competitions is equal to the true mean goe_raw score for high altitude competitions, the probability that we observe a sample mean difference of 0.605648 or something more extreme is about ~ 0.056.</p>
@@ -357,11 +351,8 @@ F-statistic: 0.06492 on 1 and 291 DF,  p-value: 0.7991</code></pre>
 <div class="cell-output-display">
 <p><img src="report_files/figure-html/dist-test-plot-and-distribution-1.png" class="img-fluid" width="288"></p>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 1
-  p_value
-    &lt;dbl&gt;
-1   0.958</code></pre>
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/dist-test-plot-and-distribution-2.png" class="img-fluid" width="288"></p>
 </div>
 </div>
 <p>Assuming that the true mean goe_raw score for competitions a short distance from Moscow is equal to the true mean goe_raw score for competitions a long distance from Moscow, the probability that we observe a sample mean difference of 0.603055 or something more extreme is about ~ 0.958.</p>
@@ -433,7 +424,7 @@ F-statistic: 0.06492 on 1 and 291 DF,  p-value: 0.7991</code></pre>
 <p><em>The results from our hypothesis tests are as follows:</em></p>
 <p>We failed to reject our null hypotheses for all of the hypothesis tests. The test that was closest to rejecting our null hypothesis at a significance level of 5% was the test that looked at the execution score by the altitude of competitions, followed closely by the test that looked at the execution score by the difficulty of jumps. However, all of the tests failed to provide sufficient evidence that the difficulty of the jump or the location of the competitions affects Trusova’s execution of her jumps.</p>
 <p>These results make sense, because is likely that professional skaters such as Trusova try to mitigate the effect of variables such as distance and altitude on their execution scores. Professional skaters likely travel way in advance of competitions to ensure they are not jet-lagged, and train difficult jumps more than easy ones.</p>
-<p>These results could also be explained by the process in which we split the sample set in half to create the top and bottom groups for the difference in mean goe_raw scores in each instance. If we were to conduct further hypothesis testing, we could adjust the different groups created, and it would be better to have a larger sample set from other skaters and more compeititons from which to draw conclusions.</p>
+<p>These results could also be explained by the process in which we split the sample set by the median to create the top and bottom groups for the difference in mean goe_raw scores in each instance. If we were to conduct further hypothesis testing, we could adjust the ways we created the “high” and “low” groups, perhaps changing to above or below a mean value, and it would be better to have a larger sample set from other skaters and more compeititons from which to draw conclusions.</p>
 <p><em>The results from our predictive models are as follows:</em></p>
 <p>The adjusted R squared values were less than 0.05 for all of the models. The model that predicted Trusova’s raw score using only the altitude of the competition location had the highest adjusted R squared value of 0.04228525. This value, however, is still low, which indicates that none of these regression models are good fits.</p>
 <p>The AIC values were above 1400 for all of the models, which indicates that none of the models are good fits. The model that predicted Trusova’s raw score using only the altitude of the competition location had the lowest AIC value of 1438.663.&nbsp;</p>
