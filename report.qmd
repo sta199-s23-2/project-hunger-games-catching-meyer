@@ -14,7 +14,7 @@ bibliography: references.bib
 
 #### Introduction
 
-Figure skating is a sport in which athletes complete programs full of jumps, spins, and footwork while making sure to perform to their music. Scoring for figure skating consists of two components, the technical score and the artistic score. And it's this scoring that is the source of much of the controversy in the figure skating world.
+Figure skating is a sport in which athletes complete programs full of jumps, spins, and footwork while making sure to perform to their music. Scoring for figure skating consists of two components, the technical score and the artistic score, and serves as the source of much of the controversy in the figure skating world.
 
 In recent years, women's figure skating has experienced a "quad revolution" of sorts, with female skaters beginning to perform quadruple jumps with a higher frequency. This has been met with many questions from fans, coaches, and authorities alike. Are quadruple jumps -- where the skater rotates four revolutions in the air -- valued too heavily? Are they leading to degradation in the performance of other elements?
 
@@ -24,11 +24,11 @@ Little research has been done on the variables that affect a skater's ability to
 
 #### The Data
 
-One of the skaters that helped bring the "quad revolution" about is Alexandra Trusova, a Russian figure skater whose national and international competitive career spanned from 2014 to 2022. She was the first to perform several types of quadruple jumps in competition, and her earlier competitive years are well documented. Thus, she is a prime subject for analysis.
+One of the skaters that helped bring about the "quad revolution" is Alexandra Trusova, a Russian figure skater whose national and international competitive career spanned from 2014 to 2022. She was the first to perform several types of quadruple jumps in competition, and her earlier competitive years are well documented, which makes her a prime subject for analysis.
 
-Our data is collected from the competition records of the International Skating Union (ISU), Tallinn Trophy, and the Russian Skating Federation. The ISU is the governing body of figure skating competition around the world. ISU-sanctioned and many other competitions have websites containing records of the detailed results of the competition. Each event has an attached pdf file, recording every skater's detailed scoring breakdown, including the judges' evaluation of their jumps. After obtaining Alexandra Trusova's competitive history, the corresponding data for each of her jumps completed in national championships or international competition was pulled into a dataset, accompanied by relevant data about date and the competition location. We created this dataset ourselves as there were only PDF versions of her competition records available online.
+Our data is collected from the competition records of the International Skating Union (ISU), Tallinn Trophy, and the Russian Skating Federation. The ISU is the governing body of figure skating competitions around the world, and both ISU-sanctioned and non-ISU-sanctioned competitions have websites containing detailed records of competition results. Each event has its own pdf file that contains the detailed scoring breakdown of every skater as well as the judges' evaluation of their jumps. After obtaining Alexandra Trusova's competitive history, we pulled the corresponding data for all of her jumps completed in national championships or international competitions into a dataset and added on relevant data about the date and location of the competition. We created this dataset ourselves as there were only PDF versions of her competition records available online.
 
-Because we created our own dataset, there was no need to extensively clean the data. However, before importing the dataset to R, we added the altitude and distance variables based on references values from google maps and calculated the goe_raw variable according to the ISU rules: dropping the highest and lowest GOE and averaging the remaining GOE values. This could not be done by code due to different competitions having different numbers of judges.
+Because we created our own dataset, there was no need to extensively clean the data. However, before importing the dataset to R, we added the altitude and distance variables based on references values from google maps and calculated the goe_raw variable according to the ISU rules; we dropped the highest and lowest GOE values, then averaged the remaining ones. This could not be done by code as different competitions have different numbers of judges.
 
 #### Relevant Variables & Justification
 
@@ -50,21 +50,21 @@ Because we created our own dataset, there was no need to extensively clean the d
 |                    | Due to adjustments to the GOE system after the 2017-2018 season, GOEs for jumping passes from competitions before June 2018 are scaled up by 5/3 to adjust from the -3 to 3 scale to the -5 to 5 scale.                                                                                                                         |
 +--------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-*Altitude:* We chose to test jump score by altitude because of how competing at different altitudes can affect the body and sport of an athlete. Less oxygen is available at higher altitudes, which typically corresponds to a lower amount of oxygen in athletes' muscles. However, air at higher altitudes is less dense than air at lower altitudes, which can indicate less air resistance. This means that competing at higher altitudes could have an interesting effect regarding skill sports such as figure skating, which requires great amounts of muscle strength and the ability to move quickly and precisely through air [@chapman2010].
+*Altitude:* We chose to test jump score by altitude because competing at different altitudes can affect the body and sport of an athlete. Less oxygen is available at higher altitudes, which typically corresponds to a lower amount of oxygen in athletes' muscles. However, air at higher altitudes is less dense than air at lower altitudes, which can indicate less air resistance. This means that competing at higher altitudes could have an interesting effect on skill sports like figure skating, which requires great amounts of muscle strength and the ability to move quickly and precisely through air [@chapman2010].
 
-*Location:* The physical location of a competition has the potential to affect an athlete in several ways, particularly taking into account travel time and circadian rhythm adjustment. We will test score by competition distance from Moscow (Trusova's home training city) to determine whether or not there is a correlation between performance and travel time/travel distance. "Jet lag", or the necessary adjustment of the body's circadian rhythm to a new time zone, can affect the energy of an athlete, and therefore may be able to affect performance quality [@lee2012].
+*Location:* The physical location of a competition has the potential to affect an athlete in several ways, specifically in terms of travel time and the need for circadian rhythm adjustment. We will test score by competition distance from Moscow (Trusova's home training city) to determine whether or not there is a correlation between performance and travel time/travel distance. "Jet lag", or the necessary adjustment of the body's circadian rhythm to a new time zone, can affect the energy of an athlete and subsequently impact performance quality [@lee2012].
 
 #### Ethical Concerns
 
-Despite her fame within the figure skating world, Alexandra Trusova was a minor during the time period this dataset covers. As such, the only data we gathered was taken from publicly available records. We also took care to not include variables that evaluated Trusova's skating in a subjective manner and kept our analysis to quantitative data when possible.
+Despite her fame within the figure skating world, Alexandra Trusova was a minor during the time period covered by this dataset. As such, we only gathered data from publicly available records. We also took care to not include variables that evaluated Trusova's skating in a subjective manner and kept our analysis to quantitative data when possible.
 
 #### Research Question & Hypothesis
 
-With this dataset, we are researching **how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps.** Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in difficulty of the jump and distance between training location (Moscow) and competition location will negatively affect Trusova's execution of her jumps, and that the altitude of the competition location will have an impact on execution as well.
+With this dataset, we are researching **how the difficulty of the jump and the location of the competition affect Alexandra Trusova's execution of jumps.** Through this, we seek to find patterns in Trusova's jump data that support or do not support the questions surrounding quadruple jumps in women's figure skating. We hypothesize that increases in the difficulty of the jump and the distance between her training location (Moscow) and competition location will negatively affect Trusova's execution of her jumps, and that the altitude of the competition location will also have an impact on her jump execution.
 
 #### Exploratory Data Analysis
 
-To explore our data, we created three different visualizations based on the variables we wanted to test. First, we created a visualization that compared jump difficulty and score to determine whether or not those variables were correlated. We then created two visualizations comparing score, jump difficulty, and both distance from Moscow and altitude, respectively. These visualizations represent the major factors we are interested in.
+To explore our data, we created three visualizations using the variables we wanted to test. First, we created a visualization that compared jump difficulty and score to determine whether or not those variables were correlated. We then created two visualizations comparing score and jump difficulty with the distance from Moscow and the altitude of the competition location. These visualizations represent the major factors we are interested in.
 
 ```{r}
 #| label: load-pkgs
@@ -142,9 +142,9 @@ trusova_jump |>
 
 ### Methodology
 
-We answered our research question using hypothesis testing and modeling. We conducted hypothesis tests to determine whether differences in the execution score of the jump are influenced by certain variables, by comparing mean execution scores for certain predictor variable groups. We utilized bootstrapping methods instead of the central limit theorem because we cannot prove independence, since all of the jumps are done by the same individual. 
+We answered our research question using hypothesis testing and modeling. We conducted hypothesis tests to determine whether differences in the execution score of the jump are influenced by certain variables. This was done by comparing mean execution scores for certain predictor variable groups. We utilized bootstrapping methods instead of the central limit theorem because we cannot prove independence, since all of the jumps are done by the same individual. We also cannot conclude that this was a random sample of Trusova's jumps since we specifically selected for national championships and international competitions when creating the dataset.
 
-We also created linear regression models and calculated their adjusted R\^2 and AIC. We used the adjusted R\^2 and AIC as benchmarks to evaluate the effectiveness of our three variables at predicting Trusova's jump execution as they respectively penalize the addition of bad variables and penalize models with more variables. We chose to use additive models because the variables we decided to test do not interact with each other, and are not correlated. Because there are only three factors, we created models of every possible variable combination, so a stepwise model selection process was not necessary. 
+We also created linear regression models and calculated their adjusted R\^2 and AIC. We used the adjusted R\^2 and AIC as benchmarks to evaluate the effectiveness of our three variables at predicting Trusova's jump execution as they respectively penalize the addition of bad variables and penalize models with more variables. We chose to use additive models because the variables we decided to test do not interact with each other and thus cannot impact one another. Because there are only three factors, we created models of every possible combination of variables, so a stepwise model selection process was not necessary. 
 
 #### Hypothesis Testing
 
@@ -187,7 +187,8 @@ summary(lm(goe_raw ~ jump_bv, data = jump_difficulty))
 ```{r}
 #| label: difficulty-test plot and distribution
 #| fig-height: 3
-#| fig-width: 3
+#| fig-width: 7
+#| warning: FALSE
 
 set.seed(4)
 
@@ -213,7 +214,7 @@ visualize(null_dist_jump) +
 
 Assuming that the true mean goe_raw score for easy jumps is equal to the true mean goe_raw score for hard jumps, the probability that we observe a sample mean difference of 0.356138 or something more extreme is about \~ 0.152.
 
-Given that our significance level 0.05 \< p-value 0.152, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that difficulty of the jump affects the execution of the jump.
+Given that our significance level 0.05 \< p-value 0.152, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that an increase in the difficulty score of a jump lowers Trusova's execution of that jump.
 
 [Altitude]{.underline}
 
@@ -242,12 +243,12 @@ $H_a:$ $\mu_h - \mu_l$ $\neq$ 0
 
 -   **Null:** The altitude of the competition location has no significant effect on the execution of the jump.
 
--   **Alternate:** The altitude of the competition location (low or high) affects the execution of the jump.
+-   **Alternate:** The altitude of the competition location (whether it is low or high) affects the execution of the jump.
 
 ```{r}
 #| label: alt-test-plot-and-distribution
 #| fig-height: 3
-#| fig-width: 3
+#| fig-width: 7
 
 set.seed(4)
 
@@ -308,7 +309,7 @@ $H_a:$ $\mu_l - \mu_s$ $<$ 0
 ```{r}
 #| label: dist-test-plot-and-distribution
 #| fig-height: 3
-#| fig-width: 3
+#| fig-width: 7
 
 set.seed(4)
 
@@ -330,12 +331,12 @@ null_dist_dist |>
 visualize(null_dist_dist) +
   shade_p_value(obs_stat = 0.603055, direction = "left") +
   labs(title = "Distance from Moscow Simulation-Based Null Distribution",
-       x = "Observed mean goe_raw difference between long/ short distance from Moscow jumps")
+       x = "Observed mean goe_raw difference between long/short distance from Moscow jumps")
 ```
 
 Assuming that the true mean goe_raw score for competitions a short distance from Moscow is equal to the true mean goe_raw score for competitions a long distance from Moscow, the probability that we observe a sample mean difference of 0.603055 or something more extreme is about \~ 0.958.
 
-Given that our significance level 0.05 \< p-value 0.958, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that distance a competition is from Moscow affects the execution of the jump.
+Given that our significance level 0.05 \< p-value 0.958, we conclude there is insufficient evidence to reject our null hypothesis / weak evidence to conclude the alternative hypothesis. This means that at a 5% significance level, there is insufficient evidence to conclude that the execution of the jump, as defined by the raw goe, decreases as the distance between Moscow and the competition location increases.
 
 #### Predictive Models
 
@@ -438,11 +439,11 @@ glance(combined_model)$AIC
 
 *The results from our hypothesis tests are as follows:*
 
-We failed to reject our null hypotheses for all of the hypothesis tests. The test that was closest to rejecting our null hypothesis at a significance level of 5% was the test that looked at the execution score by the altitude of competitions, followed closely by the test that looked at the execution score by the difficulty of jumps. However, all of the tests failed to provide sufficient evidence that the difficulty of the jump or the location of the competitions affects Trusova's execution of her jumps.
+We failed to reject our null hypotheses for all of the hypothesis tests. The test that was closest to rejecting our null hypothesis at a significance level of 5% was the test that looked at the execution score by the altitude of competitions, followed closely by the test that looked at the execution score by the difficulty of jumps. However, all of the tests failed to provide sufficient evidence that the difficulty of the jump or the location of the competitions has a significant effect on Trusova's execution of her jumps.
 
-These results make sense, because is likely that professional skaters such as Trusova try to mitigate the effect of variables such as distance and altitude on their execution scores. Professional skaters likely travel way in advance of competitions to ensure they are not jet-lagged, and train difficult jumps more than easy ones.
+These results make sense because it is likely that professional skaters such as Trusova try to mitigate the effect of variables such as distance and altitude on their execution scores. Professional skaters likely (1) travel way in advance of competitions to ensure that they are not jet-lagged and (2) practice difficult jumps more often than easy ones.
 
-These results could also be explained by the process in which we split the sample set by the median to create the top and bottom groups for the difference in mean goe_raw scores in each instance. If we were to conduct further hypothesis testing, we could adjust the ways we created the "high" and "low" groups, perhaps changing to above or below a mean value, and it would be better to have a larger sample set from other skaters and more compeititons from which to draw conclusions.
+These results could also be explained by the process in which we split the sample set by the median to create the top and bottom groups for the difference in mean goe_raw scores in each instance. If we were to conduct further hypothesis testing, we could adjust the ways we created the "high" and "low" groups, perhaps changing to above or below a mean value. It would also be better to have a larger sample set from other skaters and more compeititons from which to draw conclusions.
 
 *The results from our predictive models are as follows:*
 
@@ -454,9 +455,9 @@ The adjusted R squared and AIC values thus both indicate that the altitude_model
 
 ### Discussion
 
-Our results indicate that there is no singular factor that has a significant impact on Trusova's jump performance. We failed to reject our null hypothesis in all of our hypothesis tests, and all 7 of our predictive models had AIC values above 1430 and adjusted R squared values below 0.05.
+Our results indicate that no singular observed factor has a significant impact on Trusova's jump performance. We failed to reject our null hypothesis in all of our hypothesis tests, and all 7 of our predictive models had AIC values above 1430 and adjusted R squared values below 0.05.
 
-Our data is valid as it is gathered from official competition data from the International Skating Union and individual countries' skating federations. However, it is not necessarily reliable because: 1) There is a small amount of bias and variability inherent in figure skating judging as a result of vague GOE guidelines. 2) The data focuses on one skater's performances at national championships and international competitions. This small sample size allows for variability in patterns in the data. There are also only a handful of female skaters who have performed numerous types of quads, so it was not possible to gather data for a large sample of skaters. Additionally, it was not feasible to include data from more jumpers within the time frame of the project.
+Our data is valid as it is gathered from official competition data from the International Skating Union and individual countries' skating federations. However, it is not necessarily reliable because: 1) There is a small amount of bias and variability inherent in figure skating judging as a result of vague GOE guidelines. 2) The data focuses on one skater's performances at national championships and international competitions, and this small sample size allows for variability in patterns in the data. There are also only a handful of female skaters who have performed numerous types of quads, so it was not possible to gather data for a large sample of skaters. Additionally, it was not feasible to include data from more jumpers within the time frame of the project.
 
 As such, the conclusions we've drawn regarding Alexandra Trusova's jumps and performance cannot be generalized to the sport of figure skating as a whole until it can be supported by data gathered from the careers of other skaters. This is mainly the result of our methods, and we could improve our analysis by gathering the same information for more female skaters that have performed quadruple jumps over their entire careers. In future research, additional data of varying types, including skater-specific sensitive information, should be collected to find other potential predictors of jump outcome via hypothesis testing. It may be helpful to collect this information from a cohort of skaters over a duration of several seasons.
 
